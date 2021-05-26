@@ -8,7 +8,7 @@ const SimpleModalBody = ({
     allowOutsideClick = false,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
-    animation = { type: '', before: '', after: '' },
+    animation = { type: '', base: '', before: '', after: '' },
 }) => {
     return (
         <ClassNames>
@@ -59,11 +59,12 @@ const SimpleModalBody = ({
                         }
 
                         .content-base {
+                            position: relative;
                             overflow: hidden;
                             outline: 0;
                             transition-timing-function: ease-in-out;
                             transition-property: ${animation.type};
-                            ${animation.before};
+                            ${animation.base};
                             transition-duration: ${duration}ms;
                         }
 

@@ -18,6 +18,7 @@ const Modal1 = ({ children }) => {
             duration={300}
             animation={{
                 type: 'transform',
+                base: 'transform: scale(0)',
                 before: 'transform: scale(0)',
                 after: 'transform: scale(1)',
             }}
