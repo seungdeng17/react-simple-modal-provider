@@ -1,12 +1,13 @@
 {
   "name": "simple-modal-provider",
   "description": "React simple modal and Modal Provider",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "dev": "webpack serve",
-    "build": "rm -rf ./dist && webpack"
+    "build": "rm -rf ./dist && webpack",
+    "publish:npm": "rm -rf dist && mkdir dist && babel src/lib -d dist --copy-files"
   },
   "repository": {
     "type": "git",
@@ -30,13 +31,18 @@
   "dependencies": {
     "@emotion/react": "^11.4.0",
     "react": "^17.0.2",
-    "react-modal": "^3.13.1"
+    "react-modal": "^3.13.1",
+    "simple-modal-provider": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
+    "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/styled": "^11.3.0",
     "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.1",
