@@ -1,5 +1,5 @@
 {
-  "name": "react-simple-modal-provider",
+  "name": "simple-modal-provider",
   "description": "React simple modal and Modal Provider",
   "version": "1.0.0",
   "module": "dist/index.js",
