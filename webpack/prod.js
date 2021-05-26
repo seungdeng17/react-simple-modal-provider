@@ -5,9 +5,11 @@ const path = require('path');
 module.exports = merge(common, {
     mode: 'production',
 
+    entry: ['@babel/polyfill', './src/lib/index.js'],
+
     output: {
-        filename: '[fullhash].js',
+        filename: 'index.js',
         path: path.resolve(__dirname, '../dist'),
-        publicPath: './',
+        libraryTarget: "umd",
     },
 });
