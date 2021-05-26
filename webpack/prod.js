@@ -12,4 +12,9 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, '../dist'),
         libraryTarget: "umd",
     },
+
+    externals: {
+        "react": "commonjs react",
+        "react-dom": "commonjs react-dom",
+    }
 });
