@@ -2,7 +2,7 @@ import { useState, createContext, useContext } from 'react';
 import SimpleModal from '../SimpleModal';
 import styled from 'styled-components';
 
-const ModalWrap = styled.div`
+const Wrap = styled.div`
     width: 300px;
     height: 300px;
     background-color: #fff;
@@ -20,12 +20,12 @@ const Modal2 = ({ children }) => {
     const close = () => setOpen(false);
 
     const body = (
-        <ModalWrap>
+        <Wrap>
             <div>Modal2</div>
             <button onClick={close} type="button">
                 Modal2 Close
             </button>
-        </ModalWrap>
+        </Wrap>
     );
 
     return (

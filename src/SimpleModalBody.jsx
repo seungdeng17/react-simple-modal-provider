@@ -1,6 +1,6 @@
 import * as ReactModal from 'react-modal';
 
-const SimpleModalBody = ({ children, isOpen, onRequestClose }) => {
+const SimpleModalBody = ({ isOpen, onRequestClose, body }) => {
     return (
         <ReactModal
             isOpen={isOpen}
@@ -30,7 +30,7 @@ const SimpleModalBody = ({ children, isOpen, onRequestClose }) => {
                 },
             }}
         >
-            {children}
+            {body}
         </ReactModal>
     );
 };
