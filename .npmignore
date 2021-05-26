@@ -1,0 +1,10 @@
+.vscode
+.prettierrc
+.gitignore
+node_modules
+yarn.lock
+yarn-error.log
+package-lock.json
+package-error.log
+webpack
+webpack.config.js

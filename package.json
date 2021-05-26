@@ -1,8 +1,8 @@
 {
-  "name": "simple-modal",
-  "description": "",
+  "name": "@taek/react-simple-modal",
+  "description": "Simple React Modal Provider",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "dev": "webpack serve",
     "build": "rm -rf ./dist && webpack"
@@ -11,9 +11,18 @@
     "type": "git",
     "url": "git+https://github.com/seungdeng17/simple-modal.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "modal",
+    "react modal",
+    "simple modal",
+    "react simple modal",
+    "modal provider"
+  ],
+  "author": {
+    "name": "Seungtaek Lee",
+    "email": "seungdeng17@gmail.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/seungdeng17/simple-modal/issues"
   },
