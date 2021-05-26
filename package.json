@@ -2,7 +2,6 @@
   "name": "@taek/react-simple-modal",
   "description": "Simple react modal provider",
   "version": "1.0.0",
-  "private": false,
   "module": "dist/index.js",
   "main": "dist/index.js",
   "scripts": {

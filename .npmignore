@@ -8,3 +8,5 @@ package-lock.json
 package-error.log
 webpack
 webpack.config.js
+src
+public
