@@ -1,7 +1,7 @@
 import { useState, createContext, useContext } from 'react';
-import SimpleModal from '../SimpleModal';
+import SimpleModal from '../lib/SimpleModal';
 import styled from '@emotion/styled';
-import { modalAnimation } from '../modalAnimation';
+import { modalAnimation } from '../lib/modalAnimation';
 
 const context = createContext();
 export const useModal2 = () => useContext(context);

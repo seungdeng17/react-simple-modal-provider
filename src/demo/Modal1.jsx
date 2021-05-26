@@ -1,5 +1,5 @@
 import { useState, createContext, useContext } from 'react';
-import SimpleModal from '../SimpleModal';
+import SimpleModal from '../lib/SimpleModal';
 import ModalBody from './ModalBody';
 
 const context = createContext();
