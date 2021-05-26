@@ -8,8 +8,7 @@ const SimpleModalBody = ({
     allowOutsideClick = false,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
-    anim = '',
-    customAnim = { type: '', before: '', after: '' },
+    animation = { type: '', before: '', after: '' },
 }) => {
     return (
         <ClassNames>
@@ -63,17 +62,17 @@ const SimpleModalBody = ({
                             overflow: hidden;
                             outline: 0;
                             transition-timing-function: ease-in-out;
-                            transition-property: ${customAnim.type};
-                            ${customAnim.before};
+                            transition-property: ${animation.type};
+                            ${animation.before};
                             transition-duration: ${duration}ms;
                         }
 
                         .content-after {
-                            ${customAnim.after};
+                            ${animation.after};
                         }
 
                         .content-before {
-                            ${customAnim.before};
+                            ${animation.before};
                         }
                     `}
                 >

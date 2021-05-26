@@ -1,6 +1,7 @@
 import { useState, createContext, useContext } from 'react';
 import SimpleModal from '../SimpleModal';
 import styled from '@emotion/styled';
+import { modalAnimation } from '../modalAnimation';
 
 const context = createContext();
 export const useModal2 = () => useContext(context);
@@ -25,6 +26,8 @@ const Modal2 = ({ children }) => {
             isOpen={isOpen}
             setOpen={setOpen}
             body={body}
+            animation={modalAnimation.scaleUp}
+            duration={300}
         />
     );
 };

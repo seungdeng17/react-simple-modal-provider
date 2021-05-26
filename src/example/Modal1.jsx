@@ -16,7 +16,7 @@ const Modal1 = ({ children }) => {
             setOpen={setOpen}
             body={<ModalBody />}
             duration={300}
-            customAnim={{
+            animation={{
                 type: 'transform',
                 before: 'transform: scale(0)',
                 after: 'transform: scale(1)',

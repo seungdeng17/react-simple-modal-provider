@@ -9,8 +9,7 @@ const SimpleModal = ({
     allowOutsideClick,
     duration,
     overlayColor,
-    anim,
-    customAnim,
+    animation,
 }) => {
     const open = () => setOpen(true);
     const close = () => setOpen(false);
@@ -25,8 +24,7 @@ const SimpleModal = ({
                 allowOutsideClick={allowOutsideClick}
                 duration={duration}
                 overlayColor={overlayColor}
-                anim={anim}
-                customAnim={customAnim}
+                animation={animation}
             />
         </context.Provider>
     );
