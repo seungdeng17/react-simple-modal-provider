@@ -1,6 +1,6 @@
 {
-  "name": "@taek/react-simple-modal",
-  "description": "Simple react modal provider",
+  "name": "react-simple-modal-provider",
+  "description": "React simple modal and Modal Provider",
   "version": "1.0.0",
   "module": "dist/index.js",
   "main": "dist/index.js",
@@ -13,11 +13,10 @@
     "url": "git+https://github.com/seungdeng17/simple-modal.git"
   },
   "keywords": [
+    "react",
+    "simple",
     "modal",
-    "provider",
-    "react modal",
-    "simple modal",
-    "modal provider"
+    "provider"
   ],
   "author": "Seungtaek Lee <seungdeng17@gmail.com>",
   "license": "MIT",
@@ -25,10 +24,12 @@
     "url": "https://github.com/seungdeng17/simple-modal/issues"
   },
   "homepage": "https://github.com/seungdeng17/simple-modal#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@emotion/react": "^11.4.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "react-modal": "^3.13.1"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "@emotion/styled": "^11.3.0",
     "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.1",
+    "react-dom": "^17.0.2",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
