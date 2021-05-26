@@ -8,5 +8,6 @@ package-lock.json
 package-error.log
 webpack
 webpack.config.js
+babel.config.json
 src
 public
