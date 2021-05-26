@@ -37,8 +37,7 @@ const SimpleModalBody = ({
                             right: 0;
                             left: 0;
                             outline: 0;
-                            opacity: 0;
-                            z-index: 9999;
+                            z-index: 99999;
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -50,12 +49,10 @@ const SimpleModalBody = ({
 
                         .overlay-after {
                             background-color: ${overlayColor};
-                            opacity: 1;
                         }
 
                         .overlay-before {
                             background-color: rgba(0, 0, 0, 0);
-                            opacity: 0;
                         }
 
                         .content-base {

@@ -1,5 +1,6 @@
 import { useState, createContext, useContext } from 'react';
 import SimpleModal from '../lib/SimpleModal';
+import { modalAnimation } from '../lib/modalAnimation';
 import ModalBody from './ModalBody';
 
 const context = createContext();
@@ -15,12 +16,7 @@ const Modal1 = ({ children }) => {
             isOpen={isOpen}
             setOpen={setOpen}
             duration={300}
-            animation={{
-                type: 'transform',
-                base: 'transform: scale(0)',
-                before: 'transform: scale(0)',
-                after: 'transform: scale(1)',
-            }}
+            animation={modalAnimation.scaleUp}
         >
             <ModalBody />
         </SimpleModal>
