@@ -3,7 +3,8 @@
   "description": "Simple react modal provider",
   "version": "1.0.0",
   "private": false,
-  "main": "./dist/index.js",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "webpack serve",
     "build": "rm -rf ./dist && webpack",
