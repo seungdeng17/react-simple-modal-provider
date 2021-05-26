@@ -10,7 +10,7 @@ const Modal1 = ({ children }) => {
 
     return (
         <SimpleModal
-            children={children}
+            subElement={children}
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
