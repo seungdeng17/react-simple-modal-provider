@@ -7,8 +7,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "webpack serve",
-    "build": "rm -rf ./dist && webpack",
-    "publish:npm": "rm -rf dist && mkdir dist && babel src/lib -d dist --copy-files"
+    "build": "rm -rf ./dist && webpack"
   },
   "repository": {
     "type": "git",
@@ -34,7 +33,6 @@
     "react-modal": "^3.13.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.14.2",

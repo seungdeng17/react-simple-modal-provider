@@ -1,3 +1,3 @@
-export { default as modalAnimation } from "./modalAnimation";
+export { modalAnimation } from "./modalAnimation";
 export { default as ModalProvider } from "./ModalProvider";
-export { default as SimpleModalt } from "./SimpleModalt";
+export { default as SimpleModal } from "./SimpleModal";
