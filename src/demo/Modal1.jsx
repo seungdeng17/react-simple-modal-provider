@@ -14,7 +14,6 @@ const Modal1 = ({ children }) => {
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
-            body={<ModalBody />}
             duration={300}
             animation={{
                 type: 'transform',
@@ -22,7 +21,9 @@ const Modal1 = ({ children }) => {
                 before: 'transform: scale(0)',
                 after: 'transform: scale(1)',
             }}
-        />
+        >
+            <ModalBody />
+        </SimpleModal>
     );
 };
 

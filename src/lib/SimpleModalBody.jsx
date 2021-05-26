@@ -2,9 +2,9 @@ import * as ReactModal from 'react-modal';
 import { ClassNames } from '@emotion/react';
 
 const SimpleModalBody = ({
+    children,
     isOpen,
     onRequestClose,
-    body,
     allowOutsideClick = false,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
@@ -77,7 +77,7 @@ const SimpleModalBody = ({
                         }
                     `}
                 >
-                    {body}
+                    {children}
                 </ReactModal>
             )}
         </ClassNames>

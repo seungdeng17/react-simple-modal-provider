@@ -2,10 +2,10 @@ import SimpleModalBody from './SimpleModalBody';
 
 const SimpleModal = ({
     children,
+    subElement,
     context,
     isOpen,
     setOpen,
-    body,
     allowOutsideClick,
     duration,
     overlayColor,
@@ -16,16 +16,17 @@ const SimpleModal = ({
 
     return (
         <context.Provider value={{ open, close }}>
-            {children}
+            {subElement}
             <SimpleModalBody
                 isOpen={isOpen}
                 onRequestClose={close}
-                body={body}
                 allowOutsideClick={allowOutsideClick}
                 duration={duration}
                 overlayColor={overlayColor}
                 animation={animation}
-            />
+            >
+                {children}
+            </SimpleModalBody>
         </context.Provider>
     );
 };
