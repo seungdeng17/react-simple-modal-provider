@@ -4,8 +4,7 @@ const SimpleModal = ({
     children,
     context,
     isOpen,
-    open,
-    close,
+    setOpen,
     body,
     allowOutsideClick,
     duration,
@@ -13,6 +12,9 @@ const SimpleModal = ({
     anim,
     customAnim,
 }) => {
+    const open = () => setOpen(true);
+    const close = () => setOpen(false);
+
     return (
         <context.Provider value={{ open, close }}>
             {children}

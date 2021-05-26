@@ -7,16 +7,13 @@ export const useModal1 = () => useContext(context);
 
 const Modal1 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
-    const openHandler = () => setOpen(true);
-    const closeHandler = () => setOpen(false);
 
     return (
         <SimpleModal
             children={children}
             context={context}
             isOpen={isOpen}
-            open={openHandler}
-            close={closeHandler}
+            setOpen={setOpen}
             body={<ModalBody />}
             duration={300}
             customAnim={{

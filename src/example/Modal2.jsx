@@ -7,13 +7,12 @@ export const useModal2 = () => useContext(context);
 
 const Modal2 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
-    const openHandler = () => setOpen(true);
-    const closeHandler = () => setOpen(false);
+    const onCloseHandler = () => setOpen(false);
 
     const body = (
         <Body>
             <div>Modal2</div>
-            <button onClick={closeHandler} type="button">
+            <button onClick={onCloseHandler} type="button">
                 Modal2 Close
             </button>
         </Body>
@@ -24,8 +23,7 @@ const Modal2 = ({ children }) => {
             children={children}
             context={context}
             isOpen={isOpen}
-            open={openHandler}
-            close={closeHandler}
+            setOpen={setOpen}
             body={body}
         />
     );
