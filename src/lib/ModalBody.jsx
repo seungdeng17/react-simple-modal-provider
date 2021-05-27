@@ -1,7 +1,7 @@
 import * as ReactModal from 'react-modal';
 import { ClassNames } from '@emotion/react';
 
-const SimpleModalBody = ({
+const ModalBody = ({
     children,
     isOpen,
     onRequestClose,
@@ -81,4 +81,4 @@ const SimpleModalBody = ({
     );
 };
 
-export default SimpleModalBody;
+export default ModalBody;

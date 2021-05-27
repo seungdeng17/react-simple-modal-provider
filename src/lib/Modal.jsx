@@ -1,6 +1,6 @@
-import SimpleModalBody from './SimpleModalBody';
+import ModalBody from './ModalBody';
 
-const SimpleModal = ({
+const Modal = ({
     children,
     subElement,
     context,
@@ -17,7 +17,7 @@ const SimpleModal = ({
     return (
         <context.Provider value={{ open, close }}>
             {subElement}
-            <SimpleModalBody
+            <ModalBody
                 isOpen={isOpen}
                 onRequestClose={close}
                 allowOutsideClick={allowOutsideClick}
@@ -26,9 +26,9 @@ const SimpleModal = ({
                 animation={animation}
             >
                 {children}
-            </SimpleModalBody>
+            </ModalBody>
         </context.Provider>
     );
 };
 
-export default SimpleModal;
+export default Modal;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SimpleModal from '../lib/SimpleModal';
+import Modal from '../lib/Modal';
 import { modalAnimation } from '../lib/modalAnimation';
 import { createModalContext } from '../lib/modalContext';
 import styled from '@emotion/styled';
@@ -11,7 +11,7 @@ const Modal2 = ({ children }) => {
     const onCloseHandler = () => setOpen(false);
 
     return (
-        <SimpleModal
+        <Modal
             subElement={children}
             context={context}
             isOpen={isOpen}
@@ -25,7 +25,7 @@ const Modal2 = ({ children }) => {
                     Modal2 Close
                 </button>
             </Body>
-        </SimpleModal>
+        </Modal>
     );
 };
 

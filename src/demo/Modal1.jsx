@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SimpleModal from '../lib/SimpleModal';
+import Modal from '../lib/Modal';
 import { modalAnimation } from '../lib/modalAnimation';
 import { createModalContext } from '../lib/modalContext';
 import ModalBody from './ModalBody';
@@ -10,7 +10,7 @@ const Modal1 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
 
     return (
-        <SimpleModal
+        <Modal
             subElement={children}
             context={context}
             isOpen={isOpen}
@@ -19,7 +19,7 @@ const Modal1 = ({ children }) => {
             animation={modalAnimation.scaleUp}
         >
             <ModalBody />
-        </SimpleModal>
+        </Modal>
     );
 };
 
