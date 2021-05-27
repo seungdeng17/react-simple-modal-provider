@@ -1,6 +1,5 @@
-import { memo } from 'react';
-import Portal from './Portal';
 import { ClassNames } from '@emotion/react';
+import Portal from './Portal';
 
 const ModalBody = ({
     children,
@@ -48,17 +47,33 @@ const ModalBody = ({
                             justify-content: center;
                             align-items: center;
                             background-color: rgba(0, 0, 0, 0);
-                            transition-property: background-color, opacity;
-                            transition-timing-function: ease-in-out;
-                            transition-duration: ${duration}ms;
+                            animation-duration: ${duration}ms;
+                            animation-timing-function: ease-in-out;
+                            animation-fill-mode: both;
                         }
 
                         .overlay-after {
-                            background-color: ${overlayColor};
+                            animation-name: overlayAfter;
+                            @keyframes overlayAfter {
+                                0% {
+                                    background-color: rgba(0, 0, 0, 0);
+                                }
+                                100% {
+                                    background-color: ${overlayColor};
+                                }
+                            }
                         }
 
                         .overlay-before {
-                            background-color: rgba(0, 0, 0, 0);
+                            animation-name: overlayBefore;
+                            @keyframes overlayBefore {
+                                0% {
+                                    background-color: ${overlayColor};
+                                }
+                                100% {
+                                    background-color: rgba(0, 0, 0, 0);
+                                }
+                            }
                         }
 
                         .content-base {
@@ -67,18 +82,33 @@ const ModalBody = ({
                             left: ${horizontal}px;
                             overflow: hidden;
                             outline: 0;
-                            transition-timing-function: ease-in-out;
-                            transition-property: ${animation.type};
-                            ${animation.base};
-                            transition-duration: ${duration}ms;
+                            animation-duration: ${duration}ms;
+                            animation-timing-function: ease-in-out;
+                            animation-fill-mode: both;
                         }
 
                         .content-after {
-                            ${animation.after};
+                            animation-name: contentAfter;
+                            @keyframes contentAfter {
+                                0% {
+                                    ${animation.before};
+                                }
+                                100% {
+                                    ${animation.after};
+                                }
+                            }
                         }
 
                         .content-before {
-                            ${animation.before};
+                            animation-name: contentBefore;
+                            @keyframes contentBefore {
+                                0% {
+                                    ${animation.after};
+                                }
+                                100% {
+                                    ${animation.base};
+                                }
+                            }
                         }
                     `}
                 >
@@ -89,4 +119,4 @@ const ModalBody = ({
     );
 };
 
-export default memo(ModalBody);
+export default ModalBody;

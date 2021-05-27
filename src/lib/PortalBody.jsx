@@ -1,33 +1,27 @@
 import { useState, useEffect, memo, useCallback } from 'react';
 
-const PortalBody = ({
-    children,
-    trigger,
-    isOpen,
-    close,
-    duration,
-    overlayClassName,
-    className,
-}) => {
-    const [onOpenEvent, setOpenEvent] = useState(false);
-    const [onCloseEvent, setCloseEvent] = useState(false);
+const PortalBody = ({ children, isOpen, close, duration, overlayClassName, className }) => {
+    const [isOpening, setOpening] = useState(false);
+    const [isClosing, setClosing] = useState(false);
     const [isShow, setShow] = useState(false);
 
     const overlayClickHandler = useCallback(() => {
-        setCloseEvent(true);
+        setClosing(true);
         close();
+    }, []);
+
+    const initializeState = useCallback(() => {
+        setOpening(false);
+        setClosing(false);
+        setShow(false);
     }, []);
 
     useEffect(() => {
         setShow(true);
-        setOpenEvent(true);
-        if (trigger && !isOpen) {
-            setTimeout(() => {
-                setOpenEvent(false);
-                setCloseEvent(false);
-                setShow(false);
-            }, duration);
-        }
+        setOpening(true);
+        if (isOpen) return;
+
+        setTimeout(initializeState, duration);
     }, [isOpen]);
 
     return (
@@ -35,16 +29,16 @@ const PortalBody = ({
             <div
                 className={`
                 ${overlayClassName.base} 
-                ${onOpenEvent ? overlayClassName.afterOpen : ''} 
-                ${onCloseEvent ? overlayClassName.beforeClose : ''}
+                ${isOpening ? overlayClassName.afterOpen : ''} 
+                ${isClosing ? overlayClassName.beforeClose : ''}
             `}
                 onClick={overlayClickHandler}
             >
                 <div
                     className={`
                     ${className.base} 
-                    ${onOpenEvent ? className.afterOpen : ''} 
-                    ${onCloseEvent ? className.beforeClose : ''}
+                    ${isOpening ? className.afterOpen : ''} 
+                    ${isClosing ? className.beforeClose : ''}
                 `}
                 >
                     {children}

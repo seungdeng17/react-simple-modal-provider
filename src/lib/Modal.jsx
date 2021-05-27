@@ -1,4 +1,4 @@
-import { useState, memo, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ModalBody from './ModalBody';
 
 const Modal = ({
@@ -17,15 +17,13 @@ const Modal = ({
     duration = animation?.type && !duration ? 150 : duration;
 
     const [trigger, setTrigger] = useState(false);
+    const open = useCallback(() => setOpen(true), []);
+    const close = useCallback(() => setOpen(false), []);
 
-    const open = useCallback(() => {
-        setOpen(true);
+    useEffect(() => {
+        if (!isOpen) return;
         setTrigger(true);
-    }, []);
-
-    const close = useCallback(() => {
-        setOpen(false);
-    }, []);
+    }, [isOpen]);
 
     return (
         <context.Provider value={{ open, close }}>
@@ -47,4 +45,4 @@ const Modal = ({
     );
 };
 
-export default memo(Modal);
+export default Modal;

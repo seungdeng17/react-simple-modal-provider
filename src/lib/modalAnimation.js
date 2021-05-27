@@ -7,15 +7,15 @@ const scaleUp = {
 
 const slideDown = {
     type: 'top, opacity',
-    base: 'top: -50px; opacity: 0;',
-    before: 'top: 50px; opacity: 0;',
+    base: 'top: 50px; opacity: 0;',
+    before: 'top: -50px; opacity: 0;',
     after: 'top: 0px; opacity: 1;',
 };
 
 const slideUp = {
     type: 'top, opacity',
-    base: 'top: 50px; opacity: 0;',
-    before: 'top: -50px; opacity: 0;',
+    base: 'top: -50px; opacity: 0;',
+    before: 'top: 50px; opacity: 0;',
     after: 'top: 0px; opacity: 1;',
 };
 

@@ -1,5 +1,5 @@
-import { useState, useEffect, memo } from 'react';
 import * as ReactDOM from 'react-dom';
+import { useState, useEffect } from 'react';
 import PortalBody from './PortalBody';
 
 const body = document.body;
@@ -27,7 +27,6 @@ const Portal = ({
 
     return ReactDOM.createPortal(
         <PortalBody
-            trigger={trigger}
             isOpen={isOpen}
             close={close}
             duration={duration}
@@ -41,4 +40,4 @@ const Portal = ({
     );
 };
 
-export default memo(Portal);
+export default Portal;
