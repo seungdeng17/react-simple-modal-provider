@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Modal, createModalContext, modalAnimation } from 'simple-modal-provider';
-
-const context = createModalContext('Modal4');
 
 const Modal4 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
+    const context = useMemo(() => createModalContext('Modal4'), []);
 
     return (
         <Modal

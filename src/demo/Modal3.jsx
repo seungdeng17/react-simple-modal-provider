@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Modal, createModalContext, modalAnimation } from 'simple-modal-provider';
 import styled from '@emotion/styled';
 
-const context = createModalContext('Modal3');
-
 const Modal3 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
+    const context = useMemo(() => createModalContext('Modal3'), []);
     const onCloseHandler = () => setOpen(false);
 
     return (

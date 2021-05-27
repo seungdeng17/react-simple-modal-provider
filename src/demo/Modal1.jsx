@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Modal from '../lib/Modal';
 import { modalAnimation } from '../lib/modalAnimation';
 import { createModalContext } from '../lib/modalContext';
 import ModalBody from './ModalBody';
 
-const context = createModalContext('Modal1');
-
 const Modal1 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
+    const context = useMemo(() => createModalContext('Modal1'), []);
 
     return (
         <Modal
