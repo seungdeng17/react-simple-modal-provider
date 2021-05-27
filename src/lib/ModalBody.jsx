@@ -1,10 +1,12 @@
-import * as ReactModal from 'react-modal';
+// import * as ReactModal from 'react-modal';
+import { memo } from 'react';
+import ReactModal from './ReactModal';
 import { ClassNames } from '@emotion/react';
 
 const ModalBody = ({
     children,
     isOpen,
-    onRequestClose,
+    close,
     allowOutsideClick = false,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
@@ -19,7 +21,7 @@ const ModalBody = ({
             {({ css }) => (
                 <ReactModal
                     isOpen={isOpen}
-                    onRequestClose={onRequestClose}
+                    close={close}
                     ariaHideApp={false}
                     shouldCloseOnOverlayClick={!allowOutsideClick}
                     overlayClassName={{
@@ -32,7 +34,7 @@ const ModalBody = ({
                         afterOpen: 'content-after',
                         beforeClose: 'content-before',
                     }}
-                    closeTimeoutMS={duration}
+                    duration={duration}
                     portalClassName={css`
                         .overlay-base {
                             position: fixed;
@@ -89,4 +91,4 @@ const ModalBody = ({
     );
 };
 
-export default ModalBody;
+export default memo(ModalBody);

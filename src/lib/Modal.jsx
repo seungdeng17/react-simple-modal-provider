@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import ModalBody from './ModalBody';
 
 const Modal = ({
@@ -14,14 +15,14 @@ const Modal = ({
     horizontal,
 }) => {
     const open = () => setOpen(true);
-    const close = () => setOpen(false);
+    const close = () => setTimeout(() => setOpen(false), duration);
 
     return (
         <context.Provider value={{ open, close }}>
             {subElement}
             <ModalBody
                 isOpen={isOpen}
-                onRequestClose={close}
+                close={close}
                 allowOutsideClick={allowOutsideClick}
                 duration={duration}
                 overlayColor={overlayColor}
@@ -35,4 +36,4 @@ const Modal = ({
     );
 };
 
-export default Modal;
+export default memo(Modal);
