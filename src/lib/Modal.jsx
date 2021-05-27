@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { useState, memo, useCallback } from 'react';
 import ModalBody from './ModalBody';
 
 const Modal = ({
@@ -16,13 +16,22 @@ const Modal = ({
 }) => {
     duration = animation?.type && !duration ? 150 : duration;
 
-    const open = () => setOpen(true);
-    const close = () => setTimeout(() => setOpen(false), duration);
+    const [trigger, setTrigger] = useState(false);
+
+    const open = useCallback(() => {
+        setOpen(true);
+        setTrigger(true);
+    }, []);
+
+    const close = useCallback(() => {
+        setOpen(false);
+    }, []);
 
     return (
         <context.Provider value={{ open, close }}>
             {subElement}
             <ModalBody
+                trigger={trigger}
                 isOpen={isOpen}
                 close={close}
                 allowOutsideClick={allowOutsideClick}

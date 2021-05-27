@@ -4,7 +4,16 @@ import PortalBody from './PortalBody';
 
 const body = document.body;
 
-const Portal = ({ children, close, overlayClassName, className, isOpen, portalClassName }) => {
+const Portal = ({
+    children,
+    trigger,
+    isOpen,
+    close,
+    duration,
+    overlayClassName,
+    className,
+    portalClassName,
+}) => {
     const [isReady, setReady] = useState(false);
 
     useEffect(() => {
@@ -14,10 +23,18 @@ const Portal = ({ children, close, overlayClassName, className, isOpen, portalCl
         setReady(true);
     }, []);
 
-    if (!isReady || !isOpen) return null;
+    if (!isReady || !trigger) return null;
 
     return ReactDOM.createPortal(
-        <PortalBody overlayClassName={overlayClassName} className={className} close={close}>
+        <PortalBody
+            trigger={trigger}
+            isOpen={isOpen}
+            close={close}
+            duration={duration}
+            overlayClassName={overlayClassName}
+            className={className}
+            portalClassName={portalClassName}
+        >
             {children}
         </PortalBody>,
         document.querySelector(`.${portalClassName}`)

@@ -1,10 +1,10 @@
-// import * as ReactModal from 'react-modal';
 import { memo } from 'react';
 import Portal from './Portal';
 import { ClassNames } from '@emotion/react';
 
 const ModalBody = ({
     children,
+    trigger,
     isOpen,
     close,
     allowOutsideClick = false,
@@ -18,10 +18,10 @@ const ModalBody = ({
         <ClassNames>
             {({ css }) => (
                 <Portal
+                    trigger={trigger}
                     isOpen={isOpen}
                     close={close}
-                    ariaHideApp={false}
-                    shouldCloseOnOverlayClick={!allowOutsideClick}
+                    allowOutsideClick={allowOutsideClick}
                     duration={duration}
                     overlayClassName={{
                         base: 'overlay-base',
