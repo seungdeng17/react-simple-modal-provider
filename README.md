@@ -1,1 +1,1 @@
-# simple-modal
+# react-simple-modal-provider
