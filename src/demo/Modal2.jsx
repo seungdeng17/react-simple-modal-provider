@@ -17,7 +17,6 @@ const Modal2 = ({ children }) => {
             isOpen={isOpen}
             setOpen={setOpen}
             animation={modalAnimation.scaleUp}
-            duration={300}
         >
             <Body>
                 <div>Modal2</div>

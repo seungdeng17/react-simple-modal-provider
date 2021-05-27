@@ -10,6 +10,8 @@ const ModalBody = ({
     overlayColor = 'rgba(0, 0, 0, 0.6)',
     animation = { type: '', base: '', before: '', after: '' },
 }) => {
+    duration = animation.type && !duration ? 150 : duration;
+
     return (
         <ClassNames>
             {({ css }) => (
