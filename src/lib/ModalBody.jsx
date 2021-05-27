@@ -47,33 +47,17 @@ const ModalBody = ({
                             justify-content: center;
                             align-items: center;
                             background-color: rgba(0, 0, 0, 0);
-                            animation-duration: ${duration}ms;
-                            animation-timing-function: ease-in-out;
-                            animation-fill-mode: both;
+                            transition-property: background-color, opacity;
+                            transition-timing-function: ease-in-out;
+                            transition-duration: ${duration}ms;
                         }
 
                         .overlay-after {
-                            animation-name: overlayAfter;
-                            @keyframes overlayAfter {
-                                0% {
-                                    background-color: rgba(0, 0, 0, 0);
-                                }
-                                100% {
-                                    background-color: ${overlayColor};
-                                }
-                            }
+                            background-color: ${overlayColor};
                         }
 
                         .overlay-before {
-                            animation-name: overlayBefore;
-                            @keyframes overlayBefore {
-                                0% {
-                                    background-color: ${overlayColor};
-                                }
-                                100% {
-                                    background-color: rgba(0, 0, 0, 0);
-                                }
-                            }
+                            background-color: rgba(0, 0, 0, 0);
                         }
 
                         .content-base {
@@ -82,33 +66,18 @@ const ModalBody = ({
                             left: ${horizontal}px;
                             overflow: hidden;
                             outline: 0;
-                            animation-duration: ${duration}ms;
-                            animation-timing-function: ease-in-out;
-                            animation-fill-mode: both;
+                            transition-timing-function: ease-in-out;
+                            transition-property: ${animation.type};
+                            ${animation.base};
+                            transition-duration: ${duration}ms;
                         }
 
                         .content-after {
-                            animation-name: contentAfter;
-                            @keyframes contentAfter {
-                                0% {
-                                    ${animation.before};
-                                }
-                                100% {
-                                    ${animation.after};
-                                }
-                            }
+                            ${animation.after};
                         }
 
                         .content-before {
-                            animation-name: contentBefore;
-                            @keyframes contentBefore {
-                                0% {
-                                    ${animation.after};
-                                }
-                                100% {
-                                    ${animation.base};
-                                }
-                            }
+                            ${animation.before};
                         }
                     `}
                 >

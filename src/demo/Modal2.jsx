@@ -15,7 +15,7 @@ const Modal2 = ({ children }) => {
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
-            animation={modalAnimation.scaleUp}
+            animation={modalAnimation.slideDown}
         >
             <Body>
                 <div>Modal2</div>
