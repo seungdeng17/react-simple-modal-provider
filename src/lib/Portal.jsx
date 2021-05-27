@@ -1,18 +1,10 @@
 import { useState, useEffect, memo } from 'react';
 import * as ReactDOM from 'react-dom';
-import Test from './Test';
+import PortalBody from './PortalBody';
 
 const body = document.body;
 
-const ReactModal = ({
-    children,
-    close,
-    overlayClassName,
-    className,
-    isOpen,
-    duration,
-    portalClassName,
-}) => {
+const Portal = ({ children, close, overlayClassName, className, isOpen, portalClassName }) => {
     const [isReady, setReady] = useState(false);
 
     useEffect(() => {
@@ -22,18 +14,14 @@ const ReactModal = ({
         setReady(true);
     }, []);
 
-    if (!isOpen || !isReady) return null;
+    if (!isReady || !isOpen) return null;
 
     return ReactDOM.createPortal(
-        <Test
-            subElement={children}
-            duration={duration}
-            overlayClassName={overlayClassName}
-            className={className}
-            close={close}
-        />,
+        <PortalBody overlayClassName={overlayClassName} className={className} close={close}>
+            {children}
+        </PortalBody>,
         document.querySelector(`.${portalClassName}`)
     );
 };
 
-export default memo(ReactModal);
+export default memo(Portal);

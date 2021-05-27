@@ -1,6 +1,6 @@
 // import * as ReactModal from 'react-modal';
 import { memo } from 'react';
-import ReactModal from './ReactModal';
+import Portal from './Portal';
 import { ClassNames } from '@emotion/react';
 
 const ModalBody = ({
@@ -14,12 +14,10 @@ const ModalBody = ({
     vertical = 0,
     horizontal = 0,
 }) => {
-    duration = animation.type && !duration ? 150 : duration;
-
     return (
         <ClassNames>
             {({ css }) => (
-                <ReactModal
+                <Portal
                     isOpen={isOpen}
                     close={close}
                     ariaHideApp={false}
@@ -85,7 +83,7 @@ const ModalBody = ({
                     `}
                 >
                     {children}
-                </ReactModal>
+                </Portal>
             )}
         </ClassNames>
     );

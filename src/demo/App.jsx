@@ -9,8 +9,6 @@ import Button2 from './Button2';
 import Button3 from './Button3';
 import Button4 from './Button4';
 
-import ReactModal from '../lib/ReactModal';
-
 const App = () => {
     const modals = [Modal1, Modal2];
     // const modals = [Modal1, Modal2, Modal3, Modal4];
@@ -21,7 +19,6 @@ const App = () => {
             <Button2 />
             {/* <Button3 /> */}
             {/* <Button4 /> */}
-            {/* <ReactModal /> */}
         </ModalProvider>
     );
 };
