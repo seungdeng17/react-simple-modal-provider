@@ -9,6 +9,8 @@ const ModalBody = ({
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
     animation = { type: '', base: '', before: '', after: '' },
+    vertical = 0,
+    horizontal = 0,
 }) => {
     duration = animation.type && !duration ? 150 : duration;
 
@@ -61,6 +63,8 @@ const ModalBody = ({
 
                         .content-base {
                             position: relative;
+                            bottom: ${vertical}px;
+                            left: ${horizontal}px;
                             overflow: hidden;
                             outline: 0;
                             transition-timing-function: ease-in-out;

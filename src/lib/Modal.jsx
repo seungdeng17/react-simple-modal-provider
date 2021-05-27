@@ -10,6 +10,8 @@ const Modal = ({
     duration,
     overlayColor,
     animation,
+    vertical,
+    horizontal,
 }) => {
     const open = () => setOpen(true);
     const close = () => setOpen(false);
@@ -24,6 +26,8 @@ const Modal = ({
                 duration={duration}
                 overlayColor={overlayColor}
                 animation={animation}
+                vertical={vertical}
+                horizontal={horizontal}
             >
                 {children}
             </ModalBody>
