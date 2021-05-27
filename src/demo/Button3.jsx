@@ -1,7 +1,7 @@
-import { useModal3 } from './Modal3';
+import { useModal } from 'simple-modal-provider';
 
 const Button3 = () => {
-    const { open } = useModal3();
+    const { open } = useModal('Modal3');
 
     return (
         <div>

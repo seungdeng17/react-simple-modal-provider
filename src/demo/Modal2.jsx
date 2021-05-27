@@ -1,34 +1,31 @@
-import { useState, createContext, useContext } from 'react';
+import { useState } from 'react';
 import SimpleModal from '../lib/SimpleModal';
 import { modalAnimation } from '../lib/modalAnimation';
+import { createModalContext } from '../lib/modalContext';
 import styled from '@emotion/styled';
 
-const context = createContext();
-export const useModal2 = () => useContext(context);
+const context = createModalContext('Modal2');
 
 const Modal2 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
     const onCloseHandler = () => setOpen(false);
 
-    const body = (
-        <Body>
-            <div>Modal2</div>
-            <button onClick={onCloseHandler} type="button">
-                Modal2 Close
-            </button>
-        </Body>
-    );
-
     return (
         <SimpleModal
-            children={children}
+            subElement={children}
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
-            body={body}
             animation={modalAnimation.scaleUp}
             duration={300}
-        />
+        >
+            <Body>
+                <div>Modal2</div>
+                <button onClick={onCloseHandler} type="button">
+                    Modal2 Close
+                </button>
+            </Body>
+        </SimpleModal>
     );
 };
 

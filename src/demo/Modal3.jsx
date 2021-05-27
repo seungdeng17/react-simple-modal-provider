@@ -1,33 +1,29 @@
-import { useState, createContext, useContext } from 'react';
-import { modalAnimation, SimpleModal } from 'simple-modal-provider';
+import { useState } from 'react';
+import { modalAnimation, SimpleModal, createModalContext } from 'simple-modal-provider';
 import styled from '@emotion/styled';
 
-const context = createContext();
-export const useModal3 = () => useContext(context);
+const context = createModalContext('Modal3');
 
 const Modal3 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
     const onCloseHandler = () => setOpen(false);
 
-    const body = (
-        <Body>
-            <div>Modal3</div>
-            <button onClick={onCloseHandler} type="button">
-                Modal3 Close
-            </button>
-        </Body>
-    );
-
     return (
         <SimpleModal
-            children={children}
+            subElement={children}
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
-            body={body}
             animation={modalAnimation.slideDown}
             duration={300}
-        />
+        >
+            <Body>
+                <div>Modal3</div>
+                <button onClick={onCloseHandler} type="button">
+                    Modal3 Close
+                </button>
+            </Body>
+        </SimpleModal>
     );
 };
 
