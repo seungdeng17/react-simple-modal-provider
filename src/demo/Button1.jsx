@@ -1,7 +1,7 @@
-import { useModal1 } from './Modal1';
+import { useModal } from '../lib/modalContext';
 
 const Button1 = () => {
-    const { open } = useModal1();
+    const { open } = useModal('Modal1');
 
     return (
         <div>
