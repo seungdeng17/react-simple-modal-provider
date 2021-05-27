@@ -22,6 +22,7 @@ const ModalBody = ({
                     close={close}
                     ariaHideApp={false}
                     shouldCloseOnOverlayClick={!allowOutsideClick}
+                    duration={duration}
                     overlayClassName={{
                         base: 'overlay-base',
                         afterOpen: 'overlay-after',
@@ -32,7 +33,6 @@ const ModalBody = ({
                         afterOpen: 'content-after',
                         beforeClose: 'content-before',
                     }}
-                    duration={duration}
                     portalClassName={css`
                         .overlay-base {
                             position: fixed;

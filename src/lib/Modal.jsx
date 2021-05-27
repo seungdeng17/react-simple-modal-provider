@@ -14,7 +14,7 @@ const Modal = ({
     vertical,
     horizontal,
 }) => {
-    duration = animation.type && !duration ? 150 : duration;
+    duration = animation?.type && !duration ? 150 : duration;
 
     const open = () => setOpen(true);
     const close = () => setTimeout(() => setOpen(false), duration);
