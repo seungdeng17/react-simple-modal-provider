@@ -10,13 +10,12 @@ const Modal1 = ({ children }) => {
 
     return (
         <Modal
-            subElement={children}
+            consumer={children}
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
             duration={300}
             animation={modalAnimation.scaleUp}
-            vertical={200}
         >
             <ModalBody />
         </Modal>

@@ -1,8 +1,9 @@
+import { useCallback, useEffect } from 'react';
 import ModalBody from './ModalBody';
 
 const Modal = ({
     children,
-    subElement,
+    consumer,
     context,
     isOpen,
     setOpen,
@@ -13,15 +14,23 @@ const Modal = ({
     vertical,
     horizontal,
 }) => {
-    const open = () => setOpen(true);
-    const close = () => setOpen(false);
+    duration = animation?.type && !duration ? 150 : duration;
+
+    const open = useCallback(() => setOpen(true), []);
+    const close = useCallback(() => setOpen(false), []);
+    const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);
+
+    useEffect(() => {
+        if (!isOpen) return window.removeEventListener('keyup', keyUpHandler);
+        window.addEventListener('keyup', keyUpHandler);
+    }, [isOpen]);
 
     return (
         <context.Provider value={{ open, close }}>
-            {subElement}
+            {consumer}
             <ModalBody
                 isOpen={isOpen}
-                onRequestClose={close}
+                close={close}
                 allowOutsideClick={allowOutsideClick}
                 duration={duration}
                 overlayColor={overlayColor}

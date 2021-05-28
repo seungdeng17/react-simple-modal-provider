@@ -1,10 +1,10 @@
-import * as ReactModal from 'react-modal';
 import { ClassNames } from '@emotion/react';
+import Portal from './Portal';
 
 const ModalBody = ({
     children,
     isOpen,
-    onRequestClose,
+    close,
     allowOutsideClick = false,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
@@ -12,16 +12,14 @@ const ModalBody = ({
     vertical = 0,
     horizontal = 0,
 }) => {
-    duration = animation.type && !duration ? 150 : duration;
-
     return (
         <ClassNames>
             {({ css }) => (
-                <ReactModal
+                <Portal
                     isOpen={isOpen}
-                    onRequestClose={onRequestClose}
-                    ariaHideApp={false}
-                    shouldCloseOnOverlayClick={!allowOutsideClick}
+                    close={close}
+                    allowOutsideClick={allowOutsideClick}
+                    duration={duration}
                     overlayClassName={{
                         base: 'overlay-base',
                         afterOpen: 'overlay-after',
@@ -32,7 +30,6 @@ const ModalBody = ({
                         afterOpen: 'content-after',
                         beforeClose: 'content-before',
                     }}
-                    closeTimeoutMS={duration}
                     portalClassName={css`
                         .overlay-base {
                             position: fixed;
@@ -83,7 +80,7 @@ const ModalBody = ({
                     `}
                 >
                     {children}
-                </ReactModal>
+                </Portal>
             )}
         </ClassNames>
     );
