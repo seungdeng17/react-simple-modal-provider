@@ -24,10 +24,6 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
         close();
     }, []);
 
-    const keyUpHandler = useCallback(({ key }) => {
-        console.log(key);
-    }, []);
-
     const overlaylClass = cx(overlayClassName.base, {
         [overlayClassName.afterOpen]: isOpening,
         [overlayClassName.beforeClose]: isClosing,

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import ModalBody from './ModalBody';
 
 const Modal = ({
@@ -18,6 +18,13 @@ const Modal = ({
 
     const open = useCallback(() => setOpen(true), []);
     const close = useCallback(() => setOpen(false), []);
+
+    const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);
+
+    useEffect(() => {
+        if (!isOpen) return window.removeEventListener('keyup', keyUpHandler);
+        window.addEventListener('keyup', keyUpHandler);
+    }, [isOpen]);
 
     return (
         <context.Provider value={{ open, close }}>
