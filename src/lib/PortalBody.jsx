@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 
+const stateBundler = (setFuncArr = [], willState) => setFuncArr.forEach((set) => set(willState));
+
 const PortalBody = ({ children, isOpen, close, duration, overlayClassName, className }) => {
     const [isOpening, setOpening] = useState(false);
     const [isClosing, setClosing] = useState(false);
@@ -12,15 +14,10 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
         close();
     }, []);
 
-    const initializeState = useCallback(() => {
-        setOpening(false);
-        setClosing(false);
-        setShow(false);
-    }, []);
+    const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
 
     useEffect(() => {
-        setShow(true);
-        setOpening(true);
+        stateBundler([setShow, setOpening], true);
         if (isOpen) return;
         setClosing(true);
         setTimeout(initializeState, duration);
