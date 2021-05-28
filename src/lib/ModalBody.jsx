@@ -3,7 +3,6 @@ import Portal from './Portal';
 
 const ModalBody = ({
     children,
-    trigger,
     isOpen,
     close,
     allowOutsideClick = false,
@@ -17,7 +16,6 @@ const ModalBody = ({
         <ClassNames>
             {({ css }) => (
                 <Portal
-                    trigger={trigger}
                     isOpen={isOpen}
                     close={close}
                     allowOutsideClick={allowOutsideClick}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import ModalBody from './ModalBody';
 
 const Modal = ({
@@ -16,20 +16,13 @@ const Modal = ({
 }) => {
     duration = animation?.type && !duration ? 150 : duration;
 
-    const [trigger, setTrigger] = useState(false);
     const open = useCallback(() => setOpen(true), []);
     const close = useCallback(() => setOpen(false), []);
-
-    useEffect(() => {
-        if (!isOpen) return;
-        setTrigger(true);
-    }, [isOpen]);
 
     return (
         <context.Provider value={{ open, close }}>
             {subElement}
             <ModalBody
-                trigger={trigger}
                 isOpen={isOpen}
                 close={close}
                 allowOutsideClick={allowOutsideClick}

@@ -6,7 +6,6 @@ const body = document.body;
 
 const Portal = ({
     children,
-    trigger,
     isOpen,
     close,
     duration,
@@ -23,7 +22,7 @@ const Portal = ({
         setReady(true);
     }, []);
 
-    if (!isReady || !trigger) return null;
+    if (!isReady) return null;
 
     return ReactDOM.createPortal(
         <PortalBody
