@@ -17,7 +17,7 @@
 
 ```jsx
 // MyModal Component
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Modal, createModalContext } from "react-simple-modal-provider";
 
 export default ({ children }) => {
