@@ -1,7 +1,7 @@
 {
     "name": "react-simple-modal-provider",
     "description": "React simple modal and Modal provider",
-    "version": "0.9.1",
+    "version": "1.0.1",
     "module": "dist/index.js",
     "main": "dist/index.js",
     "scripts": {
@@ -40,7 +40,6 @@
         "html-webpack-plugin": "^5.3.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "react-modal": "^3.13.1",
         "webpack": "^5.37.1",
         "webpack-cli": "^4.7.0",
         "webpack-dev-server": "^3.11.2",

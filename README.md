@@ -1,13 +1,6 @@
 # react-simple-modal-provider
 
-<a href="https://codesandbox.io/s/react-simple-modal-provider-100-o65sm" target="_blank">⭐️ Codesandbox Example</a>
-
-<br/>
-
-## How to use
-```
-...
-```
+<a href="https://codesandbox.io/s/react-simple-modal-provider-100-esr6t" target="_blank">⭐️ Codesandbox Example</a>
 
 <br/>
 
