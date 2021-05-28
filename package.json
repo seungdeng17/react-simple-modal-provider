@@ -30,8 +30,7 @@
     "dependencies": {
         "@emotion/react": "^11.4.0",
         "react": "^17.0.2",
-        "react-modal": "^3.13.1",
-        "simple-modal-provider": "^1.1.7"
+        "react-modal": "^3.13.1"
     },
     "devDependencies": {
         "@babel/core": "^7.14.3",
