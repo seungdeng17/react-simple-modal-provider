@@ -58,7 +58,7 @@ export default () => {
       ...
     </ModalProvider>
   );
-}
+};
 ```
 
 Register a modal array through the **"modals"** props of the **"ModalProvider"** module and wrap it around the application. <br/>
@@ -102,10 +102,10 @@ It is recommended to name variables using destructuring assignment.<br/>
 |:---:|:---:|:---:|:---:|
 |**allowClickOutside**|boolean|true|Allow click outside|
 |**overlayColor**|string|rgba(0, 0, 0, 0.6)|Overlay color|
-|**animation**|object|-|Open/Close [animation](#Animation)|
+|**animation**|object|-|Open/Close animation|
 |**duration**|number|0|Animation duration |
-|**vertical**|number|0|Modal vertical position (px)|
-|**horizontal**|number|0|Modal horizontal position (px)|
+|**vertical**|number|0|Vertical position (px)|
+|**horizontal**|number|0|Horizontal position (px)|
 
 <br/>
 
