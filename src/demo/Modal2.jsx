@@ -1,12 +1,13 @@
 import { useState, useMemo } from 'react';
 import Modal from '../lib/Modal';
 import { modalAnimation } from '../lib/modalAnimation';
-import { createModalContext } from '../lib/modalContext';
+import { createModalContext, useModal } from '../lib/modalContext';
 import styled from '@emotion/styled';
 
 const Modal2 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
     const context = useMemo(() => createModalContext('Modal2'), []);
+    const { open: modal3Open } = useModal('Modal3');
     const onCloseHandler = () => setOpen(false);
 
     return (
@@ -21,6 +22,9 @@ const Modal2 = ({ children }) => {
                 <div>Modal2</div>
                 <button onClick={onCloseHandler} type="button">
                     Modal2 Close
+                </button>
+                <button type="button" onClick={modal3Open}>
+                    Modal3 Open
                 </button>
             </Body>
         </Modal>
