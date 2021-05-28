@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 
 const Modal2 = ({ children }) => {
     const [isOpen, setOpen] = useState(false);
-    const context = useMemo(() => createModalContext('Modal2'), []);
+    const context = useMemo(() => createModalContext('Modal3'), []);
     const onCloseHandler = () => setOpen(false);
 
     return (
@@ -15,12 +15,12 @@ const Modal2 = ({ children }) => {
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
-            animation={modalAnimation.slideDown}
+            animation={modalAnimation.slideUp}
         >
             <Body>
-                <div>Modal2</div>
+                <div>Modal3</div>
                 <button onClick={onCloseHandler} type="button">
-                    Modal2 Close
+                    Modal3 Close
                 </button>
             </Body>
         </Modal>
@@ -28,9 +28,9 @@ const Modal2 = ({ children }) => {
 };
 
 const Body = styled.div`
-    width: 600px;
-    height: 200px;
-    background-color: #00f;
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
