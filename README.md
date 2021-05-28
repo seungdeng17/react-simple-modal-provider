@@ -2,6 +2,8 @@
 
 ### Simple Modal Manager for React Projects
 
+<br/>
+
 ## Demo
 
 <a href="https://codesandbox.io/s/react-simple-modal-provider-100-esr6t" target="_blank">⭐️ Codesandbox</a>
