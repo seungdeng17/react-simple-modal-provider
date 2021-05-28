@@ -3,7 +3,7 @@ import ModalBody from './ModalBody';
 
 const Modal = ({
     children,
-    subElement,
+    consumer,
     context,
     isOpen,
     setOpen,
@@ -18,7 +18,6 @@ const Modal = ({
 
     const open = useCallback(() => setOpen(true), []);
     const close = useCallback(() => setOpen(false), []);
-
     const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);
 
     useEffect(() => {
@@ -28,7 +27,7 @@ const Modal = ({
 
     return (
         <context.Provider value={{ open, close }}>
-            {subElement}
+            {consumer}
             <ModalBody
                 isOpen={isOpen}
                 close={close}

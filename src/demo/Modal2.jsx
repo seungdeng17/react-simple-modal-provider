@@ -11,7 +11,7 @@ const Modal2 = ({ children }) => {
 
     return (
         <Modal
-            subElement={children}
+            consumer={children}
             context={context}
             isOpen={isOpen}
             setOpen={setOpen}
