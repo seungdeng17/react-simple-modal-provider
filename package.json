@@ -1,7 +1,7 @@
 {
     "name": "react-simple-modal-provider",
     "description": "React simple modal and Modal provider",
-    "version": "1.0.0",
+    "version": "0.1.1",
     "module": "dist/index.js",
     "main": "dist/index.js",
     "scripts": {
@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/seungdeng17/simple-modal.git"
+        "url": "git+https://github.com/seungdeng17/react-simple-modal-provider.git"
     },
     "keywords": [
         "react",
@@ -21,27 +21,26 @@
     "author": "Seungtaek Lee <seungdeng17@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/seungdeng17/simple-modal/issues"
+        "url": "https://github.com/seungdeng17/react-simple-modal-provider/issues"
     },
-    "homepage": "https://github.com/seungdeng17/simple-modal#readme",
+    "homepage": "https://github.com/seungdeng17/react-simple-modal-provider#readme",
     "publishConfig": {
         "access": "public"
     },
-    "dependencies": {
-        "@emotion/react": "^11.4.0",
-        "react": "^17.0.2",
-        "react-modal": "^3.13.1"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@babel/core": "^7.14.3",
         "@babel/polyfill": "^7.12.1",
         "@babel/preset-env": "^7.14.2",
         "@babel/preset-react": "^7.13.13",
+        "@emotion/react": "^11.4.0",
         "@emotion/styled": "^11.3.0",
         "babel-loader": "^8.2.2",
         "classnames": "^2.3.1",
         "html-webpack-plugin": "^5.3.1",
+        "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-modal": "^3.13.1",
         "webpack": "^5.37.1",
         "webpack-cli": "^4.7.0",
         "webpack-dev-server": "^3.11.2",
