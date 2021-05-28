@@ -1,11 +1,13 @@
-import { useState, useEffect, memo, useCallback } from 'react';
+import { useState, useEffect, useRef, memo, useCallback } from 'react';
 
 const PortalBody = ({ children, isOpen, close, duration, overlayClassName, className }) => {
     const [isOpening, setOpening] = useState(false);
     const [isClosing, setClosing] = useState(false);
     const [isShow, setShow] = useState(false);
+    const modalRef = useRef();
 
-    const overlayClickHandler = useCallback(() => {
+    const overlayClickHandler = useCallback(({ target }) => {
+        if (modalRef.current.contains(target)) return;
         setClosing(true);
         close();
     }, []);
@@ -20,7 +22,7 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
         setShow(true);
         setOpening(true);
         if (isOpen) return;
-
+        setClosing(true);
         setTimeout(initializeState, duration);
     }, [isOpen]);
 
@@ -35,6 +37,7 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
                 onClick={overlayClickHandler}
             >
                 <div
+                    ref={modalRef}
                     className={`
                     ${className.base} 
                     ${isOpening ? className.afterOpen : ''} 
