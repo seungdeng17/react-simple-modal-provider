@@ -1,27 +1,13 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noResolve": false,
-    "noImplicitAny": false,
-    "removeComments": false,
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "keyofStringsOnly": true
-  },
-  "typeRoots": ["node_modules/@types", "src/@type"],
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts",
-    "./node_modules/**/*"
-  ],
-  "include": ["./src/**/*", "@type"]
+    "compilerOptions": {
+        "strict": false,
+        "allowJs": true,
+        "noImplicitAny": true,
+        "target": "es5",
+        "module": "esnext",
+        "jsx": "react-jsx",
+        "moduleResolution": "Node",
+        "lib": ["dom", "ES2015"],
+        "outDir": "./dist/"
+    }
 }
