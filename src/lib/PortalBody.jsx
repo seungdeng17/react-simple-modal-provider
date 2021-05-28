@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
+import cx from 'classnames';
 
 const stateBundler = (setFuncArr = [], willState) => setFuncArr.forEach((set) => set(willState));
 
 const PortalBody = ({ children, isOpen, close, duration, overlayClassName, className }) => {
     const [isOpening, setOpening] = useState(false);
     const [isClosing, setClosing] = useState(false);
-    const [isShow, setShow] = useState(false);
+    const [isShow, setShow] = useState(true);
     const modalRef = useRef();
 
     const overlayClickHandler = useCallback(({ target }) => {
@@ -14,7 +15,10 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
         close();
     }, []);
 
-    const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
+    const initializeState = useCallback(
+        () => stateBundler([setOpening, setClosing, setShow], false),
+        []
+    );
 
     useEffect(() => {
         stateBundler([setShow, setOpening], true);
@@ -23,24 +27,20 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
         setTimeout(initializeState, duration);
     }, [isOpen]);
 
+    const overlaylClass = cx(overlayClassName.base, {
+        [overlayClassName.afterOpen]: isOpening,
+        [overlayClassName.beforeClose]: isClosing,
+    });
+
+    const modalClass = cx(className.base, {
+        [className.afterOpen]: isOpening,
+        [className.beforeClose]: isClosing,
+    });
+
     return (
-        isShow && (
-            <div
-                className={`
-                ${overlayClassName.base} 
-                ${isOpening ? overlayClassName.afterOpen : ''} 
-                ${isClosing ? overlayClassName.beforeClose : ''}
-            `}
-                onClick={overlayClickHandler}
-            >
-                <div
-                    ref={modalRef}
-                    className={`
-                    ${className.base} 
-                    ${isOpening ? className.afterOpen : ''} 
-                    ${isClosing ? className.beforeClose : ''}
-                `}
-                >
+        (isOpen || isShow) && (
+            <div className={overlaylClass} onClick={overlayClickHandler}>
+                <div ref={modalRef} className={modalClass}>
                     {children}
                 </div>
             </div>
