@@ -8,6 +8,7 @@ const Portal = ({
     children,
     isOpen,
     close,
+    allowOutsideClick,
     duration,
     overlayClassName,
     className,
@@ -28,6 +29,7 @@ const Portal = ({
         <PortalBody
             isOpen={isOpen}
             close={close}
+            allowOutsideClick={allowOutsideClick}
             duration={duration}
             overlayClassName={overlayClassName}
             className={className}

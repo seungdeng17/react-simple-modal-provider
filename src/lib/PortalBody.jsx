@@ -3,7 +3,15 @@ import cx from 'classnames';
 
 const stateBundler = (setFuncArr = [], willState) => setFuncArr.forEach((set) => set(willState));
 
-const PortalBody = ({ children, isOpen, close, duration, overlayClassName, className }) => {
+const PortalBody = ({
+    children,
+    isOpen,
+    close,
+    allowOutsideClick,
+    duration,
+    overlayClassName,
+    className,
+}) => {
     const [isOpening, setOpening] = useState(false);
     const [isClosing, setClosing] = useState(false);
     const [isShow, setShow] = useState(true);
@@ -19,7 +27,7 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
     const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
 
     const overlayClickHandler = useCallback(({ target }) => {
-        if (modalRef.current.contains(target)) return;
+        if (modalRef.current.contains(target) || allowOutsideClick) return;
         setClosing(true);
         close();
     }, []);
