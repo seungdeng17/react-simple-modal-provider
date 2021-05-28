@@ -14,13 +14,13 @@
 ## Examples
 
 ```jsx
-// MyModal.js
+// MyModal Component
 import { useState, useMemo } from "react";
 import { Modal, createModalContext } from "react-simple-modal-provider";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
-  const context = useMemo(() => createModalContext("MyModal"), []);
+  const [state, setState] = useState();
+  const context = createModalContext("MyModal");
 
   return (
     <Modal
@@ -31,7 +31,7 @@ export default ({ children }) => {
     >
       <div>
         <span>😆</span>
-        <button onClick={() => setOpen(false)}>Close</button>
+        <button onClick={() => setState(false)}>Close</button>
       </div>
     </Modal>
   );
@@ -45,7 +45,7 @@ Keeping eye on the four required props of the **"Modal"** module, you should cre
 <br/>
 
 ```jsx
-// App.js
+// App Component
 import { ModalProvider } from "react-simple-modal-provider";
 import MyModal from "./MyModal";
 import ConsumePage from "./ConsumePage";
@@ -54,6 +54,8 @@ export default () => {
   return (
     <ModalProvider modals={[MyModal, ...]}>
       <ConsumePage />
+      <ConsumePage />
+      ...
     </ModalProvider>
   );
 };
@@ -64,7 +66,7 @@ Register a modal array through the **"modals"** props of the **"ModalProvider"**
 <br/>
 
 ```jsx
-// ConsumePage.js
+// ConsumePage Component
 import { useModal } from 'react-simple-modal-provider';
 
 export default () => {
