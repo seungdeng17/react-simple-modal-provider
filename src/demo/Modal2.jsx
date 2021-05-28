@@ -5,17 +5,17 @@ import { createModalContext, useModal } from '../lib/modalContext';
 import styled from '@emotion/styled';
 
 const Modal2 = ({ children }) => {
-    const [isOpen, setOpen] = useState(false);
+    const [state, setState] = useState(false);
     const context = useMemo(() => createModalContext('Modal2'), []);
     const { open: modal3Open } = useModal('Modal3');
-    const onCloseHandler = () => setOpen(false);
+    const onCloseHandler = () => setState(false);
 
     return (
         <Modal
             consumer={children}
             context={context}
-            isOpen={isOpen}
-            setOpen={setOpen}
+            state={state}
+            setState={setState}
             animation={modalAnimation.slideDown}
         >
             <Body>

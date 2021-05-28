@@ -6,9 +6,9 @@ const Modal = ({
     children,
     consumer,
     context,
-    isOpen,
-    setOpen,
-    allowOutsideClick,
+    state,
+    setState,
+    allowClickOutside,
     duration,
     overlayColor,
     animation,
@@ -18,23 +18,23 @@ const Modal = ({
     duration = animation?.type && !duration ? 150 : duration;
 
     const [trigger, setTrigger] = useState(false);
-    const open = useCallback(() => stateBundler([setOpen, setTrigger], true), []);
-    const close = useCallback(() => setOpen(false), []);
+    const open = useCallback(() => stateBundler([setState, setTrigger], true), []);
+    const close = useCallback(() => setState(false), []);
     const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);
 
     useEffect(() => {
-        if (!isOpen) return window.removeEventListener('keyup', keyUpHandler);
+        if (!state) return window.removeEventListener('keyup', keyUpHandler);
         window.addEventListener('keyup', keyUpHandler);
-    }, [isOpen]);
+    }, [state]);
 
     return (
         <context.Provider value={{ open, close }}>
             {consumer}
             <ModalBody
                 trigger={trigger}
-                isOpen={isOpen}
+                state={state}
                 close={close}
-                allowOutsideClick={allowOutsideClick}
+                allowClickOutside={allowClickOutside}
                 duration={duration}
                 overlayColor={overlayColor}
                 animation={animation}

@@ -7,9 +7,9 @@ const body = document.body;
 const Portal = ({
     children,
     trigger,
-    isOpen,
+    state,
     close,
-    allowOutsideClick,
+    allowClickOutside,
     duration,
     overlayClassName,
     className,
@@ -28,9 +28,9 @@ const Portal = ({
 
     return ReactDOM.createPortal(
         <PortalBody
-            isOpen={isOpen}
+            state={state}
             close={close}
-            allowOutsideClick={allowOutsideClick}
+            allowClickOutside={allowClickOutside}
             duration={duration}
             overlayClassName={overlayClassName}
             className={className}

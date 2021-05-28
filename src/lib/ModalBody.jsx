@@ -4,9 +4,9 @@ import Portal from './Portal';
 const ModalBody = ({
     children,
     trigger,
-    isOpen,
+    state,
     close,
-    allowOutsideClick = false,
+    allowClickOutside = false,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
     animation = { type: '', base: '', before: '', after: '' },
@@ -18,9 +18,9 @@ const ModalBody = ({
             {({ css }) => (
                 <Portal
                     trigger={trigger}
-                    isOpen={isOpen}
+                    state={state}
                     close={close}
-                    allowOutsideClick={allowOutsideClick}
+                    allowClickOutside={allowClickOutside}
                     duration={duration}
                     overlayClassName={{
                         base: 'overlay-base',

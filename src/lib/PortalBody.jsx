@@ -4,9 +4,9 @@ import { stateBundler } from './utils';
 
 const PortalBody = ({
     children,
-    isOpen,
+    state,
     close,
-    allowOutsideClick,
+    allowClickOutside,
     duration,
     overlayClassName,
     className,
@@ -18,15 +18,15 @@ const PortalBody = ({
 
     useEffect(() => {
         stateBundler([setShow, setOpening], true);
-        if (isOpen) return;
+        if (state) return;
         setClosing(true);
         setTimeout(initializeState, duration);
-    }, [isOpen]);
+    }, [state]);
 
     const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
 
     const overlayClickHandler = useCallback(({ target }) => {
-        if (modalRef.current.contains(target) || allowOutsideClick) return;
+        if (modalRef.current.contains(target) || allowClickOutside) return;
         setClosing(true);
         close();
     }, []);
@@ -42,7 +42,7 @@ const PortalBody = ({
     });
 
     return (
-        (isOpen || isShow) && (
+        (state || isShow) && (
             <div className={overlaylClass} onClick={overlayClickHandler}>
                 <div ref={modalRef} className={modalClass}>
                     {children}

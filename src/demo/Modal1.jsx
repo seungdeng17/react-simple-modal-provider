@@ -5,7 +5,7 @@ import { createModalContext, useModal } from '../lib/modalContext';
 import ModalBody from './ModalBody';
 
 const Modal1 = ({ children }) => {
-    const [isOpen, setOpen] = useState(false);
+    const [state, setState] = useState(false);
     const context = useMemo(() => createModalContext('Modal1'), []);
     const { open: modal2Open } = useModal('Modal2');
     const { open: modal3Open } = useModal('Modal3');
@@ -14,8 +14,8 @@ const Modal1 = ({ children }) => {
         <Modal
             consumer={children}
             context={context}
-            isOpen={isOpen}
-            setOpen={setOpen}
+            state={state}
+            setState={setState}
             duration={300}
             animation={modalAnimation.scaleUp}
         >
