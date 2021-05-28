@@ -131,7 +131,7 @@ export default ({ children }) => {
 };
 ```
 
-#### - Custom animation example
+#### - Custom animation examples
 
 ```js
 {
