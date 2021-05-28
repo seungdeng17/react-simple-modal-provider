@@ -1,5 +1,6 @@
-import { useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import ModalBody from './ModalBody';
+import { stateBundler } from './utils';
 
 const Modal = ({
     children,
@@ -16,7 +17,8 @@ const Modal = ({
 }) => {
     duration = animation?.type && !duration ? 150 : duration;
 
-    const open = useCallback(() => setOpen(true), []);
+    const [trigger, setTrigger] = useState(false);
+    const open = useCallback(() => stateBundler([setOpen, setTrigger], true), []);
     const close = useCallback(() => setOpen(false), []);
     const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);
 
@@ -29,6 +31,7 @@ const Modal = ({
         <context.Provider value={{ open, close }}>
             {consumer}
             <ModalBody
+                trigger={trigger}
                 isOpen={isOpen}
                 close={close}
                 allowOutsideClick={allowOutsideClick}

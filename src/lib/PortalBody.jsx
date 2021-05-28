@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import cx from 'classnames';
-
-const stateBundler = (setFuncArr = [], willState) => setFuncArr.forEach((set) => set(willState));
+import { stateBundler } from './utils';
 
 const PortalBody = ({
     children,

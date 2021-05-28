@@ -6,6 +6,7 @@ const body = document.body;
 
 const Portal = ({
     children,
+    trigger,
     isOpen,
     close,
     allowOutsideClick,
@@ -23,7 +24,7 @@ const Portal = ({
         setCreatedPortal(true);
     }, []);
 
-    if (!isCreatedPortal) return null;
+    if (!isCreatedPortal || !trigger) return null;
 
     return ReactDOM.createPortal(
         <PortalBody
