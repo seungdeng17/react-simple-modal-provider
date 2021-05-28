@@ -1,6 +1,6 @@
 # react-simple-modal-provider
 
-⭐️ [Codesandbox Example](https://codesandbox.io/s/react-simple-modal-provider-100-o65sm)
+⭐️ [Codesandbox Example](https://codesandbox.io/s/react-simple-modal-provider-100-o65sm){:target="_blank"}
 
 <br/>
 
@@ -15,6 +15,6 @@
 
 <br/>
 
-[Git Repository](https://github.com/seungdeng17/react-simple-modal-provider)
+[Git Repository](https://github.com/seungdeng17/react-simple-modal-provider){:target="_blank"}
 
-[NPM](https://www.npmjs.com/package/react-simple-modal-provider)
+[NPM](https://www.npmjs.com/package/react-simple-modal-provider){:target="_blank"}
