@@ -9,23 +9,24 @@ const PortalBody = ({ children, isOpen, close, duration, overlayClassName, class
     const [isShow, setShow] = useState(true);
     const modalRef = useRef();
 
-    const overlayClickHandler = useCallback(({ target }) => {
-        if (modalRef.current.contains(target)) return;
-        setClosing(true);
-        close();
-    }, []);
-
-    const initializeState = useCallback(
-        () => stateBundler([setOpening, setClosing, setShow], false),
-        []
-    );
-
     useEffect(() => {
         stateBundler([setShow, setOpening], true);
         if (isOpen) return;
         setClosing(true);
         setTimeout(initializeState, duration);
     }, [isOpen]);
+
+    const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
+
+    const overlayClickHandler = useCallback(({ target }) => {
+        if (modalRef.current.contains(target)) return;
+        setClosing(true);
+        close();
+    }, []);
+
+    const keyUpHandler = useCallback(({ key }) => {
+        console.log(key);
+    }, []);
 
     const overlaylClass = cx(overlayClassName.base, {
         [overlayClassName.afterOpen]: isOpening,
