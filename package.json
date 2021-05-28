@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/seungdeng17/simple-modal.git"
+        "url": "git+https://github.com/seungdeng17/react-simple-modal-provider.git"
     },
     "keywords": [
         "react",
@@ -21,9 +21,9 @@
     "author": "Seungtaek Lee <seungdeng17@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/seungdeng17/simple-modal/issues"
+        "url": "https://github.com/seungdeng17/react-simple-modal-provider/issues"
     },
-    "homepage": "https://github.com/seungdeng17/simple-modal#readme",
+    "homepage": "https://github.com/seungdeng17/react-simple-modal-provider#readme",
     "publishConfig": {
         "access": "public"
     },
