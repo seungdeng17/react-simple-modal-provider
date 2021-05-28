@@ -13,16 +13,16 @@ const Portal = ({
     className,
     portalClassName,
 }) => {
-    const [isReady, setReady] = useState(false);
+    const [isCreatedPortal, setCreatedPortal] = useState(false);
 
     useEffect(() => {
         const portal = document.createElement('div');
         portal.classList.add(portalClassName);
         body.appendChild(portal);
-        setReady(true);
+        setCreatedPortal(true);
     }, []);
 
-    if (!isReady) return null;
+    if (!isCreatedPortal) return null;
 
     return ReactDOM.createPortal(
         <PortalBody
