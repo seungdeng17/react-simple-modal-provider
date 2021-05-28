@@ -6,7 +6,7 @@ const ModalBody = ({
     trigger,
     state,
     close,
-    allowClickOutside = false,
+    allowClickOutside = true,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
     animation = { type: '', base: '', before: '', after: '' },

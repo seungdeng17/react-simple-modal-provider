@@ -26,7 +26,7 @@ const PortalBody = ({
     const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
 
     const overlayClickHandler = useCallback(({ target }) => {
-        if (modalRef.current.contains(target) || allowClickOutside) return;
+        if (modalRef.current.contains(target) || !allowClickOutside) return;
         setClosing(true);
         close();
     }, []);
