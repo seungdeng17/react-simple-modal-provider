@@ -3,11 +3,14 @@
         "strict": true,
         "allowJs": true,
         "noImplicitAny": true,
-        "target": "es5",
-        "module": "esnext",
+        "target": "es6",
+        "module": "es6",
+        "lib": ["dom", "es2015"],
         "jsx": "react-jsx",
-        "moduleResolution": "Node",
-        "lib": ["dom", "ES2015"],
-        "outDir": "./dist/"
-    }
+        "declaration": true,
+        "moduleResolution": "node",
+        "outDir": "./dist"
+    },
+    "include": ["./src/lib/*"],
+    "exclude": ["node_modules", "**/*.spec.ts", "./dist/**/*"]
 }
