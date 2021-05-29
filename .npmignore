@@ -11,3 +11,4 @@ webpack
 webpack.config.js
 src
 public
+tsconfig.json
