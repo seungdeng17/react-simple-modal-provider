@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { stateBundler } from './utils';
 import { IOptionalProps, IClassName } from './type';
 
-interface IPortalProps extends IOptionalProps {
+interface IPortalBodyProps extends IOptionalProps {
     children: React.ReactNode;
     state: boolean;
     close: Function;
@@ -19,7 +19,7 @@ const PortalBody = ({
     duration,
     overlayClassName,
     className,
-}: IPortalProps) => {
+}: IPortalBodyProps) => {
     const [isOpening, setOpening] = useState<boolean>(false);
     const [isClosing, setClosing] = useState<boolean>(false);
     const [isShow, setShow] = useState<boolean>(true);
@@ -50,14 +50,14 @@ const PortalBody = ({
         [className.beforeClose]: isClosing,
     });
 
+    if (!(state || isShow)) return null;
+
     return (
-        (state || isShow) && (
-            <div className={overlaylClass} onClick={overlayClickHandler}>
-                <div ref={modalRef} className={modalClass}>
-                    {children}
-                </div>
+        <div className={overlaylClass} onClick={overlayClickHandler}>
+            <div ref={modalRef} className={modalClass}>
+                {children}
             </div>
-        )
+        </div>
     );
 };
 
