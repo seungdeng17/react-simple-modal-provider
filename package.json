@@ -1,7 +1,7 @@
 {
     "name": "react-simple-modal-provider",
     "description": "React simple modal and Modal provider",
-    "version": "1.1.2",
+    "version": "1.1.21",
     "module": "dist/index.js",
     "main": "dist/index.js",
     "scripts": {
