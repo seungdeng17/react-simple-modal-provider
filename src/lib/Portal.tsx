@@ -45,11 +45,10 @@ const Portal = ({
             duration={duration}
             overlayClassName={overlayClassName}
             className={className}
-            portalClassName={portalClassName}
         >
             {children}
         </PortalBody>,
-        document.querySelector(`.${portalClassName}`)
+        document.querySelector(`.${portalClassName}`) as HTMLElement
     );
 };
 

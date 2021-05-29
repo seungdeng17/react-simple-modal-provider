@@ -1,3 +1,4 @@
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { createElement } from 'react';
 import Modal from './Modal';
 
@@ -6,7 +7,7 @@ interface IModalProviderProps {
     modals: typeof Modal[];
 }
 
-const ModalProvider = ({ children, modals = [] }: IModalProviderProps) =>
-    modals.reduce((acc, curr) => createElement(curr, null, acc), children);
+const ModalProvider = ({ children, modals = [] }: IModalProviderProps): ReactJSXElement =>
+    modals.reduce((acc, curr) => createElement(curr, null, acc), children) as ReactJSXElement;
 
 export default ModalProvider;
