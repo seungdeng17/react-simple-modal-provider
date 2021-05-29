@@ -6,7 +6,7 @@ const Modal = ({
     children,
     consumer,
     context,
-    state,
+    state = false,
     setState,
     allowClickOutside,
     duration,
@@ -15,6 +15,8 @@ const Modal = ({
     vertical,
     horizontal,
 }) => {
+    if (!consumer || !context || !setState) throw new Error('react-simple-modal-provider: Modal Error! Not enough essential props data. Check the Modal props. (consumer, context, state, setState)');
+
     duration = animation?.type && !duration ? 150 : duration;
 
     const [trigger, setTrigger] = useState(false);

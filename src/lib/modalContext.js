@@ -12,7 +12,7 @@ const createModalContext = (key) => {
 
 const useModal = (key) => {
     if (!key) throw new Error(`react-simple-modal-provider: useModal Error! Key "${key}" is not valid`);
-    if (!contextMap.has(key)) throw new Error(`react-simple-modal-provider: useModal Error! Key "${key}" doesn't exist.`);
+    if (!contextMap.has(key)) throw new Error(`react-simple-modal-provider: useModal Error! Key "${key}" doesn't exist. Check the order of modals props passed to "ModalProvider".`);
     return useContext(contextMap.get(key));
 };
 
