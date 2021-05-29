@@ -23,7 +23,7 @@ const PortalBody = ({
     const [isOpening, setOpening] = useState<boolean>(false);
     const [isClosing, setClosing] = useState<boolean>(false);
     const [isShow, setShow] = useState<boolean>(true);
-    const modalRef = useRef();
+    const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         stateBundler([setShow, setOpening], true);
@@ -35,7 +35,7 @@ const PortalBody = ({
     const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
 
     const overlayClickHandler = useCallback(({ target }) => {
-        if (modalRef.current.contains(target) || !allowClickOutside) return;
+        if (modalRef.current?.contains(target) || !allowClickOutside) return;
         setClosing(true);
         close();
     }, []);
