@@ -18,16 +18,15 @@
 ```jsx
 // MyModal Component
 import { useState } from "react";
-import { Modal, createModalContext } from "react-simple-modal-provider";
+import { Modal } from "react-simple-modal-provider";
 
 export default ({ children }) => {
-  const [state, setState] = useState();
-  const context = createModalContext("MyModal");
+  const [state, setState] = useState(false);
 
   return (
     <Modal
+      id={"MyModal"}
       consumer={children}
-      context={context}
       state={state}
       setState={setState}
     >
@@ -40,8 +39,7 @@ export default ({ children }) => {
 };
 ```
 
-The **"createModalContext"** module provides the required context. <br/>
-Pass **unique ID** to the argument. It is, then, used to load modals. <br/>
+Pass **unique ID** to the id props. It is, then, used to load modals. <br/>
 Keeping eye on the four required props of the **"Modal"** module, you should create a modal in the child area. <br/>
 
 <br/>
@@ -69,10 +67,10 @@ Register a modal array through the **"modals"** props of the **"ModalProvider"**
 
 ```jsx
 // ConsumePage Component
-import { useModal } from 'react-simple-modal-provider';
+import { useModal } from "react-simple-modal-provider";
 
 export default () => {
-    const { open: openMyModal } = useModal('MyModal');
+    const { open: openMyModal } = useModal("MyModal");
 
     return (
         <button onClick={openMyModal}>Open</button>
@@ -93,9 +91,9 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 |props|type|default value|discription|
 |:---:|:---:|:---:|:---:|
-|**consumer**|children props|-|Components for a modal|
-|**context**|context|-|Returned by createModalContext|
-|**state**|state|-|Returned by useState state|
+|**id**|string|-|Identifier for a modal|
+|**consumer**|children props|-|Components to use modals for|
+|**state**|boolean state|false|Returned by useState state|
 |**setState**|state function|-|Returned by useState function|
 
 #### - Optional props
@@ -135,10 +133,10 @@ export default ({ children }) => {
 
 ```js
 {
-    type: 'top, opacity',
-    base: 'top: -50px; opacity: 0;',
-    before: 'top: 50px; opacity: 0;',
-    after: 'top: 0px; opacity: 1;',
+    type: "top, opacity",
+    base: "top: -50px; opacity: 0;",
+    before: "top: 50px; opacity: 0;",
+    after: "top: 0px; opacity: 1;",
 }
 ```
 
