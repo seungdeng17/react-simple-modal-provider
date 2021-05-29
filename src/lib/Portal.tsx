@@ -1,6 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
 import PortalBody from './PortalBody';
+import { IOptionalProps, IClassName } from './type';
+
+interface IPortalProps extends IOptionalProps {
+    children: React.ReactNode;
+    trigger: boolean;
+    state: boolean;
+    close: Function;
+    overlayClassName: IClassName;
+    className: IClassName;
+    portalClassName: string;
+}
 
 const body = document.body;
 
@@ -14,8 +25,8 @@ const Portal = ({
     overlayClassName,
     className,
     portalClassName,
-}) => {
-    const [isCreatedPortal, setCreatedPortal] = useState(false);
+}: IPortalProps) => {
+    const [isCreatedPortal, setCreatedPortal] = useState<boolean>(false);
 
     useEffect(() => {
         const portal = document.createElement('div');
