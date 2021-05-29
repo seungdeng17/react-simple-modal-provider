@@ -21,7 +21,7 @@ import { useState } from "react";
 import { Modal, createModalContext } from "react-simple-modal-provider";
 
 export default ({ children }) => {
-  const [state, setState] = useState();
+  const [state, setState] = useState(false);
   const context = createModalContext("MyModal");
 
   return (
@@ -95,7 +95,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 |:---:|:---:|:---:|:---:|
 |**consumer**|children props|-|Components for a modal|
 |**context**|context|-|Returned by createModalContext|
-|**state**|state|-|Returned by useState state|
+|**state**|boolean state|false|Returned by useState state|
 |**setState**|state function|-|Returned by useState function|
 
 #### - Optional props
