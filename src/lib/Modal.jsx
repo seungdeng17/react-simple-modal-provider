@@ -1,11 +1,12 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
+import { createModalContext } from './modalContext';
 import ModalBody from './ModalBody';
 import { stateBundler } from './utils';
 
 const Modal = ({
+    id,
     children,
     consumer,
-    context,
     state = false,
     setState,
     allowClickOutside,
@@ -15,10 +16,11 @@ const Modal = ({
     vertical,
     horizontal,
 }) => {
-    if (!consumer || !context || !setState) throw new Error('react-simple-modal-provider: Modal Error! Not enough essential props data. Check the Modal props. (consumer, context, state, setState)');
-
+    if (!id || !consumer || !setState) throw new Error('react-simple-modal-provider: Modal Error! Not enough essential props data. Check the Modal props. (id, consumer, state, setState)');
+    
     duration = animation?.type && !duration ? 150 : duration;
 
+    const Context = useMemo(() => createModalContext(id), []);
     const [trigger, setTrigger] = useState(false);
     const open = useCallback(() => stateBundler([setState, setTrigger], true), []);
     const close = useCallback(() => setState(false), []);
@@ -30,7 +32,7 @@ const Modal = ({
     }, [state]);
 
     return (
-        <context.Provider value={{ open, close }}>
+        <Context.Provider value={{ open, close }}>
             {consumer}
             <ModalBody
                 trigger={trigger}
@@ -45,7 +47,7 @@ const Modal = ({
             >
                 {children}
             </ModalBody>
-        </context.Provider>
+        </Context.Provider>
     );
 };
 
