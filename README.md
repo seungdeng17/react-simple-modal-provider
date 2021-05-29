@@ -25,7 +25,7 @@ export default ({ children }) => {
 
   return (
     <Modal
-      id={'MyModal'}
+      id={"MyModal"}
       consumer={children}
       state={state}
       setState={setState}
@@ -67,10 +67,10 @@ Register a modal array through the **"modals"** props of the **"ModalProvider"**
 
 ```jsx
 // ConsumePage Component
-import { useModal } from 'react-simple-modal-provider';
+import { useModal } from "react-simple-modal-provider";
 
 export default () => {
-    const { open: openMyModal } = useModal('MyModal');
+    const { open: openMyModal } = useModal("MyModal");
 
     return (
         <button onClick={openMyModal}>Open</button>
@@ -133,10 +133,10 @@ export default ({ children }) => {
 
 ```js
 {
-    type: 'top, opacity',
-    base: 'top: -50px; opacity: 0;',
-    before: 'top: 50px; opacity: 0;',
-    after: 'top: 0px; opacity: 1;',
+    type: "top, opacity",
+    base: "top: -50px; opacity: 0;",
+    before: "top: 50px; opacity: 0;",
+    after: "top: 0px; opacity: 1;",
 }
 ```
 
