@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = merge(common, {
     mode: 'development',
 
-    entry: ['@babel/polyfill', './src/index.js'],
+    entry: ['@babel/polyfill', './src/index.tsx'],
 
     devServer: {
         port: 3000,

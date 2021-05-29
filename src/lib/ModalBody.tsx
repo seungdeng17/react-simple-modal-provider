@@ -1,5 +1,13 @@
 import { ClassNames } from '@emotion/react';
 import Portal from './Portal';
+import { IOptionalProps } from './type';
+
+interface IModalBodyProps extends IOptionalProps {
+    children: React.ReactNode;
+    trigger: boolean;
+    state: boolean;
+    close: Function;
+}
 
 const ModalBody = ({
     children,
@@ -12,7 +20,7 @@ const ModalBody = ({
     animation = { type: '', base: '', before: '', after: '' },
     vertical = 0,
     horizontal = 0,
-}) => {
+}: IModalBodyProps) => {
     return (
         <ClassNames>
             {({ css }) => (

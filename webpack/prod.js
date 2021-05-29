@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = merge(common, {
     mode: 'production',
 
-    entry: ['@babel/polyfill', './src/lib/index.js'],
+    entry: ['@babel/polyfill', './src/lib/index.ts'],
 
     output: {
         filename: 'index.js',

@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "allowJs": true,
+        "noImplicitAny": true,
+        "target": "es5",
+        "module": "esnext",
+        "jsx": "react-jsx",
+        "moduleResolution": "Node",
+        "lib": ["dom", "ES2015"],
+        "outDir": "./dist/"
+    }
+}

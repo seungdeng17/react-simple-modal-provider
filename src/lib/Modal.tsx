@@ -2,10 +2,19 @@ import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createModalContext } from './modalContext';
 import ModalBody from './ModalBody';
 import { stateBundler } from './utils';
+import { IOptionalProps } from './type';
+
+interface IModalProps extends IOptionalProps {
+    children: React.ReactNode;
+    id: string;
+    consumer: React.ReactNode;
+    state: boolean;
+    setState: Function;
+}
 
 const Modal = ({
-    id,
     children,
+    id,
     consumer,
     state = false,
     setState,
@@ -15,13 +24,17 @@ const Modal = ({
     animation,
     vertical,
     horizontal,
-}) => {
-    if (!id || !consumer || !setState) throw new Error('react-simple-modal-provider: Modal Error! Not enough essential props data. Check the Modal props. (id, consumer, state, setState)');
-    
+}: IModalProps) => {
+    if (!id || !consumer || !setState) {
+        throw new Error(
+            'react-simple-modal-provider: Modal Error! Not enough essential props data. Check the Modal props. (id, consumer, state, setState)'
+        );
+    }
+
     duration = animation?.type && !duration ? 150 : duration;
 
     const Context = useMemo(() => createModalContext(id), []);
-    const [trigger, setTrigger] = useState(false);
+    const [trigger, setTrigger] = useState<boolean>(false);
     const open = useCallback(() => stateBundler([setState, setTrigger], true), []);
     const close = useCallback(() => setState(false), []);
     const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);

@@ -3,18 +3,12 @@ import Modal from '../lib/Modal';
 import { modalAnimation } from '../lib/modalAnimation';
 import styled from '@emotion/styled';
 
-const Modal2 = ({ children }) => {
-    const [state, setState] = useState(false);
+const Modal2 = ({ children }: { children: React.ReactNode }) => {
+    const [state, setState] = useState<boolean>(false);
     const onCloseHandler = () => setState(false);
 
     return (
-        <Modal
-            id={'Modal3'}
-            consumer={children}
-            state={state}
-            setState={setState}
-            animation={modalAnimation.slideUp}
-        >
+        <Modal id={'Modal3'} consumer={children} state={state} setState={setState} animation={modalAnimation.slideUp}>
             <Body>
                 <div>Modal3</div>
                 <button onClick={onCloseHandler} type="button">
