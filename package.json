@@ -1,7 +1,7 @@
 {
     "name": "react-simple-modal-provider",
     "description": "React simple modal and Modal provider",
-    "version": "1.0.31",
+    "version": "1.0.4",
     "module": "dist/index.js",
     "main": "dist/index.js",
     "scripts": {
@@ -17,7 +17,10 @@
         "simple",
         "modal",
         "provider",
-        "manager"
+        "manager",
+        "react modal",
+        "simple modal",
+        "modal provider"
     ],
     "author": "Seungtaek Lee <seungdeng17@gmail.com>",
     "license": "MIT",
