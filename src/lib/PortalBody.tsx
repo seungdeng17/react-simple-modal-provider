@@ -32,10 +32,7 @@ const PortalBody = ({
         setTimeout(initializeState, duration);
     }, [state]);
 
-    const initializeState = useCallback(
-        () => stateBundler([setOpening, setClosing, setShow], false),
-        []
-    );
+    const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
 
     const overlayClickHandler = useCallback(({ target }) => {
         if (modalRef.current.contains(target) || !allowClickOutside) return;

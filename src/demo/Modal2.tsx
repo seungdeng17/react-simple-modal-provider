@@ -10,13 +10,7 @@ const Modal2 = ({ children }: { children: React.ReactNode }) => {
     const onCloseHandler = () => setState(false);
 
     return (
-        <Modal
-            id={'Modal2'}
-            consumer={children}
-            state={state}
-            setState={setState}
-            animation={modalAnimation.slideDown}
-        >
+        <Modal id={'Modal2'} consumer={children} state={state} setState={setState} animation={modalAnimation.slideDown}>
             <Body>
                 <div>Modal2</div>
                 <button onClick={onCloseHandler} type="button">
