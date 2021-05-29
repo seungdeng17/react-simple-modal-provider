@@ -18,16 +18,15 @@
 ```jsx
 // MyModal Component
 import { useState } from "react";
-import { Modal, createModalContext } from "react-simple-modal-provider";
+import { Modal } from "react-simple-modal-provider";
 
 export default ({ children }) => {
   const [state, setState] = useState(false);
-  const context = createModalContext("MyModal");
 
   return (
     <Modal
+      id={'MyModal'}
       consumer={children}
-      context={context}
       state={state}
       setState={setState}
     >
@@ -40,7 +39,6 @@ export default ({ children }) => {
 };
 ```
 
-The **"createModalContext"** module provides the required context. <br/>
 Pass **unique ID** to the argument. It is, then, used to load modals. <br/>
 Keeping eye on the four required props of the **"Modal"** module, you should create a modal in the child area. <br/>
 
@@ -93,8 +91,8 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 |props|type|default value|discription|
 |:---:|:---:|:---:|:---:|
-|**consumer**|children props|-|Components for a modal|
-|**context**|context|-|Returned by createModalContext|
+|**id**|string|-|Identifier for a modal|
+|**consumer**|children props|-|Components to use modals for|
 |**state**|boolean state|false|Returned by useState state|
 |**setState**|state function|-|Returned by useState function|
 
