@@ -39,7 +39,7 @@ export default ({ children }) => {
 };
 ```
 
-Pass **unique ID** to the argument. It is, then, used to load modals. <br/>
+Pass **unique ID** to the id props. It is, then, used to load modals. <br/>
 Keeping eye on the four required props of the **"Modal"** module, you should create a modal in the child area. <br/>
 
 <br/>
