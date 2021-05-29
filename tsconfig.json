@@ -8,9 +8,10 @@
         "lib": ["dom", "es2015"],
         "jsx": "react-jsx",
         "declaration": true,
+        "emitDeclarationOnly": true,
         "moduleResolution": "node",
         "outDir": "./dist"
     },
     "include": ["./src/lib/*"],
-    "exclude": ["node_modules", "**/*.spec.ts", "./dist/**/*"]
+    "exclude": ["node_modules", "**/*.spec.ts", "./dist/**/*", "./src/lib/index.ts"]
 }
