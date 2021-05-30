@@ -52,7 +52,7 @@ import ConsumePage from "./ConsumePage";
 
 export default () => {
   return (
-    <ModalProvider modals={[MyModal, ...]}>
+    <ModalProvider value={[MyModal, ...]}>
       <ConsumePage />
       <ConsumePage />
       ...
@@ -61,7 +61,7 @@ export default () => {
 };
 ```
 
-Register a modal array through the **"modals"** props of the **"ModalProvider"** module and wrap it around the application. <br/>
+Register a modal array through the **"value"** props of the **"ModalProvider"** module and wrap it around the application. <br/>
 
 <br/>
 

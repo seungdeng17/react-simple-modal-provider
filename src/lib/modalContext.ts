@@ -23,7 +23,7 @@ const useModal = (key: string): IModalContext => {
     }
     if (!contextMap.has(key)) {
         throw new Error(
-            `react-simple-modal-provider: useModal Error! Key "${key}" doesn't exist. Check the order of modals props passed to "ModalProvider".`
+            `react-simple-modal-provider: useModal Error! Key "${key}" doesn't exist. Check the order of value props passed to "ModalProvider".`
         );
     }
     return useContext(contextMap.get(key));

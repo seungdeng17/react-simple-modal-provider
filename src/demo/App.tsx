@@ -11,7 +11,7 @@ const App = () => {
     const modals = [Modal1, Modal2, Modal3];
 
     return (
-        <ModalProvider modals={modals}>
+        <ModalProvider value={modals}>
             <Button1 />
             <Button2 />
             <Button3 />
