@@ -5,12 +5,13 @@ import { IOptionalProps, IClassName } from './type';
 
 interface IPortalProps extends IOptionalProps {
     children: React.ReactNode;
+    id: string;
     initialization: boolean;
     state: boolean;
     close: Function;
     overlayClassName: IClassName;
     className: IClassName;
-    portalClassName: string;
+    modalStyle: string;
 }
 
 const body = document.body;
