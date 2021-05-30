@@ -68,6 +68,7 @@ const Modal = ({
         <Context.Provider value={{ open, close }}>
             {consumer}
             <ModalBody
+                id={id}
                 initialization={initialization}
                 state={state}
                 close={close}

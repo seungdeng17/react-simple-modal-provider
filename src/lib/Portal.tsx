@@ -14,9 +14,11 @@ interface IPortalProps extends IOptionalProps {
 }
 
 const body = document.body;
+const head = document.head;
 
 const Portal = ({
     children,
+    id,
     initialization,
     state,
     close,
@@ -24,14 +26,19 @@ const Portal = ({
     duration,
     overlayClassName,
     className,
-    portalClassName,
+    modalStyle,
 }: IPortalProps) => {
     const [isCreatedPortal, setCreatedPortal] = useState<boolean>(false);
 
     useEffect(() => {
         const portal = document.createElement('div');
-        portal.classList.add(portalClassName);
+        portal.classList.add(`css-${id}`);
         body.appendChild(portal);
+
+        const style = document.createElement('style');
+        style.textContent = modalStyle;
+        head.appendChild(style);
+
         setCreatedPortal(true);
     }, []);
 
@@ -48,7 +55,7 @@ const Portal = ({
         >
             {children}
         </PortalBody>,
-        document.querySelector(`.${portalClassName}`) as HTMLElement
+        document.querySelector(`.css-${id}`) as HTMLElement
     );
 };
 
