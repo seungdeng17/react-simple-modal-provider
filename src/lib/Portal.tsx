@@ -5,18 +5,21 @@ import { IOptionalProps, IClassName } from './type';
 
 interface IPortalProps extends IOptionalProps {
     children: React.ReactNode;
+    hashId: string;
     initialization: boolean;
     state: boolean;
     close: Function;
     overlayClassName: IClassName;
     className: IClassName;
-    portalClassName: string;
+    modalStyle: string;
 }
 
 const body = document.body;
+const head = document.head;
 
 const Portal = ({
     children,
+    hashId,
     initialization,
     state,
     close,
@@ -24,14 +27,19 @@ const Portal = ({
     duration,
     overlayClassName,
     className,
-    portalClassName,
+    modalStyle,
 }: IPortalProps) => {
     const [isCreatedPortal, setCreatedPortal] = useState<boolean>(false);
 
     useEffect(() => {
         const portal = document.createElement('div');
-        portal.classList.add(portalClassName);
+        portal.classList.add(`css-${hashId}`);
         body.appendChild(portal);
+
+        const style = document.createElement('style');
+        style.textContent = modalStyle.replace(/\n|  /g, '');
+        head.appendChild(style);
+
         setCreatedPortal(true);
     }, []);
 
@@ -48,7 +56,7 @@ const Portal = ({
         >
             {children}
         </PortalBody>,
-        document.querySelector(`.${portalClassName}`) as HTMLElement
+        document.querySelector(`.css-${hashId}`) as HTMLElement
     );
 };
 
