@@ -24,6 +24,9 @@ const Modal = ({
     animation,
     vertical,
     horizontal,
+    width,
+    height,
+    backgroundColor,
 }: IModalProps) => {
     if (!id || !consumer || !setState) {
         throw new Error(
@@ -57,6 +60,9 @@ const Modal = ({
                 animation={animation}
                 vertical={vertical}
                 horizontal={horizontal}
+                width={width}
+                height={height}
+                backgroundColor={backgroundColor}
             >
                 {children}
             </ModalBody>

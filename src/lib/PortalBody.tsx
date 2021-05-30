@@ -55,7 +55,7 @@ const PortalBody = ({
     return (
         <div className={overlaylClass} onClick={overlayClickHandler}>
             <div ref={modalRef} className={modalClass}>
-                {children}
+                <div className="react-simple-modal-body">{children}</div>
             </div>
         </div>
     );

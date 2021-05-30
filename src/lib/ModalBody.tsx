@@ -20,6 +20,9 @@ const ModalBody = ({
     animation = { type: '', base: '', before: '', after: '' },
     vertical = 0,
     horizontal = 0,
+    width = 0,
+    height = 0,
+    backgroundColor = 'transparent',
 }: IModalBodyProps) => {
     return (
         <ClassNames>
@@ -86,6 +89,12 @@ const ModalBody = ({
 
                         .content-before {
                             ${animation.before};
+                        }
+
+                        .react-simple-modal-body {
+                            min-width: ${width}px;
+                            min-height: ${height}px;
+                            background-color: ${backgroundColor};
                         }
                     `}
                 >

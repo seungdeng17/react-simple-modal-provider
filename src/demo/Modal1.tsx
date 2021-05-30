@@ -17,6 +17,9 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
             setState={setState}
             duration={300}
             animation={modalAnimation.scaleUp}
+            width={300}
+            height={200}
+            backgroundColor={'#fff'}
         >
             <ModalBody />
             <button type="button" onClick={modal2Open}>
