@@ -30,6 +30,7 @@ const Modal = ({
     height = 0,
     radius = 0,
     backgroundColor = 'transparent',
+    asyncOpen,
 }: IModalProps) => {
     if (typeof id !== 'string') {
         throw new Error('react-simple-modal-provider: Modal Error! id props must be a string type.');
@@ -46,7 +47,10 @@ const Modal = ({
     const Context = useMemo(() => createModalContext(id), []);
     const [initialization, setInitialization] = useState<boolean>(false);
 
-    const open = useCallback(() => stateBundler([setState, setInitialization], true), []);
+    const open = useCallback(async () => {
+        asyncOpen && (await asyncOpen());
+        stateBundler([setState, setInitialization], true);
+    }, []);
     const close = useCallback(() => setState(false), []);
 
     const keyUpHandler = useCallback(({ key }) => {

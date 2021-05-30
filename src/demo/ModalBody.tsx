@@ -1,7 +1,12 @@
 // import styled from '@emotion/styled';
 
-const ModalBody = () => {
-    return <div>Modal Body</div>;
+const ModalBody = ({ data }) => {
+    return (
+        <div>
+            <p>Modal Body</p>
+            <p>{data.title}</p>
+        </div>
+    );
 };
 
 // const Body = styled.div`

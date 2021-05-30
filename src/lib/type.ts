@@ -16,6 +16,7 @@ interface IOptionalProps {
     height?: number;
     radius?: number;
     backgroundColor?: string;
+    asyncOpen?: Function;
 }
 
 interface IClassName {

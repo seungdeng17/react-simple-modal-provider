@@ -9,6 +9,14 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
     const { open: modal2Open } = useModal('Modal2');
     const { open: modal3Open } = useModal('Modal3');
 
+    const [data, setData] = useState(null);
+
+    const asyncOpen = async () => {
+        const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        const json = await res.json();
+        setData(json);
+    };
+
     return (
         <Modal
             id={'Modal1'}
@@ -21,8 +29,9 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
             height={300}
             radius={10}
             backgroundColor={'#fff'}
+            asyncOpen={asyncOpen}
         >
-            <ModalBody />
+            <ModalBody data={data} />
             <button type="button" onClick={modal2Open}>
                 Modal2 Open
             </button>
