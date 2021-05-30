@@ -9,6 +9,7 @@ interface IPortalProps extends IOptionalProps {
     hashId: string;
     modalSet: Set<string>;
     initialization: boolean;
+    pending: boolean;
     state: boolean;
     close: Function;
     overlayClassName: IClassName;
@@ -25,6 +26,7 @@ const Portal = ({
     hashId,
     modalSet,
     initialization,
+    pending,
     state,
     close,
     allowClickOutside,
@@ -53,6 +55,7 @@ const Portal = ({
         <PortalBody
             id={id}
             modalSet={modalSet}
+            pending={pending}
             state={state}
             close={close}
             allowClickOutside={allowClickOutside}

@@ -46,10 +46,14 @@ const Modal = ({
     const hashId = hash(id);
     const Context = useMemo(() => createModalContext(id), []);
     const [initialization, setInitialization] = useState<boolean>(false);
+    const [pending, setPending] = useState<boolean>(false);
 
     const open = useCallback(async () => {
-        asyncOpen && (await asyncOpen());
         stateBundler([setState, setInitialization], true);
+        if (!asyncOpen) return;
+        setPending(true);
+        await asyncOpen();
+        setPending(false);
     }, []);
     const close = useCallback(() => setState(false), []);
 
@@ -73,6 +77,7 @@ const Modal = ({
                 hashId={hashId}
                 modalSet={modalSet}
                 initialization={initialization}
+                pending={pending}
                 state={state}
                 close={close}
                 allowClickOutside={allowClickOutside}

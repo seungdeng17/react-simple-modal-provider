@@ -6,6 +6,7 @@ interface IPortalBodyProps extends IOptionalProps {
     children: React.ReactNode;
     id: string;
     modalSet: Set<string>;
+    pending: boolean;
     state: boolean;
     close: Function;
     overlayClassName: IClassName;
@@ -16,6 +17,7 @@ const PortalBody = ({
     children,
     id,
     modalSet,
+    pending,
     state,
     close,
     allowClickOutside,
@@ -57,7 +59,7 @@ const PortalBody = ({
     return (
         <div className={overlaylClass} onClick={overlayClickHandler}>
             <div ref={modalRef} className={modalClass}>
-                <div>{children}</div>
+                <div>{!pending && children}</div>
             </div>
         </div>
     );
