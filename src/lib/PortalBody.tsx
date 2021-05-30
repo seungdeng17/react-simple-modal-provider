@@ -4,6 +4,8 @@ import { IOptionalProps, IClassName } from './type';
 
 interface IPortalBodyProps extends IOptionalProps {
     children: React.ReactNode;
+    id: string;
+    modalSet: Set<string>;
     state: boolean;
     close: Function;
     overlayClassName: IClassName;
@@ -12,6 +14,8 @@ interface IPortalBodyProps extends IOptionalProps {
 
 const PortalBody = ({
     children,
+    id,
+    modalSet,
     state,
     close,
     allowClickOutside,
@@ -27,6 +31,7 @@ const PortalBody = ({
     useEffect(() => {
         stateBundler([setShow, setOpening], true);
         if (state) return;
+        modalSet.delete(id);
         setClosing(true);
         setTimeout(initializeState, duration);
     }, [state]);

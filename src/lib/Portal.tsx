@@ -5,7 +5,9 @@ import { IOptionalProps, IClassName } from './type';
 
 interface IPortalProps extends IOptionalProps {
     children: React.ReactNode;
+    id: string;
     hashId: string;
+    modalSet: Set<string>;
     initialization: boolean;
     state: boolean;
     close: Function;
@@ -19,7 +21,9 @@ const head = document.head;
 
 const Portal = ({
     children,
+    id,
     hashId,
+    modalSet,
     initialization,
     state,
     close,
@@ -47,6 +51,8 @@ const Portal = ({
 
     return ReactDOM.createPortal(
         <PortalBody
+            id={id}
+            modalSet={modalSet}
             state={state}
             close={close}
             allowClickOutside={allowClickOutside}
