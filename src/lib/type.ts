@@ -12,6 +12,9 @@ interface IOptionalProps {
     animation?: IAnimation;
     vertical?: number;
     horizontal?: number;
+    width?: number;
+    height?: number;
+    backgroundColor?: string;
 }
 
 interface IClassName {

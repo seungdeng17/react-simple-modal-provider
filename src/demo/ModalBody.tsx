@@ -5,6 +5,7 @@ const ModalBody = () => {
 };
 
 const Body = styled.div`
+    border-radius: 30px;
     width: 800px;
     height: 300px;
     background-color: #f00;
