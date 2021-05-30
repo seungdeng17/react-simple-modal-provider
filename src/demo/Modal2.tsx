@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Modal from '../lib/Modal';
 import { modalAnimation } from '../lib/modalAnimation';
 import { useModal } from '../lib/modalContext';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 
 const Modal2 = ({ children }: { children: React.ReactNode }) => {
     const [state, setState] = useState<boolean>(false);
@@ -18,7 +18,7 @@ const Modal2 = ({ children }: { children: React.ReactNode }) => {
             animation={modalAnimation.slideDown}
             radius={10}
         >
-            <Body>
+            <div>
                 <div>Modal2</div>
                 <button onClick={onCloseHandler} type="button">
                     Modal2 Close
@@ -26,18 +26,18 @@ const Modal2 = ({ children }: { children: React.ReactNode }) => {
                 <button type="button" onClick={modal3Open}>
                     Modal3 Open
                 </button>
-            </Body>
+            </div>
         </Modal>
     );
 };
 
-const Body = styled.div`
-    width: 600px;
-    height: 200px;
-    background-color: #00f;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-`;
+// const Body = styled.div`
+//     width: 600px;
+//     height: 200px;
+//     background-color: #00f;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+// `;
 
 export default Modal2;
