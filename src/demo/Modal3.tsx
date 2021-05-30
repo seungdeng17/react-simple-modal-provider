@@ -8,7 +8,14 @@ const Modal2 = ({ children }: { children: React.ReactNode }) => {
     const onCloseHandler = () => setState(false);
 
     return (
-        <Modal id={'Modal3'} consumer={children} state={state} setState={setState} animation={modalAnimation.slideUp}>
+        <Modal
+            id={'Modal3'}
+            consumer={children}
+            state={state}
+            setState={setState}
+            animation={modalAnimation.slideUp}
+            radius={10}
+        >
             <Body>
                 <div>Modal3</div>
                 <button onClick={onCloseHandler} type="button">

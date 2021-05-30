@@ -14,6 +14,7 @@ interface IOptionalProps {
     horizontal?: number;
     width?: number;
     height?: number;
+    radius?: number;
     backgroundColor?: string;
 }
 

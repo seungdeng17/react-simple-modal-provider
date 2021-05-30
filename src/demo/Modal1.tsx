@@ -18,7 +18,8 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
             duration={300}
             animation={modalAnimation.scaleUp}
             width={300}
-            height={200}
+            height={300}
+            radius={10}
             backgroundColor={'#fff'}
         >
             <ModalBody />

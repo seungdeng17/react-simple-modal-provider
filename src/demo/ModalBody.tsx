@@ -6,8 +6,9 @@ const ModalBody = () => {
 
 const Body = styled.div`
     border-radius: 30px;
-    width: 800px;
-    height: 300px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 200px;
     background-color: #f00;
     display: flex;
     flex-direction: column;

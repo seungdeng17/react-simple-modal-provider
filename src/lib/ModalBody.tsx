@@ -22,6 +22,7 @@ const ModalBody = ({
     horizontal = 0,
     width = 0,
     height = 0,
+    radius = 0,
     backgroundColor = 'transparent',
 }: IModalBodyProps) => {
     return (
@@ -81,6 +82,14 @@ const ModalBody = ({
                             transition-property: ${animation.type};
                             ${animation.base};
                             transition-duration: ${duration}ms;
+
+                            min-width: ${width}px;
+                            min-height: ${height}px;
+                            border-radius: ${radius}px;
+                            background-color: ${backgroundColor};
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                         }
 
                         .content-after {
@@ -89,12 +98,6 @@ const ModalBody = ({
 
                         .content-before {
                             ${animation.before};
-                        }
-
-                        .react-simple-modal-body {
-                            min-width: ${width}px;
-                            min-height: ${height}px;
-                            background-color: ${backgroundColor};
                         }
                     `}
                 >

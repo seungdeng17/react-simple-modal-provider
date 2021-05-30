@@ -28,6 +28,7 @@ const Modal = ({
     horizontal,
     width,
     height,
+    radius,
     backgroundColor,
 }: IModalProps) => {
     if (!id || !consumer || !setState) {
@@ -75,6 +76,7 @@ const Modal = ({
                 horizontal={horizontal}
                 width={width}
                 height={height}
+                radius={radius}
                 backgroundColor={backgroundColor}
             >
                 {children}
