@@ -1,20 +1,14 @@
 import * as ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
 import PortalBody from './PortalBody';
-import { IOptionalProps, IClassName } from './type';
+import { IPortalCommonProps } from './type';
 
-interface IPortalProps extends IOptionalProps {
-    children: React.ReactNode;
-    id: string;
+interface IPortalProps extends IPortalCommonProps {
     hashId: string;
-    modalSet: Set<string>;
     initialization: boolean;
-    pending: boolean;
-    state: boolean;
-    close: Function;
-    overlayClassName: IClassName;
-    className: IClassName;
     modalStyle: string;
+    duration?: number;
+    allowClickOutside?: boolean;
 }
 
 const body = document.body;

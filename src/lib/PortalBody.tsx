@@ -1,16 +1,12 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { stateBundler } from './utils';
-import { IOptionalProps, IClassName } from './type';
+import { IPortalCommonProps, IClassName } from './type';
 
-interface IPortalBodyProps extends IOptionalProps {
-    children: React.ReactNode;
-    id: string;
-    modalSet: Set<string>;
-    pending: boolean;
-    state: boolean;
-    close: Function;
+interface IPortalBodyProps extends IPortalCommonProps {
     overlayClassName: IClassName;
     className: IClassName;
+    duration?: number;
+    allowClickOutside?: boolean;
 }
 
 const PortalBody = ({
