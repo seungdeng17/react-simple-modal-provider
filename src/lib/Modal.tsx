@@ -47,7 +47,10 @@ const Modal = ({
         modalSet.add(id);
     }, []);
 
-    const close = useCallback(() => setState(false), []);
+    const close = useCallback(() => {
+        setState(false);
+        modalSet.delete(id);
+    }, []);
 
     const keyUpHandler = useCallback(({ key }) => {
         if (key !== 'Escape') return;
