@@ -5,7 +5,7 @@ import { IOptionalProps, IClassName } from './type';
 
 interface IPortalProps extends IOptionalProps {
     children: React.ReactNode;
-    trigger: boolean;
+    initialization: boolean;
     state: boolean;
     close: Function;
     overlayClassName: IClassName;
@@ -17,7 +17,7 @@ const body = document.body;
 
 const Portal = ({
     children,
-    trigger,
+    initialization,
     state,
     close,
     allowClickOutside,
@@ -35,7 +35,7 @@ const Portal = ({
         setCreatedPortal(true);
     }, []);
 
-    if (!isCreatedPortal || !trigger) return null;
+    if (!isCreatedPortal || !initialization) return null;
 
     return ReactDOM.createPortal(
         <PortalBody

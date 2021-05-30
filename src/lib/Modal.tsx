@@ -34,8 +34,8 @@ const Modal = ({
     duration = animation?.type && !duration ? 150 : duration;
 
     const Context = useMemo(() => createModalContext(id), []);
-    const [trigger, setTrigger] = useState<boolean>(false);
-    const open = useCallback(() => stateBundler([setState, setTrigger], true), []);
+    const [initialization, setInitialization] = useState<boolean>(false);
+    const open = useCallback(() => stateBundler([setState, setInitialization], true), []);
     const close = useCallback(() => setState(false), []);
     const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);
 
@@ -48,7 +48,7 @@ const Modal = ({
         <Context.Provider value={{ open, close }}>
             {consumer}
             <ModalBody
-                trigger={trigger}
+                initialization={initialization}
                 state={state}
                 close={close}
                 allowClickOutside={allowClickOutside}

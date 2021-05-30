@@ -4,14 +4,14 @@ import { IOptionalProps } from './type';
 
 interface IModalBodyProps extends IOptionalProps {
     children: React.ReactNode;
-    trigger: boolean;
+    initialization: boolean;
     state: boolean;
     close: Function;
 }
 
 const ModalBody = ({
     children,
-    trigger,
+    initialization,
     state,
     close,
     allowClickOutside = true,
@@ -25,7 +25,7 @@ const ModalBody = ({
         <ClassNames>
             {({ css }) => (
                 <Portal
-                    trigger={trigger}
+                    initialization={initialization}
                     state={state}
                     close={close}
                     allowClickOutside={allowClickOutside}
