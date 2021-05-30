@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
-import cx from 'classnames';
 import { stateBundler } from './utils';
 import { IOptionalProps, IClassName } from './type';
 
@@ -40,15 +39,13 @@ const PortalBody = ({
         close();
     }, []);
 
-    const overlaylClass = cx(overlayClassName.base, {
-        [overlayClassName.afterOpen]: isOpening,
-        [overlayClassName.beforeClose]: isClosing,
-    });
+    const overlaylClass = `${overlayClassName.base} ${isOpening ? overlayClassName.afterOpen : ''} ${
+        isClosing ? overlayClassName.beforeClose : ''
+    }`;
 
-    const modalClass = cx(className.base, {
-        [className.afterOpen]: isOpening,
-        [className.beforeClose]: isClosing,
-    });
+    const modalClass = `${className.base} ${isOpening ? className.afterOpen : ''} ${
+        isClosing ? className.beforeClose : ''
+    }`;
 
     if (!(state || isShow)) return null;
 
