@@ -37,7 +37,7 @@ const Portal = ({
         body.appendChild(portal);
 
         const style = document.createElement('style');
-        style.textContent = modalStyle;
+        style.textContent = modalStyle.replace(/\n|  /g, '');
         head.appendChild(style);
 
         setCreatedPortal(true);
