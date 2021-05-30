@@ -5,7 +5,7 @@ import { IOptionalProps, IClassName } from './type';
 
 interface IPortalProps extends IOptionalProps {
     children: React.ReactNode;
-    id: string;
+    hashId: string;
     initialization: boolean;
     state: boolean;
     close: Function;
@@ -19,7 +19,7 @@ const head = document.head;
 
 const Portal = ({
     children,
-    id,
+    hashId,
     initialization,
     state,
     close,
@@ -33,7 +33,7 @@ const Portal = ({
 
     useEffect(() => {
         const portal = document.createElement('div');
-        portal.classList.add(`css-${id}`);
+        portal.classList.add(`css-${hashId}`);
         body.appendChild(portal);
 
         const style = document.createElement('style');
@@ -56,7 +56,7 @@ const Portal = ({
         >
             {children}
         </PortalBody>,
-        document.querySelector(`.css-${id}`) as HTMLElement
+        document.querySelector(`.css-${hashId}`) as HTMLElement
     );
 };
 

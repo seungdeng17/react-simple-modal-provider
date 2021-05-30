@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createModalContext } from './modalContext';
-import { stateBundler } from './utils';
+import { stateBundler, hash } from './utils';
 import { IOptionalProps } from './type';
 import Portal from './Portal';
 
@@ -42,6 +42,7 @@ const Modal = ({
 
     duration = animation?.type && !duration ? 150 : duration;
 
+    const hashId = hash(id);
     const Context = useMemo(() => createModalContext(id), []);
     const [initialization, setInitialization] = useState<boolean>(false);
 
@@ -71,7 +72,7 @@ const Modal = ({
         <Context.Provider value={{ open, close }}>
             {consumer}
             <Portal
-                id={id}
+                hashId={hashId}
                 initialization={initialization}
                 state={state}
                 close={close}
@@ -88,7 +89,7 @@ const Modal = ({
                     beforeClose: 'content-before',
                 }}
                 modalStyle={`
-                .css-${id} .overlay-base {
+                .css-${hashId} .overlay-base {
                     position: fixed;
                     top: 0;
                     bottom: 0;
@@ -107,15 +108,15 @@ const Modal = ({
                     transition-duration: ${duration}ms;
                 }
 
-                .css-${id} .overlay-after {
+                .css-${hashId} .overlay-after {
                     background-color: ${overlayColor};
                 }
 
-                .css-${id} .overlay-before {
+                .css-${hashId} .overlay-before {
                     background-color: rgba(0, 0, 0, 0);
                 }
 
-                .css-${id} .content-base {
+                .css-${hashId} .content-base {
                     position: relative;
                     bottom: ${vertical}px;
                     left: ${horizontal}px;
@@ -135,11 +136,11 @@ const Modal = ({
                     align-items: center;
                 }
 
-                .css-${id} .content-after {
+                .css-${hashId} .content-after {
                     ${animation.after};
                 }
 
-                .css-${id} .content-before {
+                .css-${hashId} .content-before {
                     ${animation.before};
                 }
             `}
