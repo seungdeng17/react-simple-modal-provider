@@ -108,6 +108,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**horizontal**|number|0|Horizontal position (px)|
 |**width**|number|0|Modal width (px)|
 |**height**|number|0|Modal height (px)|
+|**radius**|number|0|Border radius (px)|
 |**backgroundColor**|string|transparent|Background color|
 
 <br/>
