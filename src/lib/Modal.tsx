@@ -12,6 +12,8 @@ interface IModalProps extends IOptionalProps {
     setState: Function;
 }
 
+const modalSet = new Set();
+
 const Modal = ({
     children,
     id,
@@ -38,9 +40,20 @@ const Modal = ({
 
     const Context = useMemo(() => createModalContext(id), []);
     const [initialization, setInitialization] = useState<boolean>(false);
-    const open = useCallback(() => stateBundler([setState, setInitialization], true), []);
+
+    const open = useCallback(() => {
+        stateBundler([setState, setInitialization], true);
+        modalSet.add(id);
+    }, []);
+
     const close = useCallback(() => setState(false), []);
-    const keyUpHandler = useCallback(({ key }) => key === 'Escape' && close(), []);
+
+    const keyUpHandler = useCallback(({ key }) => {
+        if (key !== 'Escape') return;
+        if ([...modalSet][modalSet.size - 1] !== id) return;
+        modalSet.delete(id);
+        close();
+    }, []);
 
     useEffect(() => {
         if (!state) return window.removeEventListener('keyup', keyUpHandler);
