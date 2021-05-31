@@ -5,9 +5,15 @@ import PortalBody from './PortalBody';
 import DefaultSpinner from './assets/Spinner';
 
 interface IPortalProps extends IPortalCommonProps {
+    id: string;
+    modalSet: Set<string>;
+    pending: boolean;
     hashId: string;
     initialization: boolean;
+    duration: number;
     modalStyle: string;
+    spinner: JSX.Element | boolean | undefined;
+    spinnerColor: string;
 }
 
 const body = document.body;

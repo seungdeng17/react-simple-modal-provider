@@ -1,11 +1,6 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
-import { IPortalCommonProps, IClassName } from './type';
+import { IPortalCommonProps } from './type';
 import { defer } from './utils';
-
-interface IPortalBodyProps extends IPortalCommonProps {
-    overlayClassName: IClassName;
-    className: IClassName;
-}
 
 const PortalBody = ({
     children,
@@ -15,7 +10,9 @@ const PortalBody = ({
     overlayClassName,
     className,
     asyncOpen,
-}: IPortalBodyProps) => {
+}: IPortalCommonProps) => {
+    const [overlayClass, setOverlayClass] = useState(overlayClassName.base);
+    const [modalClass, setModalClass] = useState(className.base);
     const modalRef = useRef<HTMLDivElement>(null);
 
     const overlayClickHandler = useCallback(({ target }) => {
@@ -23,18 +20,17 @@ const PortalBody = ({
         close();
     }, []);
 
-    const [overlayClass, setOverlayClass] = useState(overlayClassName.base);
-    const [modalClass, setModalClass] = useState(className.base);
-
-    useEffect(async () => {
-        if (state) {
-            asyncOpen && (await defer(100));
-            setOverlayClass((state) => `${state} ${overlayClassName.afterOpen}`);
-            setModalClass((state) => `${state} ${className.afterOpen}`);
-        } else {
-            setOverlayClass((state) => `${state} ${overlayClassName.beforeClose}`);
-            setModalClass((state) => `${state} ${className.beforeClose}`);
-        }
+    useEffect(() => {
+        (async () => {
+            if (state) {
+                asyncOpen && (await defer(100));
+                setOverlayClass((state) => `${state} ${overlayClassName.afterOpen}`);
+                setModalClass((state) => `${state} ${className.afterOpen}`);
+            } else {
+                setOverlayClass((state) => `${state} ${overlayClassName.beforeClose}`);
+                setModalClass((state) => `${state} ${className.beforeClose}`);
+            }
+        })();
     }, [state]);
 
     return (
