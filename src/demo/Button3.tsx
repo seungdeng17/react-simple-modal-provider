@@ -1,6 +1,6 @@
 import { useModal } from '../lib/modalContext';
 
-const Button2 = () => {
+const Button3 = () => {
     const { open } = useModal('Modal3');
 
     return (
@@ -12,4 +12,4 @@ const Button2 = () => {
     );
 };
 
-export default Button2;
+export default Button3;
