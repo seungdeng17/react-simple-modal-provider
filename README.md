@@ -4,6 +4,8 @@
 
 <br/>
 
+### Contents
+
 - [Demo](#demo)
 - [Installation](#installation)
 - [Examples](#examples)
@@ -207,7 +209,7 @@ export default ({ children }) => {
 
 <br/>
 
-[Top](#react-simple-modal-provider)
+[Top](#contents)
 
 <hr/>
 
