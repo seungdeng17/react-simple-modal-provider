@@ -1,14 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
-import PortalBody from './PortalBody';
 import { IPortalCommonProps } from './type';
+import PortalBody from './PortalBody';
 
 interface IPortalProps extends IPortalCommonProps {
     hashId: string;
     initialization: boolean;
     modalStyle: string;
-    duration?: number;
-    allowClickOutside?: boolean;
 }
 
 const body = document.body;
@@ -28,6 +26,8 @@ const Portal = ({
     overlayClassName,
     className,
     modalStyle,
+    spinner,
+    spinnerColor,
 }: IPortalProps) => {
     const [isCreatedPortal, setCreatedPortal] = useState<boolean>(false);
 
@@ -53,6 +53,8 @@ const Portal = ({
             state={state}
             close={close}
             allowClickOutside={allowClickOutside}
+            spinner={spinner}
+            spinnerColor={spinnerColor}
             duration={duration}
             overlayClassName={overlayClassName}
             className={className}

@@ -11,20 +11,6 @@ interface IClassName {
     beforeClose: string;
 }
 
-interface IOptionalProps {
-    allowClickOutside?: boolean;
-    duration?: number;
-    overlayColor?: string;
-    animation?: IAnimation;
-    vertical?: number;
-    horizontal?: number;
-    width?: number;
-    height?: number;
-    radius?: number;
-    backgroundColor?: string;
-    asyncOpen?: Function;
-}
-
 interface IPortalCommonProps {
     children: React.ReactNode;
     id: string;
@@ -34,6 +20,10 @@ interface IPortalCommonProps {
     close: Function;
     overlayClassName: IClassName;
     className: IClassName;
+    duration: number;
+    allowClickOutside: boolean;
+    spinner: JSX.Element | boolean | undefined;
+    spinnerColor: string;
 }
 
-export { IOptionalProps, IClassName, IPortalCommonProps };
+export { IAnimation, IClassName, IPortalCommonProps };

@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { stateBundler } from './utils';
 import { IPortalCommonProps, IClassName } from './type';
-import Spinner from './assets/Spinner';
+import DefaultSpinner from './assets/Spinner';
 
 interface IPortalBodyProps extends IPortalCommonProps {
     overlayClassName: IClassName;
     className: IClassName;
-    duration?: number;
-    allowClickOutside?: boolean;
 }
 
 const PortalBody = ({
@@ -21,6 +19,8 @@ const PortalBody = ({
     duration,
     overlayClassName,
     className,
+    spinner,
+    spinnerColor,
 }: IPortalBodyProps) => {
     const [isOpening, setOpening] = useState<boolean>(false);
     const [isClosing, setClosing] = useState<boolean>(false);
@@ -57,7 +57,7 @@ const PortalBody = ({
         <>
             {pending ? (
                 <div className={overlayClassName.base}>
-                    <Spinner />
+                    {spinner ? spinner : spinner !== false && <DefaultSpinner spinnerColor={spinnerColor} />}
                 </div>
             ) : (
                 <div className={overlaylClass} onClick={overlayClickHandler}>
