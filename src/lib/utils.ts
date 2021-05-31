@@ -11,4 +11,6 @@ const hash = (id: string) => {
     return `modal-${hash}`;
 };
 
-export { stateBundler, hash };
+const defer = async (ms: number) => await new Promise((r) => setTimeout(r, ms));
+
+export { stateBundler, hash, defer };

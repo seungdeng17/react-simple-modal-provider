@@ -13,17 +13,12 @@ interface IClassName {
 
 interface IPortalCommonProps {
     children: React.ReactNode;
-    id: string;
-    modalSet: Set<string>;
-    pending: boolean;
     state: boolean;
     close: Function;
+    allowClickOutside: boolean;
     overlayClassName: IClassName;
     className: IClassName;
-    duration: number;
-    allowClickOutside: boolean;
-    spinner: JSX.Element | boolean | undefined;
-    spinnerColor: string;
+    asyncOpen: Function | undefined;
 }
 
 export { IAnimation, IClassName, IPortalCommonProps };
