@@ -4,6 +4,15 @@
 
 <br/>
 
+- [Demo](#demo)
+- [Installation](#installation)
+- [Examples](#examples)
+- [API](#api)
+- [Async](#async)
+- [Animation](#animation)
+
+<br/>
+
 ## Demo
 
 <a href="https://codesandbox.io/s/react-simple-modal-provider-100-esr6t" target="_blank">⭐️ Codesandbox</a>
@@ -116,7 +125,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 <br/>
 
-## Async Examples
+## Async
 
 ```jsx
 // MyAsyncModal Component
