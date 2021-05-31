@@ -18,7 +18,7 @@
 ```jsx
 // MyModal Component
 import { useState } from "react";
-import { Modal } from "react-simple-modal-provider";
+import Modal from "react-simple-modal-provider";
 
 export default ({ children }) => {
   const [state, setState] = useState(false);
@@ -110,6 +110,44 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**height**|number|0|Modal height (px)|
 |**radius**|number|0|Border radius (px)|
 |**backgroundColor**|string|transparent|Background color|
+|**asyncOpen**|async function|-|Called when modal opened|
+|**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
+|**spinnerColor**|string|#93dbe9|Spinner color|
+
+<br/>
+
+## Async Examples
+
+```jsx
+import { useState } from "react";
+import Modal from "react-simple-modal-provider";
+
+export default ({ children }) => {
+    const [state, setState] = useState(false);
+    const [data, setData] = useState(null);
+
+    const asyncOpen = async () => {
+        const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+        const json = await response.json();
+        setData(json);
+    };
+
+    return (
+        <Modal
+            id={"MyAsyncModal"}
+            consumer={children}
+            state={state}
+            setState={setState}
+            asyncOpen={asyncOpen}
+        >
+            <h1>{data.title}</h1>
+        </Modal>
+    );
+};
+```
+
+A spinner is built-in. If you don't want to, specify false in **"spinner"** props. <br/>
+Custom spinners in "JSX" format can also be specified.
 
 <br/>
 
