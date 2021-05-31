@@ -1,6 +1,6 @@
 import DefaultSpinner from './assets/SpinnerSVG';
 
-const Spinner = ({ spinner, spinnerColor }: { spinner: JSX.Element | boolean | undefined; spinnerColor: string }) => {
+const Spinner = ({ spinner, spinnerColor }: { spinner?: JSX.Element | boolean; spinnerColor: string }) => {
     return (
         <div
             style={{

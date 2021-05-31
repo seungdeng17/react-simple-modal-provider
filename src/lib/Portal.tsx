@@ -12,7 +12,7 @@ interface IPortalProps extends IPortalCommonProps {
     initialization: boolean;
     duration: number;
     modalStyle: string;
-    spinner: JSX.Element | boolean | undefined;
+    spinner?: JSX.Element | boolean;
     spinnerColor: string;
 }
 
