@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
-import { stateBundler } from './utils';
 import { IPortalCommonProps, IClassName } from './type';
 import DefaultSpinner from './assets/Spinner';
+import Temp from './Temp';
 
 interface IPortalBodyProps extends IPortalCommonProps {
     overlayClassName: IClassName;
@@ -22,34 +22,20 @@ const PortalBody = ({
     spinner,
     spinnerColor,
 }: IPortalBodyProps) => {
-    const [isOpening, setOpening] = useState<boolean>(false);
-    const [isClosing, setClosing] = useState<boolean>(false);
     const [isShow, setShow] = useState<boolean>(true);
     const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        stateBundler([setShow, setOpening], true);
+        setShow(true);
         if (state) return;
         modalSet.delete(id);
-        setClosing(true);
-        setTimeout(initializeState, duration);
+        setTimeout(() => setShow(false), duration);
     }, [state]);
-
-    const initializeState = useCallback(() => stateBundler([setOpening, setClosing, setShow], false), []);
 
     const overlayClickHandler = useCallback(({ target }) => {
         if (modalRef.current?.contains(target) || !allowClickOutside) return;
-        setClosing(true);
         close();
     }, []);
-
-    const overlaylClass = `${overlayClassName.base} ${isOpening ? overlayClassName.afterOpen : ''} ${
-        isClosing ? overlayClassName.beforeClose : ''
-    }`;
-
-    const modalClass = `${className.base} ${isOpening ? className.afterOpen : ''} ${
-        isClosing ? className.beforeClose : ''
-    }`;
 
     if (!(state || isShow)) return null;
 
@@ -60,11 +46,7 @@ const PortalBody = ({
                     {spinner ? spinner : spinner !== false && <DefaultSpinner spinnerColor={spinnerColor} />}
                 </div>
             ) : (
-                <div className={overlaylClass} onClick={overlayClickHandler}>
-                    <div ref={modalRef} className={modalClass}>
-                        <div>{children}</div>
-                    </div>
-                </div>
+                <Temp {...{ state, overlayClickHandler, overlayClassName, className, modalRef }}>{children}</Temp>
             )}
         </>
     );
