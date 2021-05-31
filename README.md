@@ -149,7 +149,7 @@ export default ({ children }) => {
       setState={setState}
       asyncOpen={asyncOpen}
     >
-      <h1>{data?.title}</h1> || <ModalBody data={data} />
+      <ModalBody data={data} />
     </Modal>
   );
 };
