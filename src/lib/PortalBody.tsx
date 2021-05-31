@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { IPortalCommonProps, IClassName } from './type';
-import DefaultSpinner from './assets/Spinner';
-import Temp from './Temp';
+import { defer } from './utils';
 
 interface IPortalBodyProps extends IPortalCommonProps {
     overlayClassName: IClassName;
@@ -10,45 +9,40 @@ interface IPortalBodyProps extends IPortalCommonProps {
 
 const PortalBody = ({
     children,
-    id,
-    modalSet,
-    pending,
     state,
     close,
     allowClickOutside,
-    duration,
     overlayClassName,
     className,
-    spinner,
-    spinnerColor,
+    asyncOpen,
 }: IPortalBodyProps) => {
-    const [isShow, setShow] = useState<boolean>(true);
     const modalRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        setShow(true);
-        if (state) return;
-        modalSet.delete(id);
-        setTimeout(() => setShow(false), duration);
-    }, [state]);
 
     const overlayClickHandler = useCallback(({ target }) => {
         if (modalRef.current?.contains(target) || !allowClickOutside) return;
         close();
     }, []);
 
-    if (!(state || isShow)) return null;
+    const [overlayClass, setOverlayClass] = useState(overlayClassName.base);
+    const [modalClass, setModalClass] = useState(className.base);
+
+    useEffect(async () => {
+        if (state) {
+            asyncOpen && (await defer(100));
+            setOverlayClass((state) => `${state} ${overlayClassName.afterOpen}`);
+            setModalClass((state) => `${state} ${className.afterOpen}`);
+        } else {
+            setOverlayClass((state) => `${state} ${overlayClassName.beforeClose}`);
+            setModalClass((state) => `${state} ${className.beforeClose}`);
+        }
+    }, [state]);
 
     return (
-        <>
-            {pending ? (
-                <div className={overlayClassName.base}>
-                    {spinner ? spinner : spinner !== false && <DefaultSpinner spinnerColor={spinnerColor} />}
-                </div>
-            ) : (
-                <Temp {...{ state, overlayClickHandler, overlayClassName, className, modalRef }}>{children}</Temp>
-            )}
-        </>
+        <div className={overlayClass} onClick={overlayClickHandler}>
+            <div className={modalClass} ref={modalRef}>
+                <div>{children}</div>
+            </div>
+        </div>
     );
 };
 

@@ -2,6 +2,7 @@ import * as ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
 import { IPortalCommonProps } from './type';
 import PortalBody from './PortalBody';
+import DefaultSpinner from './assets/Spinner';
 
 interface IPortalProps extends IPortalCommonProps {
     hashId: string;
@@ -26,10 +27,12 @@ const Portal = ({
     overlayClassName,
     className,
     modalStyle,
+    asyncOpen,
     spinner,
     spinnerColor,
 }: IPortalProps) => {
     const [isCreatedPortal, setCreatedPortal] = useState<boolean>(false);
+    const [isShow, setShow] = useState<boolean>(true);
 
     useEffect(() => {
         const portal = document.createElement('div');
@@ -43,19 +46,47 @@ const Portal = ({
         setCreatedPortal(true);
     }, []);
 
+    useEffect(() => {
+        if (!initialization) return;
+        setShow(true);
+        if (state) return;
+        modalSet.delete(id);
+        setTimeout(() => setShow(false), duration);
+    }, [state]);
+
     if (!isCreatedPortal || !initialization) return null;
+    if (!(state || isShow)) return null;
+    if (pending) {
+        return (
+            <div
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    bottom: 0,
+                    right: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    outline: '0',
+                    zIndex: 99999,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                    pointerEvents: 'none',
+                }}
+            >
+                {spinner ? spinner : spinner !== false && <DefaultSpinner spinnerColor={spinnerColor} />}
+            </div>
+        );
+    }
 
     return ReactDOM.createPortal(
         <PortalBody
-            id={id}
-            modalSet={modalSet}
-            pending={pending}
             state={state}
             close={close}
             allowClickOutside={allowClickOutside}
-            spinner={spinner}
-            spinnerColor={spinnerColor}
-            duration={duration}
+            asyncOpen={asyncOpen}
             overlayClassName={overlayClassName}
             className={className}
         >
