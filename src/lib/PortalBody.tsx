@@ -1,13 +1,9 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { stateBundler } from './utils';
-import { IOptionalProps, IClassName } from './type';
+import { IPortalCommonProps, IClassName } from './type';
+import DefaultSpinner from './assets/Spinner';
 
-interface IPortalBodyProps extends IOptionalProps {
-    children: React.ReactNode;
-    id: string;
-    modalSet: Set<string>;
-    state: boolean;
-    close: Function;
+interface IPortalBodyProps extends IPortalCommonProps {
     overlayClassName: IClassName;
     className: IClassName;
 }
@@ -16,12 +12,15 @@ const PortalBody = ({
     children,
     id,
     modalSet,
+    pending,
     state,
     close,
     allowClickOutside,
     duration,
     overlayClassName,
     className,
+    spinner,
+    spinnerColor,
 }: IPortalBodyProps) => {
     const [isOpening, setOpening] = useState<boolean>(false);
     const [isClosing, setClosing] = useState<boolean>(false);
@@ -55,11 +54,19 @@ const PortalBody = ({
     if (!(state || isShow)) return null;
 
     return (
-        <div className={overlaylClass} onClick={overlayClickHandler}>
-            <div ref={modalRef} className={modalClass}>
-                <div>{children}</div>
-            </div>
-        </div>
+        <>
+            {pending ? (
+                <div className={overlayClassName.base}>
+                    {spinner ? spinner : spinner !== false && <DefaultSpinner spinnerColor={spinnerColor} />}
+                </div>
+            ) : (
+                <div className={overlaylClass} onClick={overlayClickHandler}>
+                    <div ref={modalRef} className={modalClass}>
+                        <div>{children}</div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 

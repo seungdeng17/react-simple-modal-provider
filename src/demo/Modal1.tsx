@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Modal from '../lib/Modal';
 import { modalAnimation } from '../lib/modalAnimation';
 import { useModal } from '../lib/modalContext';
-import ModalBody from './ModalBody';
+import Modal1Body from './Modal1Body';
 
 const Modal1 = ({ children }: { children: React.ReactNode }) => {
     const [state, setState] = useState<boolean>(false);
@@ -12,9 +12,14 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
     const [data, setData] = useState(null);
 
     const asyncOpen = async () => {
-        const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-        const json = await res.json();
-        setData(json);
+        try {
+            await new Promise((r) => setTimeout(r, 500));
+            const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+            const json = await res.json();
+            setData(json);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     return (
@@ -31,7 +36,7 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
             backgroundColor={'#fff'}
             asyncOpen={asyncOpen}
         >
-            <ModalBody data={data} />
+            <Modal1Body data={data} />
             <button type="button" onClick={modal2Open}>
                 Modal2 Open
             </button>

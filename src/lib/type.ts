@@ -5,24 +5,25 @@ interface IAnimation {
     after: string;
 }
 
-interface IOptionalProps {
-    allowClickOutside?: boolean;
-    duration?: number;
-    overlayColor?: string;
-    animation?: IAnimation;
-    vertical?: number;
-    horizontal?: number;
-    width?: number;
-    height?: number;
-    radius?: number;
-    backgroundColor?: string;
-    asyncOpen?: Function;
-}
-
 interface IClassName {
     base: string;
     afterOpen: string;
     beforeClose: string;
 }
 
-export { IOptionalProps, IClassName };
+interface IPortalCommonProps {
+    children: React.ReactNode;
+    id: string;
+    modalSet: Set<string>;
+    pending: boolean;
+    state: boolean;
+    close: Function;
+    overlayClassName: IClassName;
+    className: IClassName;
+    duration: number;
+    allowClickOutside: boolean;
+    spinner: JSX.Element | boolean | undefined;
+    spinnerColor: string;
+}
+
+export { IAnimation, IClassName, IPortalCommonProps };

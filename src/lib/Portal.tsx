@@ -1,18 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
+import { IPortalCommonProps } from './type';
 import PortalBody from './PortalBody';
-import { IOptionalProps, IClassName } from './type';
 
-interface IPortalProps extends IOptionalProps {
-    children: React.ReactNode;
-    id: string;
+interface IPortalProps extends IPortalCommonProps {
     hashId: string;
-    modalSet: Set<string>;
     initialization: boolean;
-    state: boolean;
-    close: Function;
-    overlayClassName: IClassName;
-    className: IClassName;
     modalStyle: string;
 }
 
@@ -25,6 +18,7 @@ const Portal = ({
     hashId,
     modalSet,
     initialization,
+    pending,
     state,
     close,
     allowClickOutside,
@@ -32,6 +26,8 @@ const Portal = ({
     overlayClassName,
     className,
     modalStyle,
+    spinner,
+    spinnerColor,
 }: IPortalProps) => {
     const [isCreatedPortal, setCreatedPortal] = useState<boolean>(false);
 
@@ -53,9 +49,12 @@ const Portal = ({
         <PortalBody
             id={id}
             modalSet={modalSet}
+            pending={pending}
             state={state}
             close={close}
             allowClickOutside={allowClickOutside}
+            spinner={spinner}
+            spinnerColor={spinnerColor}
             duration={duration}
             overlayClassName={overlayClassName}
             className={className}
