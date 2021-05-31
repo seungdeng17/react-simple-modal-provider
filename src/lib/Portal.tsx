@@ -30,8 +30,6 @@ const Portal = ({
     close,
     allowClickOutside,
     duration,
-    overlayClassName,
-    className,
     modalStyle,
     asyncOpen,
     spinner,
@@ -46,7 +44,7 @@ const Portal = ({
         body.appendChild(portal);
 
         const style = document.createElement('style');
-        style.textContent = modalStyle.replace(/\n|  /g, '');
+        style.textContent = modalStyle;
         head.appendChild(style);
 
         setCreatedPortal(true);
@@ -65,14 +63,7 @@ const Portal = ({
     if (pending) return <Spinner spinner={spinner} spinnerColor={spinnerColor} />;
 
     return ReactDOM.createPortal(
-        <PortalBody
-            state={state}
-            close={close}
-            allowClickOutside={allowClickOutside}
-            asyncOpen={asyncOpen}
-            overlayClassName={overlayClassName}
-            className={className}
-        >
+        <PortalBody state={state} close={close} allowClickOutside={allowClickOutside} asyncOpen={asyncOpen}>
             {children}
         </PortalBody>,
         document.querySelector(`.css-${hashId}`) as HTMLElement

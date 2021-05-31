@@ -17,7 +17,6 @@ const Spinner = ({ spinner, spinnerColor }: { spinner: JSX.Element | boolean | u
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: 'rgba(0, 0, 0, 0)',
-                pointerEvents: 'none',
             }}
         >
             {spinner ? spinner : spinner !== false && <DefaultSpinner spinnerColor={spinnerColor} />}

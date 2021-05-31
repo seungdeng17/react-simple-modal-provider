@@ -2,15 +2,19 @@ import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { IPortalCommonProps } from './type';
 import { defer } from './utils';
 
-const PortalBody = ({
-    children,
-    state,
-    close,
-    allowClickOutside,
-    overlayClassName,
-    className,
-    asyncOpen,
-}: IPortalCommonProps) => {
+const overlayClassName = {
+    base: 'overlay-base',
+    afterOpen: 'overlay-after',
+    beforeClose: 'overlay-before',
+};
+
+const className = {
+    base: 'content-base',
+    afterOpen: 'content-after',
+    beforeClose: 'content-before',
+};
+
+const PortalBody = ({ children, state, close, allowClickOutside, asyncOpen }: IPortalCommonProps) => {
     const [overlayClass, setOverlayClass] = useState(overlayClassName.base);
     const [modalClass, setModalClass] = useState(className.base);
     const modalRef = useRef<HTMLDivElement>(null);
