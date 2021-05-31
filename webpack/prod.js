@@ -10,11 +10,11 @@ module.exports = merge(common, {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, '../dist'),
-        libraryTarget: "umd",
+        libraryTarget: 'umd',
     },
 
     externals: {
-        "react": "commonjs react",
-        "react-dom": "commonjs react-dom",
-    }
+        'react': 'commonjs react',
+        'react-dom': 'commonjs react-dom',
+    },
 });
