@@ -39,10 +39,8 @@ export default ({ children }) => {
       state={state}
       setState={setState}
     >
-      <div>
-        <span>😆</span>
-        <button onClick={() => setState(false)}>Close</button>
-      </div>
+      <span>😆</span>
+      <button onClick={() => setState(false)}>Close</button>
     </Modal>
   );
 };
@@ -79,11 +77,9 @@ Register a modal array through the **"value"** props of the **"ModalProvider"** 
 import { useModal } from "react-simple-modal-provider";
 
 export default () => {
-    const { open: openMyModal } = useModal("MyModal");
+  const { open: openMyModal } = useModal("MyModal");
 
-    return (
-        <button onClick={openMyModal}>Open</button>
-    );
+  return <button onClick={openMyModal}>Open</button>;
 };
 ```
 
@@ -109,8 +105,12 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 |props|type|default value|discription|
 |:---:|:---:|:---:|:---:|
-|**allowClickOutside**|boolean|true|Allow click outside|
+|**asyncOpen**|async function|-|Called when modal opened|
+|**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
+|**spinnerColor**|string|#93dbe9|Built-in spinner color|
 |**overlayColor**|string|rgba(0, 0, 0, 0.6)|Overlay color|
+|**backgroundColor**|string|transparent|Modal background color|
+|**allowClickOutside**|boolean|true|Allow click outside|
 |**animation**|object|-|Open/Close [animation](#animation)|
 |**duration**|number|0|Animation duration |
 |**vertical**|number|0|Vertical position (px)|
@@ -118,10 +118,6 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**width**|number|0|Modal width (px)|
 |**height**|number|0|Modal height (px)|
 |**radius**|number|0|Border radius (px)|
-|**backgroundColor**|string|transparent|Background color|
-|**asyncOpen**|async function|-|Called when modal opened|
-|**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
-|**spinnerColor**|string|#93dbe9|Built-in spinner color|
 
 <br/>
 
@@ -134,26 +130,26 @@ import Modal from "react-simple-modal-provider";
 import ModalBody from "./ModalBody";
 
 export default ({ children }) => {
-    const [state, setState] = useState(false);
-    const [data, setData] = useState(null);
+  const [state, setState] = useState(false);
+  const [data, setData] = useState(null);
 
-    const asyncOpen = async () => {
-        const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-        const json = await response.json();
-        setData(json);
-    };
+  const asyncOpen = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    const json = await response.json();
+    setData(json);
+  };
 
-    return (
-        <Modal
-            id={"MyAsyncModal"}
-            consumer={children}
-            state={state}
-            setState={setState}
-            asyncOpen={asyncOpen}
-        >
-            <h1>{data?.title}</h1> || <ModalBody data={data} />
-        </Modal>
-    );
+  return (
+    <Modal
+      id={"MyAsyncModal"}
+      consumer={children}
+      state={state}
+      setState={setState}
+      asyncOpen={asyncOpen}
+    >
+      <h1>{data?.title}</h1> || <ModalBody data={data} />
+    </Modal>
+  );
 };
 ```
 
@@ -183,7 +179,7 @@ import { Modal, modalAnimation } from "react-simple-modal-provider";
 export default ({ children }) => {
   return (
     <Modal animation={modalAnimation.scaleUp}>
-        ...
+      ...
     </Modal>
   );
 };
@@ -193,26 +189,30 @@ export default ({ children }) => {
 
 ```js
 {
-    type: "top, opacity",
-    base: "top: -50px; opacity: 0;",
-    before: "top: 50px; opacity: 0;",
-    after: "top: 0px; opacity: 1;",
+  type: "top, opacity",
+  base: "top: -50px; opacity: 0;",
+  before: "top: 50px; opacity: 0;",
+  after: "top: 0px; opacity: 1;",
 }
 ```
 
 ```js
 {
-    type: "transform, opacity",
-    base: "transform: rotate(0deg) scale(0.3); opacity: 0;",
-    before: "transform: rotate(0deg) scale(0.3); opacity: 0;",
-    after: "transform: rotate(360deg) scale(1); opacity: 1;"
+  type: "transform, opacity",
+  base: "transform: rotate(0deg) scale(0.3); opacity: 0;",
+  before: "transform: rotate(0deg) scale(0.3); opacity: 0;",
+  after: "transform: rotate(360deg) scale(1); opacity: 1;"
 }
 ```
 
 <br/>
 
+[Top](#react-simple-modal-provider)
+
 <hr/>
 
-<a href="https://github.com/seungdeng17/react-simple-modal-provider" target="_blank">Git Repository</a>
+<br/>
 
+<a href="https://github.com/seungdeng17/react-simple-modal-provider" target="_blank">Github</a>
+•
 <a href="https://www.npmjs.com/package/react-simple-modal-provider" target="_blank">NPM</a>
