@@ -176,7 +176,7 @@ Custom spinners in "JSX" format can also be specified.
   - slideUp
 
 ```jsx
-import { Modal, modalAnimation } from "react-simple-modal-provider";
+import Modal, { modalAnimation } from "react-simple-modal-provider";
 
 export default ({ children }) => {
   return (
