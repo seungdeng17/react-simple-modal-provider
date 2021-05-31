@@ -112,7 +112,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**backgroundColor**|string|transparent|Background color|
 |**asyncOpen**|async function|-|Called when modal opened|
 |**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
-|**spinnerColor**|string|#93dbe9|Spinner color|
+|**spinnerColor**|string|#93dbe9|Built-in spinner color|
 
 <br/>
 

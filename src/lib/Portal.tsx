@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
 import { IPortalCommonProps } from './type';
 import PortalBody from './PortalBody';
-import DefaultSpinner from './assets/Spinner';
+import Spinner from './Spinner';
 
 interface IPortalProps extends IPortalCommonProps {
     id: string;
@@ -62,30 +62,7 @@ const Portal = ({
 
     if (!isCreatedPortal || !initialization) return null;
     if (!(state || isShow)) return null;
-    if (pending) {
-        return (
-            <div
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    outline: '0',
-                    zIndex: 99999,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: 'rgba(0, 0, 0, 0)',
-                    pointerEvents: 'none',
-                }}
-            >
-                {spinner ? spinner : spinner !== false && <DefaultSpinner spinnerColor={spinnerColor} />}
-            </div>
-        );
-    }
+    if (pending) return <Spinner spinner={spinner} spinnerColor={spinnerColor} />;
 
     return ReactDOM.createPortal(
         <PortalBody
