@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { stateBundler } from './utils';
 import { IPortalCommonProps, IClassName } from './type';
+import Spinner from './assets/Spinner';
 
 interface IPortalBodyProps extends IPortalCommonProps {
     overlayClassName: IClassName;
@@ -53,11 +54,19 @@ const PortalBody = ({
     if (!(state || isShow)) return null;
 
     return (
-        <div className={overlaylClass} onClick={overlayClickHandler}>
-            <div ref={modalRef} className={modalClass}>
-                <div>{!pending && children}</div>
-            </div>
-        </div>
+        <>
+            {pending ? (
+                <div className={overlayClassName.base}>
+                    <Spinner />
+                </div>
+            ) : (
+                <div className={overlaylClass} onClick={overlayClickHandler}>
+                    <div ref={modalRef} className={modalClass}>
+                        <div>{children}</div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 
