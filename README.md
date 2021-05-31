@@ -119,9 +119,10 @@ It is recommended to name variables using destructuring assignment.<br/>
 ## Async Examples
 
 ```jsx
+// MyAsyncModal Component
 import { useState } from "react";
 import Modal from "react-simple-modal-provider";
-import MyModalBody from "./MyModalBody";
+import ModalBody from "./ModalBody";
 
 export default ({ children }) => {
     const [state, setState] = useState(false);
@@ -141,9 +142,16 @@ export default ({ children }) => {
             setState={setState}
             asyncOpen={asyncOpen}
         >
-            <h1>{data?.title}</h1> || <MyModalBody data={data} />
+            <h1>{data?.title}</h1> || <ModalBody data={data} />
         </Modal>
     );
+};
+```
+
+```jsx
+// ModalBody Component
+export default ({ data }) => {
+  return <h1>{data.title}</h1>;
 };
 ```
 
