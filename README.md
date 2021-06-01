@@ -96,7 +96,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 #### - Essential props
 
-|props|type|default value|discription|
+|Prop|Type|Default|Discription|
 |:---:|:---:|:---:|:---:|
 |**id**|string|-|Identifier for a modal|
 |**consumer**|children props|-|Components to use modals for|
@@ -105,14 +105,15 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 #### - Optional props
 
-|props|type|default value|discription|
+|Prop|Type|Default|Discription|
 |:---:|:---:|:---:|:---:|
 |**asyncOpen**|async function|-|Called when modal opened|
+|**draggable**|boolean|false|Drag usable|
+|**allowClickOutside**|boolean|true|Allow click outside|
 |**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
 |**spinnerColor**|string|#93dbe9|Built-in spinner color|
 |**overlayColor**|string|rgba(0, 0, 0, 0.6)|Overlay color|
 |**backgroundColor**|string|transparent|Modal background color|
-|**allowClickOutside**|boolean|true|Allow click outside|
 |**animation**|object|-|Open/Close [animation](#animation)|
 |**duration**|number|0|Animation duration |
 |**vertical**|number|0|Vertical position (px)|
@@ -120,7 +121,6 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**width**|number|0|Modal width (px)|
 |**height**|number|0|Modal height (px)|
 |**radius**|number|0|Border radius (px)|
-|**draggable** (beta)|boolean|false|Drag usable|
 
 <br/>
 
