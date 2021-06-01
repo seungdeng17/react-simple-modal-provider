@@ -1,7 +1,7 @@
 {
     "name": "react-simple-modal-provider",
     "description": "React simple modal and Modal provider",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "module": "dist/index.js",
     "main": "dist/index.js",
     "scripts": {
@@ -18,7 +18,7 @@
         "modal",
         "provider",
         "manager",
-        "drag",
+        "draggable",
         "react modal",
         "simple modal",
         "modal provider",
