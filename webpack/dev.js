@@ -6,6 +6,7 @@ module.exports = merge(common, {
     mode: 'development',
 
     entry: ['@babel/polyfill', './src/index.tsx'],
+    // entry: ['@babel/polyfill', './src/codesandbox/index.js'],
 
     devServer: {
         port: 3000,
