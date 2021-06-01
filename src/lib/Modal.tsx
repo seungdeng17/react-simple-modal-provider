@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createModalContext } from './modalContext';
+import { modalAnimation } from './modalAnimation';
 import { checkModalEssentialProps, stateBundler, hash, getModalStyle } from './utils';
 import { IAnimation } from './type';
 import Portal from './Portal';
@@ -23,7 +24,7 @@ interface IModalProps {
     asyncOpen?: Function;
     spinner?: JSX.Element | boolean;
     spinnerColor?: string;
-    drag?: boolean;
+    draggable?: boolean;
 }
 
 const modalSet: Set<string> = new Set();
@@ -47,11 +48,12 @@ const Modal = ({
     asyncOpen,
     spinner,
     spinnerColor = '#93dbe9',
-    drag = false,
+    draggable = false,
 }: IModalProps) => {
     checkModalEssentialProps({ id, consumer, setState });
 
     duration = animation?.type && !duration ? 150 : duration;
+    if (draggable && animation.type) animation = modalAnimation.scaleUp;
 
     const hashId = hash(id);
     const Context = useMemo(() => createModalContext(id), []);
@@ -107,7 +109,7 @@ const Modal = ({
                     radius,
                     backgroundColor,
                 })}
-                drag={drag}
+                draggable={draggable}
             >
                 {children}
             </Portal>

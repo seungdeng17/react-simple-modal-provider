@@ -10,6 +10,4 @@ const CLASS_NAME = {
     BEFORE_CLOSE: 'content-before',
 };
 
-const MODAL_DRAGGABLE = 'modal-draggable';
-
-export { OVERLAY_CLASS_NAME, CLASS_NAME, MODAL_DRAGGABLE };
+export { OVERLAY_CLASS_NAME, CLASS_NAME };

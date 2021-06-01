@@ -13,7 +13,7 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
 
     const asyncOpen = async () => {
         try {
-            // await new Promise((r) => setTimeout(r, 500));
+            await new Promise((r) => setTimeout(r, 500));
             const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
             const json = await res.json();
             setData(json);
@@ -30,14 +30,14 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
             setState={setState}
             duration={300}
             animation={modalAnimation.scaleUp}
+            asyncOpen={asyncOpen}
             width={300}
             height={300}
             radius={10}
             backgroundColor={'#fff'}
-            asyncOpen={asyncOpen}
-            drag={true}
+            draggable={true}
         >
-            <div className="modal-draggable">
+            <div>
                 <Modal1Body data={data} />
                 <button type="button" onClick={modal2Open}>
                     Modal2 Open

@@ -16,9 +16,12 @@ const Modal2 = ({ children }: { children: React.ReactNode }) => {
             setState={setState}
             animation={modalAnimation.slideDown}
             radius={10}
-            drag={true}
+            width={400}
+            height={400}
+            backgroundColor={'#f0f'}
+            draggable={true}
         >
-            <div className="modal-draggable" style={{ width: 300, height: 300, backgroundColor: 'red' }}>
+            <div style={{ width: 300, height: 300, backgroundColor: 'red' }}>
                 <div>Modal2</div>
                 <button onClick={onCloseHandler} type="button">
                     Modal2 Close

@@ -1,5 +1,5 @@
 import { IAnimation } from './type';
-import { CLASS_NAME, MODAL_DRAGGABLE } from './constants';
+import { CLASS_NAME } from './constants';
 
 const stateBundler = <T>(setFuncArr: Function[] = [], willState: T) => setFuncArr.forEach((set) => set(willState));
 
@@ -126,7 +126,7 @@ const throttle = function (callback: Function, waitTime: number) {
 };
 
 const modalDrag = (e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLElement;
+    const target = e.currentTarget as HTMLElement;
     const {
         clientX,
         clientY,
@@ -139,7 +139,7 @@ const modalDrag = (e: React.MouseEvent<HTMLDivElement>) => {
         pageY: number;
     } = e;
 
-    if (!(target.matches(`.${CLASS_NAME.BASE}`) || target.matches(`.${MODAL_DRAGGABLE}`))) return;
+    if (!target.matches(`.${CLASS_NAME.BASE}`)) return;
 
     const move = ({ pageX, pageY }: { pageX: number; pageY: number }) => {
         target.style.top = pageY - offsetY + 'px';
