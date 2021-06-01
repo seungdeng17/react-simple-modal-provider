@@ -126,47 +126,45 @@ const throttle = function (callback: Function, waitTime: number) {
 };
 
 const modalDrag = (e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.currentTarget as HTMLElement;
     const {
+        currentTarget,
         clientX,
         clientY,
-        pageX,
-        pageY,
     }: {
+        currentTarget: HTMLElement;
         clientX: number;
         clientY: number;
-        pageX: number;
-        pageY: number;
     } = e;
 
-    if (!target.matches(`.${CLASS_NAME.BASE}`)) return;
+    if (!currentTarget.matches(`.${CLASS_NAME.BASE}`)) return;
 
-    const move = ({ pageX, pageY }: { pageX: number; pageY: number }) => {
-        target.style.top = pageY - offsetY + 'px';
-        target.style.left = pageX - offsetX + 'px';
+    const move = ({ clientX, clientY }: { clientX: number; clientY: number }) => {
+        currentTarget.style.top = clientY - offsetY + 'px';
+        currentTarget.style.left = clientX - offsetX + 'px';
     };
 
-    const onMouseMoveThrottle = throttle(({ pageX, pageY }: { pageX: number; pageY: number }) => {
-        if (pageX <= 0 || pageY <= 0 || pageX >= innerWidth || pageY >= innerHeight) return removeMousemoveEvent();
-        move({ pageX, pageY });
+    const onMouseMoveThrottle = throttle(({ clientX, clientY }: { clientX: number; clientY: number }) => {
+        if (clientX <= 0 || clientY <= 0 || clientX >= innerWidth || clientY >= innerHeight)
+            return removeMousemoveEvent();
+        move({ clientX, clientY });
     }, 10);
 
     const removeMousemoveEvent = () => {
         document.removeEventListener('mousemove', onMouseMoveThrottle);
-        target.onmouseup = null;
+        currentTarget.onmouseup = null;
     };
 
     document.addEventListener('mousemove', onMouseMoveThrottle);
-    target.onmouseup = removeMousemoveEvent;
+    currentTarget.onmouseup = removeMousemoveEvent;
 
-    const offsetX = clientX - target.getBoundingClientRect().left;
-    const offsetY = clientY - target.getBoundingClientRect().top;
-    move({ pageX, pageY });
+    const offsetX = clientX - currentTarget.getBoundingClientRect().left;
+    const offsetY = clientY - currentTarget.getBoundingClientRect().top;
+    move({ clientX, clientY });
 
-    target.style.width = target.offsetWidth + 'px';
-    target.style.height = target.offsetHeight + 'px';
-    target.style.position = 'fixed';
-    target.style.zIndex = '10000';
+    currentTarget.style.width = currentTarget.offsetWidth + 'px';
+    currentTarget.style.height = currentTarget.offsetHeight + 'px';
+    currentTarget.style.position = 'fixed';
+    currentTarget.style.zIndex = '10000';
 };
 
 export { stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, modalDrag };
