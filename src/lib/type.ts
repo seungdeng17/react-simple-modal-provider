@@ -11,6 +11,7 @@ interface IPortalCommonProps {
     close: Function;
     allowClickOutside: boolean;
     asyncOpen?: Function;
+    draggable?: boolean;
 }
 
 export { IAnimation, IPortalCommonProps };

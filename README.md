@@ -120,6 +120,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**width**|number|0|Modal width (px)|
 |**height**|number|0|Modal height (px)|
 |**radius**|number|0|Border radius (px)|
+|**draggable** (beta)|boolean|false|Drag usable|
 
 <br/>
 

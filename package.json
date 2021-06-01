@@ -18,9 +18,11 @@
         "modal",
         "provider",
         "manager",
+        "drag",
         "react modal",
         "simple modal",
-        "modal provider"
+        "modal provider",
+        "drag modal"
     ],
     "author": "Seungtaek Lee <seungdeng17@gmail.com>",
     "license": "MIT",

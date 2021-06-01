@@ -30,19 +30,22 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
             setState={setState}
             duration={300}
             animation={modalAnimation.scaleUp}
+            asyncOpen={asyncOpen}
             width={300}
             height={300}
             radius={10}
             backgroundColor={'#fff'}
-            asyncOpen={asyncOpen}
+            draggable={true}
         >
-            <Modal1Body data={data} />
-            <button type="button" onClick={modal2Open}>
-                Modal2 Open
-            </button>
-            <button type="button" onClick={modal3Open}>
-                Modal3 Open
-            </button>
+            <div>
+                <Modal1Body data={data} />
+                <button type="button" onClick={modal2Open}>
+                    Modal2 Open
+                </button>
+                <button type="button" onClick={modal3Open}>
+                    Modal3 Open
+                </button>
+            </div>
         </Modal>
     );
 };
