@@ -1,0 +1,32 @@
+.container {
+  background-color: #fff;
+  display: inline-block;
+  width: fit-content;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 6px 0px, rgba(0, 0, 0, 0.3) 0px 1px 6px 0px;
+
+  div {
+    margin-bottom: 30px;
+    color: rgb(34, 34, 34);
+    font-size: 18px;
+  }
+  
+  button {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    background-color: rgb(49, 130, 246);
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      background-color: rgb(28, 100, 218);
+    }
+  } 
+}
