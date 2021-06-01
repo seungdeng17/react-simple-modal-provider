@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
-import { IPortalCommonProps } from './type';
+import { IPortalCommonProps, ModalDragEventPropertyType } from './type';
 import { defer, modalDrag } from './utils';
 import { OVERLAY_CLASS_NAME, CLASS_NAME } from './constants';
 
@@ -13,9 +13,9 @@ const PortalBody = ({ children, state, close, allowClickOutside, asyncOpen, drag
         close();
     }, []);
 
-    const modalDragHandler = (e) => {
+    const modalDragHandler = ({ target, clientX, clientY, pageX, pageY }: ModalDragEventPropertyType) => {
         if (!drag) return;
-        modalDrag(e);
+        modalDrag({ target, clientX, clientY, pageX, pageY });
     };
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import { IAnimation } from './type';
+import { IAnimation, ModalDragEventPropertyType } from './type';
 import { CLASS_NAME, MODAL_DRAGGABLE } from './constants';
 
 const stateBundler = <T>(setFuncArr: Function[] = [], willState: T) => setFuncArr.forEach((set) => set(willState));
@@ -116,7 +116,7 @@ const getModalStyle = ({
 
 const throttle = function (callback: Function, waitTime: number) {
     let timerId: null | ReturnType<typeof setTimeout> = null;
-    return (e: EventTarget) => {
+    return (e: Event) => {
         if (timerId) return;
         timerId = setTimeout(() => {
             callback.call(null, e);
@@ -125,21 +125,7 @@ const throttle = function (callback: Function, waitTime: number) {
     };
 };
 
-const modalDrag = ({
-    target,
-    clientX,
-    clientY,
-    pageX,
-    pageY,
-}: {
-    target: HTMLElement;
-    clientX: number;
-    clientY: number;
-    pageX: number;
-    pageY: number;
-}) => {
-    console.log(target);
-
+const modalDrag = ({ target, clientX, clientY, pageX, pageY }: ModalDragEventPropertyType) => {
     if (!(target.matches(`.${CLASS_NAME.BASE}`) || target.matches(`.${MODAL_DRAGGABLE}`))) return;
 
     const move = ({ pageX, pageY }: { pageX: number; pageY: number }) => {

@@ -14,4 +14,12 @@ interface IPortalCommonProps {
     drag?: boolean;
 }
 
-export { IAnimation, IPortalCommonProps };
+type ModalDragEventPropertyType = {
+    target: EventTarget & HTMLDivElement;
+    clientX: number;
+    clientY: number;
+    pageX: number;
+    pageY: number;
+};
+
+export { IAnimation, IPortalCommonProps, ModalDragEventPropertyType };
