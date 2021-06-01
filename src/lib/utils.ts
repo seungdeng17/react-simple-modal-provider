@@ -1,4 +1,4 @@
-import { IAnimation, ModalDragEventPropertyType } from './type';
+import { IAnimation } from './type';
 import { CLASS_NAME, MODAL_DRAGGABLE } from './constants';
 
 const stateBundler = <T>(setFuncArr: Function[] = [], willState: T) => setFuncArr.forEach((set) => set(willState));
@@ -125,7 +125,20 @@ const throttle = function (callback: Function, waitTime: number) {
     };
 };
 
-const modalDrag = ({ target, clientX, clientY, pageX, pageY }: ModalDragEventPropertyType) => {
+const modalDrag = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    const {
+        clientX,
+        clientY,
+        pageX,
+        pageY,
+    }: {
+        clientX: number;
+        clientY: number;
+        pageX: number;
+        pageY: number;
+    } = e;
+
     if (!(target.matches(`.${CLASS_NAME.BASE}`) || target.matches(`.${MODAL_DRAGGABLE}`))) return;
 
     const move = ({ pageX, pageY }: { pageX: number; pageY: number }) => {
