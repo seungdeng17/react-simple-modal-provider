@@ -53,7 +53,7 @@ const Modal = ({
     checkModalEssentialProps({ id, consumer, setState });
 
     duration = animation?.type && !duration ? 150 : duration;
-    if (draggable && animation.type) animation = modalAnimation.scaleUp;
+    if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
 
     const hashId = hash(id);
     const Context = useMemo(() => createModalContext(id), []);
