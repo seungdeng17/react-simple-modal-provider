@@ -194,10 +194,10 @@ export default ({ children }) => {
 
 ```js
 {
-  type: 'transform, opacity',
-  base: 'transform: translateY(-50px); opacity: 0;',
-  before: 'transform: translateY(50px); opacity: 0;',
-  after: 'transform: translateY(0px); opacity: 1;',
+  type: "transform, opacity",
+  base: "transform: translateY(-50px); opacity: 0;",
+  before: "transform: translateY(50px); opacity: 0;",
+  after: "transform: translateY(0px); opacity: 1;",
 }
 ```
 
