@@ -4,7 +4,7 @@
 
 <br/>
 
-![react-simple-modal-provider-144](https://user-images.githubusercontent.com/58316983/120341282-b4db0b00-c331-11eb-8fe4-2cedd8644611.gif)
+![react-simple-modal-provider-144](https://user-images.githubusercontent.com/58316983/120344811-e6a1a100-c334-11eb-8e9c-64483620e8db.gif)
 
 <br/>
 
