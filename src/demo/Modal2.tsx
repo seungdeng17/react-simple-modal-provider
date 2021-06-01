@@ -17,7 +17,7 @@ const Modal2 = ({ children }: { children: React.ReactNode }) => {
             animation={modalAnimation.slideDown}
             radius={10}
         >
-            <div>
+            <div style={{ width: 600, height: 600, backgroundColor: 'red' }}>
                 <div>Modal2</div>
                 <button onClick={onCloseHandler} type="button">
                     Modal2 Close

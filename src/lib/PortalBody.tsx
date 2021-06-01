@@ -1,22 +1,11 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { IPortalCommonProps } from './type';
-import { defer } from './utils';
-
-const overlayClassName = {
-    base: 'overlay-base',
-    afterOpen: 'overlay-after',
-    beforeClose: 'overlay-before',
-};
-
-const className = {
-    base: 'content-base',
-    afterOpen: 'content-after',
-    beforeClose: 'content-before',
-};
+import { defer, dragHandler } from './utils';
+import { OVERLAY_CLASS_NAME, CLASS_NAME } from './constants';
 
 const PortalBody = ({ children, state, close, allowClickOutside, asyncOpen }: IPortalCommonProps) => {
-    const [overlayClass, setOverlayClass] = useState(overlayClassName.base);
-    const [modalClass, setModalClass] = useState(className.base);
+    const [overlayClass, setOverlayClass] = useState(OVERLAY_CLASS_NAME.BASE);
+    const [modalClass, setModalClass] = useState(CLASS_NAME.BASE);
     const modalRef = useRef<HTMLDivElement>(null);
 
     const overlayClickHandler = useCallback(({ target }) => {
@@ -28,18 +17,18 @@ const PortalBody = ({ children, state, close, allowClickOutside, asyncOpen }: IP
         (async () => {
             if (state) {
                 asyncOpen && (await defer(100));
-                setOverlayClass((state) => `${state} ${overlayClassName.afterOpen}`);
-                setModalClass((state) => `${state} ${className.afterOpen}`);
+                setOverlayClass((state) => `${state} ${OVERLAY_CLASS_NAME.AFTER_OPEN}`);
+                setModalClass((state) => `${state} ${CLASS_NAME.AFTER_OPEN}`);
             } else {
-                setOverlayClass((state) => `${state} ${overlayClassName.beforeClose}`);
-                setModalClass((state) => `${state} ${className.beforeClose}`);
+                setOverlayClass((state) => `${state} ${OVERLAY_CLASS_NAME.BEFORE_CLOSE}`);
+                setModalClass((state) => `${state} ${CLASS_NAME.BEFORE_CLOSE}`);
             }
         })();
     }, [state]);
 
     return (
         <div className={overlayClass} onClick={overlayClickHandler}>
-            <div className={modalClass} ref={modalRef}>
+            <div className={modalClass} onMouseDown={dragHandler} ref={modalRef}>
                 <div>{children}</div>
             </div>
         </div>

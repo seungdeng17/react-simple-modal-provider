@@ -1,4 +1,5 @@
 import { IAnimation } from './type';
+import { CLASS_NAME } from './constants';
 
 const stateBundler = <T>(setFuncArr: Function[] = [], willState: T) => setFuncArr.forEach((set) => set(willState));
 
@@ -113,4 +114,60 @@ const getModalStyle = ({
     `.replace(/\n|  /g, '');
 };
 
-export { stateBundler, hash, defer, checkModalEssentialProps, getModalStyle };
+const throttle = function (callback: Function, waitTime: number) {
+    let timerId: null | ReturnType<typeof setTimeout> = null;
+    return (e: EventTarget) => {
+        if (timerId) return;
+        timerId = setTimeout(() => {
+            callback.call(null, e);
+            timerId = null;
+        }, waitTime);
+    };
+};
+
+const dragHandler = (event: Event) => {
+    const {
+        target,
+        clientX,
+        clientY,
+        pageX,
+        pageY,
+    }: {
+        target: HTMLElement;
+        clientX: number;
+        clientY: number;
+        pageX: number;
+        pageY: number;
+    } = event;
+
+    if (!target.matches(`.${CLASS_NAME.BASE}`)) return;
+
+    const move = ({ pageX, pageY }: { pageX: number; pageY: number }) => {
+        target.style.top = pageY - offsetY + 'px';
+        target.style.left = pageX - offsetX + 'px';
+    };
+
+    const onMouseMoveThrottle = throttle(({ pageX, pageY }: { pageX: number; pageY: number }) => {
+        if (pageX <= 0 || pageY <= 0 || pageX >= innerWidth || pageY >= innerHeight) return removeMousemoveEvent();
+        move({ pageX, pageY });
+    }, 10);
+
+    const removeMousemoveEvent = () => {
+        document.removeEventListener('mousemove', onMouseMoveThrottle);
+        target.onmouseup = null;
+    };
+
+    document.addEventListener('mousemove', onMouseMoveThrottle);
+    target.onmouseup = removeMousemoveEvent;
+
+    const offsetX = clientX - target.getBoundingClientRect().left;
+    const offsetY = clientY - target.getBoundingClientRect().top;
+    move({ pageX, pageY });
+
+    target.style.width = target.offsetWidth + 'px';
+    target.style.height = target.offsetHeight + 'px';
+    target.style.position = 'fixed';
+    target.style.zIndex = '10000';
+};
+
+export { stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, dragHandler };
