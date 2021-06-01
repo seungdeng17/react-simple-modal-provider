@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal, { modalAnimation } from "react-simple-modal-provider";
+import Modal, { modalAnimation } from "../../lib";
 import Modal10Body from "./Modal10Body";
 
 export default ({ children }) => {
@@ -13,6 +13,7 @@ export default ({ children }) => {
       setState={setState}
       duration={250}
       animation={modalAnimation.scaleUp}
+      draggable={true}
     >
       <Modal10Body />
     </Modal>

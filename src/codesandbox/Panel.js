@@ -1,4 +1,4 @@
-import { useModal } from "react-simple-modal-provider";
+import { useModal } from "../lib";
 import "./panel.scss";
 
 export default () => {

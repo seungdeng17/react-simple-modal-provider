@@ -1,4 +1,4 @@
-import { ModalProvider } from "react-simple-modal-provider";
+import { ModalProvider } from "../lib";
 import modals from "./Modal";
 import Panel from "./Panel";
 import "./app.scss";
