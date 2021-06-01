@@ -1,5 +1,5 @@
 import { IAnimation } from './type';
-import { CLASS_NAME } from './constants';
+import { CLASS_NAME, MODAL_DRAGGABLE } from './constants';
 
 const stateBundler = <T>(setFuncArr: Function[] = [], willState: T) => setFuncArr.forEach((set) => set(willState));
 
@@ -125,22 +125,22 @@ const throttle = function (callback: Function, waitTime: number) {
     };
 };
 
-const dragHandler = (event: Event) => {
-    const {
-        target,
-        clientX,
-        clientY,
-        pageX,
-        pageY,
-    }: {
-        target: HTMLElement;
-        clientX: number;
-        clientY: number;
-        pageX: number;
-        pageY: number;
-    } = event;
+const modalDrag = ({
+    target,
+    clientX,
+    clientY,
+    pageX,
+    pageY,
+}: {
+    target: HTMLElement;
+    clientX: number;
+    clientY: number;
+    pageX: number;
+    pageY: number;
+}) => {
+    console.log(target);
 
-    if (!target.matches(`.${CLASS_NAME.BASE}`)) return;
+    if (!(target.matches(`.${CLASS_NAME.BASE}`) || target.matches(`.${MODAL_DRAGGABLE}`))) return;
 
     const move = ({ pageX, pageY }: { pageX: number; pageY: number }) => {
         target.style.top = pageY - offsetY + 'px';
@@ -170,4 +170,4 @@ const dragHandler = (event: Event) => {
     target.style.zIndex = '10000';
 };
 
-export { stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, dragHandler };
+export { stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, modalDrag };

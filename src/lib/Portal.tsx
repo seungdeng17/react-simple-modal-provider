@@ -34,6 +34,7 @@ const Portal = ({
     asyncOpen,
     spinner,
     spinnerColor,
+    drag,
 }: IPortalProps) => {
     const [isCreatedPortal, setCreatedPortal] = useState<boolean>(false);
     const [isShow, setShow] = useState<boolean>(true);
@@ -63,7 +64,7 @@ const Portal = ({
     if (pending) return <Spinner spinner={spinner} spinnerColor={spinnerColor} />;
 
     return ReactDOM.createPortal(
-        <PortalBody state={state} close={close} allowClickOutside={allowClickOutside} asyncOpen={asyncOpen}>
+        <PortalBody state={state} close={close} allowClickOutside={allowClickOutside} asyncOpen={asyncOpen} drag={drag}>
             {children}
         </PortalBody>,
         document.querySelector(`.css-${hashId}`) as HTMLElement

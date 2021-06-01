@@ -23,6 +23,7 @@ interface IModalProps {
     asyncOpen?: Function;
     spinner?: JSX.Element | boolean;
     spinnerColor?: string;
+    drag?: boolean;
 }
 
 const modalSet: Set<string> = new Set();
@@ -46,6 +47,7 @@ const Modal = ({
     asyncOpen,
     spinner,
     spinnerColor = '#93dbe9',
+    drag = false,
 }: IModalProps) => {
     checkModalEssentialProps({ id, consumer, setState });
 
@@ -105,6 +107,7 @@ const Modal = ({
                     radius,
                     backgroundColor,
                 })}
+                drag={drag}
             >
                 {children}
             </Portal>

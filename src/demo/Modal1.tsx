@@ -35,14 +35,17 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
             radius={10}
             backgroundColor={'#fff'}
             asyncOpen={asyncOpen}
+            drag={true}
         >
-            <Modal1Body data={data} />
-            <button type="button" onClick={modal2Open}>
-                Modal2 Open
-            </button>
-            <button type="button" onClick={modal3Open}>
-                Modal3 Open
-            </button>
+            <div className="modal-draggable">
+                <Modal1Body data={data} />
+                <button type="button" onClick={modal2Open}>
+                    Modal2 Open
+                </button>
+                <button type="button" onClick={modal3Open}>
+                    Modal3 Open
+                </button>
+            </div>
         </Modal>
     );
 };
