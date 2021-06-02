@@ -100,7 +100,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 #### - Essential props
 
-|Prop|Type|Default|Discription|
+|Prop|Type|Default|Description|
 |:---:|:---:|:---:|:---:|
 |**id**|string|-|Identifier for a modal|
 |**consumer**|children props|-|Components to use modals for|
@@ -109,7 +109,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 #### - Optional props
 
-|Prop|Type|Default|Discription|
+|Prop|Type|Default|Description|
 |:---:|:---:|:---:|:---:|
 |**asyncOpen**|[async](#async) function|-|Called when modal opened|
 |**draggable**|boolean|false|Drag usable|
