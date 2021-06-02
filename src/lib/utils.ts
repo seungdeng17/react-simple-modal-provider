@@ -1,5 +1,7 @@
 import { IAnimation } from './type';
-import { CLASS_NAME, PREFIX, ERROR_MESSAGES } from './constants';
+import { PREFIX, ERROR_MESSAGES } from './constants';
+
+const $ = (selector: string, parent: HTMLElement | Document = document) => parent.querySelector(selector);
 
 const stateBundler = <T>(setFuncArr: Function[] = [], willState: T) => setFuncArr.forEach((set) => set(willState));
 
@@ -163,4 +165,4 @@ const modalDrag = (e: React.MouseEvent<HTMLDivElement>) => {
     currentTarget.style.zIndex = '10000';
 };
 
-export { stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, modalDrag };
+export { $, stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, modalDrag };

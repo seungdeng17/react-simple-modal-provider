@@ -4,6 +4,7 @@ import { IPortalCommonProps } from './type';
 import PortalBody from './PortalBody';
 import Spinner from './Spinner';
 import { PREFIX } from './constants';
+import { $ } from './utils';
 
 interface IPortalProps extends IPortalCommonProps {
     id: string;
@@ -46,6 +47,7 @@ const Portal = ({
         body.appendChild(portal);
 
         const style = document.createElement('style');
+        style.setAttribute('data-modal-style', `${PREFIX.PORTAL}${hashId}`);
         style.textContent = modalStyle;
         head.appendChild(style);
 
@@ -74,7 +76,7 @@ const Portal = ({
         >
             {children}
         </PortalBody>,
-        document.querySelector(`.${PREFIX.PORTAL}${hashId}`) as HTMLElement
+        $(`.${PREFIX.PORTAL}${hashId}`) as HTMLElement
     );
 };
 
