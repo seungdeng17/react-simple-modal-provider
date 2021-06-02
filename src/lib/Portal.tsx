@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { IPortalCommonProps } from './type';
 import PortalBody from './PortalBody';
 import Spinner from './Spinner';
+import { PREFIX } from './constants';
 
 interface IPortalProps extends IPortalCommonProps {
     id: string;
@@ -41,7 +42,7 @@ const Portal = ({
 
     useEffect(() => {
         const portal = document.createElement('div');
-        portal.classList.add(`css-${hashId}`);
+        portal.classList.add(`${PREFIX.PORTAL}${hashId}`);
         body.appendChild(portal);
 
         const style = document.createElement('style');
@@ -73,7 +74,7 @@ const Portal = ({
         >
             {children}
         </PortalBody>,
-        document.querySelector(`.css-${hashId}`) as HTMLElement
+        document.querySelector(`.${PREFIX.PORTAL}${hashId}`) as HTMLElement
     );
 };
 

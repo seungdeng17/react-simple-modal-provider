@@ -1,5 +1,5 @@
 import { IAnimation } from './type';
-import { CLASS_NAME } from './constants';
+import { CLASS_NAME, PREFIX, ERROR_MESSAGES } from './constants';
 
 const stateBundler = <T>(setFuncArr: Function[] = [], willState: T) => setFuncArr.forEach((set) => set(willState));
 
@@ -11,7 +11,7 @@ const hash = (id: string) => {
         hash = ((hash << 5) - hash + id.charCodeAt(i++)) << 0;
     }
     hash = hash + 2147483647 + 1;
-    return `modal-${hash}`;
+    return `${PREFIX.HASH}${hash}`;
 };
 
 const defer = async (ms: number) => await new Promise((r) => setTimeout(r, ms));
@@ -25,12 +25,8 @@ const checkModalEssentialProps = ({
     consumer: React.ReactNode;
     setState: Function;
 }) => {
-    if (typeof id !== 'string')
-        throw new Error('react-simple-modal-provider: Modal Error! id props must be a string type.');
-    if (!id || !consumer || !setState)
-        throw new Error(
-            'react-simple-modal-provider: Modal Error! Not enough essential props data. Check the Modal props. (id, consumer, state, setState)'
-        );
+    if (typeof id !== 'string') throw new Error(ERROR_MESSAGES.MODAL_ID_TYPE_ERROR);
+    if (!id || !consumer || !setState) throw new Error(ERROR_MESSAGES.MODAL_PROPS_NOT_ENOUGH);
 };
 
 const getModalStyle = ({
@@ -57,7 +53,7 @@ const getModalStyle = ({
     animation: IAnimation;
 }) => {
     return `
-        .css-${hashId} .overlay-base {
+        .${PREFIX.PORTAL}${hashId} .overlay-base {
             position: fixed;
             top: 0;
             bottom: 0;
@@ -76,15 +72,15 @@ const getModalStyle = ({
             transition-duration: ${duration}ms;
         }
 
-        .css-${hashId} .overlay-after {
+        .${PREFIX.PORTAL}${hashId} .overlay-after {
             background-color: ${overlayColor};
         }
 
-        .css-${hashId} .overlay-before {
+        .${PREFIX.PORTAL}${hashId} .overlay-before {
             background-color: rgba(0, 0, 0, 0);
         }
 
-        .css-${hashId} .content-base {
+        .${PREFIX.PORTAL}${hashId} .content-base {
             position: relative;
             bottom: ${vertical}px;
             left: ${horizontal}px;
@@ -104,11 +100,11 @@ const getModalStyle = ({
             align-items: center;
         }
 
-        .css-${hashId} .content-after {
+        .${PREFIX.PORTAL}${hashId} .content-after {
             ${animation.after};
         }
 
-        .css-${hashId} .content-before {
+        .${PREFIX.PORTAL}${hashId} .content-before {
             ${animation.before};
         }
     `.replace(/\n|  /g, '');
