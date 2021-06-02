@@ -111,7 +111,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 |Prop|Type|Default|Discription|
 |:---:|:---:|:---:|:---:|
-|**asyncOpen**|async function|-|Called when modal opened|
+|**asyncOpen**|[async](#async) function|-|Called when modal opened|
 |**draggable**|boolean|false|Drag usable|
 |**allowClickOutside**|boolean|true|Allow click outside|
 |**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
