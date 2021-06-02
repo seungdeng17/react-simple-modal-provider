@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { IPortalCommonProps } from './type';
-import { defer, modalDrag } from './utils';
+import { defer, startDragHandler } from './utils';
 import { OVERLAY_CLASS_NAME, CLASS_NAME } from './constants';
 
 const PortalBody = ({ children, state, close, allowClickOutside, draggable }: IPortalCommonProps) => {
@@ -15,7 +15,7 @@ const PortalBody = ({ children, state, close, allowClickOutside, draggable }: IP
 
     const modalDragHandler = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (!draggable) return;
-        modalDrag(e);
+        startDragHandler(e);
     }, []);
 
     useEffect(() => {

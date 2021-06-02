@@ -118,7 +118,7 @@ const getModalStyle = ({
     `.replace(/\n|  /g, '');
 };
 
-const throttle = function (callback: Function, waitTime: number) {
+const throttle = (callback: Function, waitTime: number) => {
     let timerId: null | ReturnType<typeof setTimeout> = null;
     return (e: Event) => {
         if (timerId) return;
@@ -129,7 +129,7 @@ const throttle = function (callback: Function, waitTime: number) {
     };
 };
 
-const modalDrag = (e: React.MouseEvent<HTMLDivElement>) => {
+const startDragHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     const {
         currentTarget,
         clientX,
@@ -169,4 +169,4 @@ const modalDrag = (e: React.MouseEvent<HTMLDivElement>) => {
     currentTarget.style.zIndex = '10000';
 };
 
-export { $, stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, modalDrag };
+export { $, stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, startDragHandler };
