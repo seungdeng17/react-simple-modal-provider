@@ -30,7 +30,7 @@ const checkModalEssentialProps = ({
     setState: Function;
 }) => {
     if (typeof id !== 'string') throw new Error(ERROR_MESSAGES.MODAL_ID_TYPE_ERROR);
-    if (!id || !consumer || state === undefined || !setState) throw new Error(ERROR_MESSAGES.MODAL_PROPS_NOT_ENOUGH);
+    if (!id || !consumer || state === undefined || !setState) throw new Error(ERROR_MESSAGES.MODAL_NOT_ENOUGH_PROPS);
 };
 
 const getModalStyle = ({
