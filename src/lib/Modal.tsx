@@ -33,7 +33,7 @@ const Modal = ({
     children,
     id,
     consumer,
-    state = false,
+    state,
     setState,
     allowClickOutside = true,
     duration = 0,
@@ -50,7 +50,7 @@ const Modal = ({
     spinnerColor = '#93dbe9',
     draggable = false,
 }: IModalProps) => {
-    checkModalEssentialProps({ id, consumer, setState });
+    checkModalEssentialProps({ id, consumer, state, setState });
 
     duration = animation?.type && !duration ? 150 : duration;
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
