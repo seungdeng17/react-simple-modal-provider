@@ -104,7 +104,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 |:---:|:---:|:---:|:---:|
 |**id**|string|-|Identifier for a modal|
 |**consumer**|children props|-|Components to use modals for|
-|**state**|boolean state|false|Returned by useState state|
+|**state**|boolean state|-|Returned by useState state|
 |**setState**|state function|-|Returned by useState function|
 
 #### - Optional props
