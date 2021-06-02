@@ -3,7 +3,7 @@ import { IPortalCommonProps } from './type';
 import { defer, modalDrag } from './utils';
 import { OVERLAY_CLASS_NAME, CLASS_NAME } from './constants';
 
-const PortalBody = ({ children, state, close, allowClickOutside, asyncOpen, draggable }: IPortalCommonProps) => {
+const PortalBody = ({ children, state, close, allowClickOutside, draggable }: IPortalCommonProps) => {
     const [overlayClass, setOverlayClass] = useState(OVERLAY_CLASS_NAME.BASE);
     const [modalClass, setModalClass] = useState(CLASS_NAME.BASE);
     const modalRef = useRef<HTMLDivElement>(null);
@@ -21,7 +21,8 @@ const PortalBody = ({ children, state, close, allowClickOutside, asyncOpen, drag
     useEffect(() => {
         (async () => {
             if (state) {
-                asyncOpen && (await defer(100));
+                await defer(50);
+
                 setOverlayClass((overlayClass) => `${overlayClass} ${OVERLAY_CLASS_NAME.AFTER_OPEN}`);
                 setModalClass((modalClass) => `${modalClass} ${CLASS_NAME.AFTER_OPEN}`);
             } else {

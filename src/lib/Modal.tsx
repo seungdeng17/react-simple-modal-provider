@@ -93,7 +93,6 @@ const Modal = ({
                 state={state}
                 close={close}
                 allowClickOutside={allowClickOutside}
-                asyncOpen={asyncOpen}
                 spinner={spinner}
                 spinnerColor={spinnerColor}
                 duration={duration}

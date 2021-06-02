@@ -12,7 +12,7 @@ const Spinner = ({ spinner, spinnerColor }: { spinner?: JSX.Element | boolean; s
                 width: '100%',
                 height: '100%',
                 outline: '0',
-                zIndex: 99999,
+                zIndex: 10001,
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
