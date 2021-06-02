@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createModalContext } from './modalContext';
 import { modalAnimation } from './modalAnimation';
-import { checkModalEssentialProps, stateBundler, hash, getModalStyle } from './utils';
+import { checkModalEssentialProps, hash, getModalStyle } from './utils';
 import { IAnimation } from './type';
 import Portal from './Portal';
 
@@ -61,7 +61,8 @@ const Modal = ({
     const [pending, setPending] = useState<boolean>(false);
 
     const open = useCallback(async () => {
-        stateBundler([setState, setInitialization], true);
+        setState(true);
+        if (!initialization) setInitialization(true);
         if (!asyncOpen) return;
         setPending(true);
         await asyncOpen();
@@ -93,7 +94,6 @@ const Modal = ({
                 state={state}
                 close={close}
                 allowClickOutside={allowClickOutside}
-                asyncOpen={asyncOpen}
                 spinner={spinner}
                 spinnerColor={spinnerColor}
                 duration={duration}

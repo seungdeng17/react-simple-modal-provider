@@ -66,7 +66,7 @@ const getModalStyle = ({
             width: 100%;
             height: 100%;
             outline: 0;
-            z-index: 99999;
+            z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -94,6 +94,8 @@ const getModalStyle = ({
             transition-property: ${animation.type};
             ${animation.base};
             transition-duration: ${duration}ms;
+            visibility: hidden;
+            pointer-events: none;
 
             min-width: ${width}px;
             min-height: ${height}px;
@@ -105,6 +107,8 @@ const getModalStyle = ({
         }
 
         .${PREFIX.PORTAL}${hashId} .content-after {
+            visibility: visible;
+            pointer-events: auto;
             ${animation.after};
         }
 
