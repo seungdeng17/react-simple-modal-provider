@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal, { modalAnimation, useModal } from "../../lib";
+import Modal, { modalAnimation, useModal } from "../../../lib";
 import "./modal.scss";
 
 export default ({ children }) => {
@@ -21,7 +21,7 @@ export default ({ children }) => {
         onClick={openModal7}
       >
         🤩
-        <p style={{ margin: 10 }}>Click Me!</p>
+        <p style={{ margin: 10, fontSize: 30 }}>Click Me!</p>
       </div>
     </Modal>
   );

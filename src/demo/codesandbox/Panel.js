@@ -1,4 +1,4 @@
-import { useModal } from "../lib";
+import { useModal } from "../../lib";
 import "./panel.scss";
 
 export default () => {
@@ -19,6 +19,7 @@ export default () => {
       </div>
       <div>
         <p>⚽️ Modal 2~4: Animation Modal</p>
+        <p>🍟 + Draggable</p>
         <button onClick={openModal2}>Scale Up</button>
         <button onClick={openModal3}>Slide Down</button>
         <p>🍖 Disallowed Click Outside</p>

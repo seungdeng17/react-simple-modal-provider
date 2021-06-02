@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal, { modalAnimation } from "../../lib";
+import Modal, { modalAnimation } from "../../../lib";
 import "./modal.scss";
 
 export default ({ children }) => {

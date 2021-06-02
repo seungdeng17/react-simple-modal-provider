@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "../../lib";
+import Modal from "../../../lib";
 import "./modal.scss";
 
 export default ({ children }) => {
@@ -22,12 +22,12 @@ export default ({ children }) => {
       }}
       // allowClickOutside={false}
       overlayColor={"rgba(150, 50, 250, 0.3)"}
-      vertical={150}
+      vertical={170}
       // horizontal={100}
       width={340}
       height={220}
       radius={20}
-      backgroundColor={"rgba(255, 255, 255, 0.8)"}
+      backgroundColor={"rgba(255, 255, 255, 0.9)"}
     >
       <div className="custom-modal-inner">
         😎

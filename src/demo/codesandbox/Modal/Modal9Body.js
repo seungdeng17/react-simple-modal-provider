@@ -1,6 +1,6 @@
 const Modal9Body = ({ data }) => {
   return (
-    <h1 style={{ fontSize: 30 }}>
+    <h1 style={{ fontSize: 20 }}>
       {data.id}: {data.title}
     </h1>
   );

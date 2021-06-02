@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal, { modalAnimation } from "../../lib";
+import Modal, { modalAnimation } from "../../../lib";
 import "./modal.scss";
 
 export default ({ children }) => {
@@ -7,16 +7,16 @@ export default ({ children }) => {
 
   return (
     <Modal
-      id={"Modal4"}
+      id={"Modal2"}
       consumer={children}
       state={state}
       setState={setState}
       duration={250}
-      animation={modalAnimation.slideUp}
-      allowClickOutside={false}
+      animation={modalAnimation.scaleUp}
+      draggable={true}
     >
       <div className="modal-body">
-        😘
+        😁
         <button onClick={() => setState(false)}>Close</button>
       </div>
     </Modal>
