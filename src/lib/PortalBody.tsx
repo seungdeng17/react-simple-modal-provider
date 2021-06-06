@@ -21,7 +21,7 @@ const PortalBody = ({ children, state, close, allowClickOutside, draggable }: IP
     useEffect(() => {
         (async () => {
             if (state) {
-                await defer(50);
+                await defer(30);
 
                 setOverlayClass((overlayClass) => `${overlayClass} ${OVERLAY_CLASS_NAME.AFTER_OPEN}`);
                 setModalClass((modalClass) => `${modalClass} ${CLASS_NAME.AFTER_OPEN}`);
