@@ -1,22 +1,17 @@
 import { createContext, useContext } from 'react';
 import { ERROR_MESSAGES } from './constants';
 
-interface IModalContext {
-    open: () => void;
-    close: () => void;
-}
-
 const contextMap = new Map();
 
-const createModalContext = (id: string): React.Context<IModalContext> => {
+const createModalContext = (id: string) => {
     if (!id) throw new Error(ERROR_MESSAGES.MODAL_ID_INVALID_FROM_CONTEXT(id));
     if (contextMap.has(id)) return contextMap.get(id);
-    const context = createContext<IModalContext>({ open, close });
+    const context = createContext({});
     contextMap.set(id, context);
     return context;
 };
 
-const useModal = (id: string): IModalContext => {
+const useModal = (id: string) => {
     if (!id) throw new Error(ERROR_MESSAGES.MODAL_ID_INVALID_FROM_USEMODAL(id));
     if (!contextMap.has(id)) throw new Error(ERROR_MESSAGES.MODAL_ID_NOT_EXIST(id));
     return useContext(contextMap.get(id));

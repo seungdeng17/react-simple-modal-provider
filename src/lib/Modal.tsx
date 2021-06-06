@@ -59,9 +59,11 @@ const Modal = ({
     const Context = useMemo(() => createModalContext(id), []);
     const [initialization, setInitialization] = useState<boolean>(false);
     const [pending, setPending] = useState<boolean>(false);
+    const [props, setProps] = useState<{}>({});
 
-    const open = useCallback(async () => {
+    const open = useCallback(async (props) => {
         setState(true);
+        if (props.constructor && props.constructor.name !== 'SyntheticBaseEvent') setProps(props);
         if (!initialization) setInitialization(true);
         if (!asyncOpen) return;
         setPending(true);
@@ -83,7 +85,7 @@ const Modal = ({
     }, [state]);
 
     return (
-        <Context.Provider value={{ open, close }}>
+        <Context.Provider value={{ open, close, props }}>
             {consumer}
             <Portal
                 id={id}
