@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 import { ERROR_MESSAGES } from './constants';
 
 interface IModalContext {
-    open: ({}) => void;
+    open: ({}: React.MouseEvent<HTMLElement> | {}) => void;
     close: () => void;
 }
 
