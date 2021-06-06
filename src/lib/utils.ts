@@ -169,4 +169,23 @@ const startDragHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     currentTarget.style.zIndex = '10000';
 };
 
-export { $, stateBundler, hash, defer, checkModalEssentialProps, getModalStyle, throttle, startDragHandler };
+const checkPropsCondition = (props: {}) => {
+    return (
+        props !== null &&
+        typeof props === 'object' &&
+        props.constructor &&
+        props.constructor.name !== 'SyntheticBaseEvent'
+    );
+};
+
+export {
+    $,
+    stateBundler,
+    hash,
+    defer,
+    checkModalEssentialProps,
+    getModalStyle,
+    throttle,
+    startDragHandler,
+    checkPropsCondition,
+};

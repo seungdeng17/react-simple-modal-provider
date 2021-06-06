@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createModalContext } from './modalContext';
 import { modalAnimation } from './modalAnimation';
-import { checkModalEssentialProps, hash, getModalStyle } from './utils';
+import { checkModalEssentialProps, hash, getModalStyle, checkPropsCondition } from './utils';
 import { IAnimation } from './type';
 import Portal from './Portal';
 
@@ -63,7 +63,7 @@ const Modal = ({
 
     const open = useCallback(async (props) => {
         setState(true);
-        if (props.constructor && props.constructor.name !== 'SyntheticBaseEvent') setProps(props);
+        if (checkPropsCondition(props)) setProps(props);
         if (!initialization) setInitialization(true);
         if (!asyncOpen) return;
         setPending(true);
