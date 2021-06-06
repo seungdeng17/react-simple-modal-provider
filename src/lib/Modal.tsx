@@ -85,7 +85,7 @@ const Modal = ({
     }, [state]);
 
     return (
-        <Context.Provider value={{ open, close, props }}>
+        <Context.Provider value={{ open, close, ...props }}>
             {consumer}
             <Portal
                 id={id}
