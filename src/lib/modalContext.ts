@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 import { ERROR_MESSAGES } from './constants';
 
 interface IModalContext {
-    open: ({}: {}) => void;
+    open: ({}) => void;
     close: () => void;
 }
 
