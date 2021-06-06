@@ -4,6 +4,7 @@ import { ERROR_MESSAGES } from './constants';
 interface IModalContext {
     open: ({}: React.MouseEvent<HTMLElement> | {}) => void;
     close: () => void;
+    [key: string]: any;
 }
 
 const contextMap = new Map();
