@@ -16,6 +16,7 @@
 - [API](#api)
 - [Async](#async)
 - [Animation](#animation)
+- [ETC](#etc)
 
 <br/>
 
@@ -31,7 +32,7 @@
 ## Examples
 
 ```jsx
-// MyModal Component
+// BasicModal Component
 import { useState } from "react";
 import Modal from "react-simple-modal-provider";
 
@@ -40,13 +41,12 @@ export default ({ children }) => {
 
   return (
     <Modal
-      id={"MyModal"}
+      id={"BasicModal"}
       consumer={children}
       state={state}
       setState={setState}
     >
       <span>😆</span>
-      <button onClick={() => setState(false)}>Close</button>
     </Modal>
   );
 };
@@ -60,12 +60,12 @@ Keeping eye on the four required props of the **"Modal"** module, you should cre
 ```jsx
 // App Component
 import { ModalProvider } from "react-simple-modal-provider";
-import MyModal from "./MyModal";
+import BasicModal from "./BasicModal";
 import ConsumePage from "./ConsumePage";
 
 export default () => {
   return (
-    <ModalProvider value={[MyModal, ...]}>
+    <ModalProvider value={[BasicModal, ...]}>
       <ConsumePage />
       <ConsumePage />
       ...
@@ -83,9 +83,9 @@ Register a modal array through the **"value"** props of the **"ModalProvider"** 
 import { useModal } from "react-simple-modal-provider";
 
 export default () => {
-  const { open: openMyModal } = useModal("MyModal");
+  const { open: openModal } = useModal("BasicModal");
 
-  return <button onClick={openMyModal}>Open</button>;
+  return <button onClick={openModal}>Open</button>;
 };
 ```
 
@@ -131,7 +131,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 ## Async
 
 ```jsx
-// MyAsyncModal Component
+// AsyncModal Component
 import { useState } from "react";
 import Modal from "react-simple-modal-provider";
 import ModalBody from "./ModalBody";
@@ -148,7 +148,7 @@ export default ({ children }) => {
 
   return (
     <Modal
-      id={"MyAsyncModal"}
+      id={"AsyncModal"}
       consumer={children}
       state={state}
       setState={setState}
@@ -212,6 +212,34 @@ export default ({ children }) => {
   before: "transform: rotate(0deg) scale(0.3); opacity: 0;",
   after: "transform: rotate(360deg) scale(1); opacity: 1;"
 }
+```
+
+<br/>
+
+## ETC
+
+#### - Forward props when opening modals
+
+```jsx
+// ConsumePage Component
+import { useModal } from "react-simple-modal-provider";
+
+export default () => {
+  const { open } = useModal("ETCModal");
+
+  return <button onClick={() => open({ title: "Hello World" })}>Open</button>;
+};
+```
+
+```jsx
+// ModalBody Component
+import { useModal } from "react-simple-modal-provider";
+
+export default () => {
+  const { title } = useModal("ETCModal");
+
+  return <h1>{title}</h1>;  // Hello World
+};
 ```
 
 <br/>
