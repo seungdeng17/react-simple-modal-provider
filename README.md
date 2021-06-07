@@ -33,18 +33,17 @@
 
 ```jsx
 // BasicModal Component
-import { useState } from "react";
-import Modal from "react-simple-modal-provider";
+import Modal, { useModalState } from "react-simple-modal-provider";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
+  const { isOpen, setOpen } = useModalState();
 
   return (
     <Modal
       id={"BasicModal"}
       consumer={children}
-      state={state}
-      setState={setState}
+      isOpen={isOpen}
+      setOpen={setOpen}
     >
       <span>😆</span>
     </Modal>
@@ -104,8 +103,8 @@ It is recommended to name variables using destructuring assignment.<br/>
 |:---:|:---:|:---:|:---:|
 |**id**|string|-|Identifier for a modal|
 |**consumer**|children props|-|Components to use modals for|
-|**state**|boolean state|-|Returned by useState state|
-|**setState**|state function|-|Returned by useState function|
+|**isOpen**|boolean state|-|Returned by useModalState hooks|
+|**setOpen**|state function|-|Returned by useModalState hooks|
 
 #### - Optional props
 
@@ -132,12 +131,11 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 ```jsx
 // AsyncModal Component
-import { useState } from "react";
-import Modal from "react-simple-modal-provider";
+import Modal, { useModalState } from "react-simple-modal-provider";
 import ModalBody from "./ModalBody";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
+  const { isOpen, setOpen } = useModalState();
   const [data, setData] = useState(null);
 
   const asyncOpen = async () => {
@@ -150,8 +148,8 @@ export default ({ children }) => {
     <Modal
       id={"AsyncModal"}
       consumer={children}
-      state={state}
-      setState={setState}
+      isOpen={isOpen}
+      setOpen={setOpen}
       asyncOpen={asyncOpen}
     >
       <ModalBody data={data} />
