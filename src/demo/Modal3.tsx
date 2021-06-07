@@ -1,17 +1,15 @@
-import { useState } from 'react';
-import Modal from '../lib/Modal';
-import { modalAnimation } from '../lib/modalAnimation';
+import Modal, { useModalState, modalAnimation } from '../lib';
 
 const Modal3 = ({ children }: { children: React.ReactNode }) => {
-    const [state, setState] = useState<boolean>(false);
-    const onCloseHandler = () => setState(false);
+    const { isOpen, setOpen } = useModalState();
+    const onCloseHandler = () => setOpen(false);
 
     return (
         <Modal
             id={'Modal3'}
             consumer={children}
-            state={state}
-            setState={setState}
+            isOpen={isOpen}
+            setOpen={setOpen}
             animation={modalAnimation.slideUp}
             radius={10}
         >

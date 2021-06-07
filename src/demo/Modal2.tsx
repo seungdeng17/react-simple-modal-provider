@@ -1,19 +1,16 @@
-import { useState } from 'react';
-import Modal from '../lib/Modal';
-import { modalAnimation } from '../lib/modalAnimation';
-import { useModal } from '../lib/modalContext';
+import Modal, { useModalState, useModal, modalAnimation } from '../lib';
 
 const Modal2 = ({ children }: { children: React.ReactNode }) => {
-    const [state, setState] = useState<boolean>(false);
+    const { isOpen, setOpen } = useModalState();
     const { open: modal3Open } = useModal('Modal3');
-    const onCloseHandler = () => setState(false);
+    const onCloseHandler = () => setOpen(false);
 
     return (
         <Modal
             id={'Modal2'}
             consumer={children}
-            state={state}
-            setState={setState}
+            isOpen={isOpen}
+            setOpen={setOpen}
             animation={modalAnimation.slideDown}
             radius={10}
             width={400}

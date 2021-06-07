@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import Modal from '../lib/Modal';
-import { modalAnimation } from '../lib/modalAnimation';
-import { useModal } from '../lib/modalContext';
+import Modal, { useModalState, useModal, modalAnimation } from '../lib/';
 import Modal1Body from './Modal1Body';
 
 const Modal1 = ({ children }: { children: React.ReactNode }) => {
-    const [state, setState] = useState<boolean>(false);
+    const { isOpen, setOpen } = useModalState();
     const { open: modal2Open } = useModal('Modal2');
     const { open: modal3Open } = useModal('Modal3');
 
@@ -26,8 +24,8 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
         <Modal
             id={'Modal1'}
             consumer={children}
-            state={state}
-            setState={setState}
+            isOpen={isOpen}
+            setOpen={setOpen}
             duration={300}
             animation={modalAnimation.scaleUp}
             asyncOpen={asyncOpen}
