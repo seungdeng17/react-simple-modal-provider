@@ -131,6 +131,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 ```jsx
 // AsyncModal Component
+import { useState } from "react";
 import Modal, { useModalState } from "react-simple-modal-provider";
 import ModalBody from "./ModalBody";
 
