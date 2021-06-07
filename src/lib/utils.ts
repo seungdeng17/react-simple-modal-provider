@@ -21,16 +21,16 @@ const defer = async (ms: number) => await new Promise((r) => setTimeout(r, ms));
 const checkModalEssentialProps = ({
     id,
     consumer,
-    state,
-    setState,
+    isOpen,
+    setOpen,
 }: {
     id: string;
     consumer: React.ReactNode;
-    state: boolean;
-    setState: Function;
+    isOpen: boolean;
+    setOpen: Function;
 }) => {
     if (typeof id !== 'string') throw new Error(ERROR_MESSAGES.MODAL_ID_TYPE_ERROR);
-    if (!id || !consumer || state === undefined || !setState) throw new Error(ERROR_MESSAGES.MODAL_NOT_ENOUGH_PROPS);
+    if (!id || !consumer || isOpen === undefined || !setOpen) throw new Error(ERROR_MESSAGES.MODAL_NOT_ENOUGH_PROPS);
 };
 
 const getModalStyle = ({

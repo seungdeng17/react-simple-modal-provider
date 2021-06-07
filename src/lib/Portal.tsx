@@ -28,7 +28,7 @@ const Portal = ({
     modalSet,
     initialization,
     pending,
-    state,
+    isOpen,
     close,
     allowClickOutside,
     duration,
@@ -41,7 +41,7 @@ const Portal = ({
 
     useEffect(() => {
         (async () => {
-            if (!state) {
+            if (!isOpen) {
                 await defer(duration);
 
                 const portal = $(`.${PREFIX.PORTAL}${hashId}`);
@@ -63,18 +63,18 @@ const Portal = ({
 
             setCreatedPortal(true);
         })();
-    }, [state]);
+    }, [isOpen]);
 
     useEffect(() => {
-        if (!initialization || state) return;
+        if (!initialization || isOpen) return;
         modalSet.delete(id);
-    }, [state]);
+    }, [isOpen]);
 
     if (!isCreatedPortal || !initialization) return null;
     if (pending) return <Spinner spinner={spinner} spinnerColor={spinnerColor} />;
 
     return ReactDOM.createPortal(
-        <PortalBody state={state} close={close} allowClickOutside={allowClickOutside} draggable={draggable}>
+        <PortalBody isOpen={isOpen} close={close} allowClickOutside={allowClickOutside} draggable={draggable}>
             {children}
         </PortalBody>,
         $(`.${PREFIX.PORTAL}${hashId}`) as HTMLElement

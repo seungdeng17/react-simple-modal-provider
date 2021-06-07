@@ -9,8 +9,8 @@ interface IModalProps {
     children: React.ReactNode;
     id: string;
     consumer: React.ReactNode;
-    state: boolean;
-    setState: Function;
+    isOpen: boolean;
+    setOpen: Function;
     allowClickOutside?: boolean;
     duration?: number;
     overlayColor?: string;
@@ -33,8 +33,8 @@ const Modal = ({
     children,
     id,
     consumer,
-    state,
-    setState,
+    isOpen,
+    setOpen,
     allowClickOutside = true,
     duration = 0,
     overlayColor = 'rgba(0, 0, 0, 0.6)',
@@ -50,7 +50,7 @@ const Modal = ({
     spinnerColor = '#93dbe9',
     draggable = false,
 }: IModalProps) => {
-    checkModalEssentialProps({ id, consumer, state, setState });
+    checkModalEssentialProps({ id, consumer, isOpen, setOpen });
 
     duration = animation?.type && !duration ? 150 : duration;
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
@@ -62,7 +62,7 @@ const Modal = ({
     const [props, setProps] = useState<{}>({});
 
     const open = useCallback(async (props) => {
-        setState(true);
+        setOpen(true);
         if (checkPropsCondition(props)) setProps(props);
         if (!initialization) setInitialization(true);
         if (!asyncOpen) return;
@@ -70,7 +70,7 @@ const Modal = ({
         await asyncOpen();
         setPending(false);
     }, []);
-    const close = useCallback(() => setState(false), []);
+    const close = useCallback(() => setOpen(false), []);
 
     const keyUpHandler = useCallback(({ key }) => {
         if (key !== 'Escape') return;
@@ -79,10 +79,10 @@ const Modal = ({
     }, []);
 
     useEffect(() => {
-        if (!state) return window.removeEventListener('keyup', keyUpHandler);
+        if (!isOpen) return window.removeEventListener('keyup', keyUpHandler);
         window.addEventListener('keyup', keyUpHandler);
         modalSet.add(id);
-    }, [state]);
+    }, [isOpen]);
 
     return (
         <Context.Provider value={{ open, close, ...props }}>
@@ -93,7 +93,7 @@ const Modal = ({
                 modalSet={modalSet}
                 initialization={initialization}
                 pending={pending}
-                state={state}
+                isOpen={isOpen}
                 close={close}
                 allowClickOutside={allowClickOutside}
                 spinner={spinner}

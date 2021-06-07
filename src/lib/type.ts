@@ -7,7 +7,7 @@ interface IAnimation {
 
 interface IPortalCommonProps {
     children: React.ReactNode;
-    state: boolean;
+    isOpen: boolean;
     close: Function;
     allowClickOutside: boolean;
     draggable?: boolean;
