@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal, {
   useModalState,
   modalAnimation
-} from "react-simple-modal-provider";
+} from "../../../lib";
 import Modal9Body from "./Modal9Body";
 import "./modal.scss";
 

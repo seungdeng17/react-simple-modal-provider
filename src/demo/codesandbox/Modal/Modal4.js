@@ -1,7 +1,7 @@
 import Modal, {
   useModalState,
   modalAnimation
-} from "react-simple-modal-provider";
+} from "../../../lib";
 import "./modal.scss";
 
 export default ({ children }) => {

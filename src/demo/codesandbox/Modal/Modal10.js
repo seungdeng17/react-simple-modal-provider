@@ -1,7 +1,7 @@
 import Modal, {
   useModalState,
   modalAnimation
-} from "react-simple-modal-provider";
+} from "../../../lib";
 import Modal10Body from "./Modal10Body";
 
 export default ({ children }) => {
