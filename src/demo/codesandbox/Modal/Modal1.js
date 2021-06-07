@@ -1,12 +1,11 @@
-import { useState } from "react";
-import Modal from "../../../lib";
+import Modal, { useModalState } from "react-simple-modal-provider";
 import "./modal.scss";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
+  const { isOpen, setOpen } = useModalState();
 
   return (
-    <Modal id={"Modal1"} consumer={children} state={state} setState={setState}>
+    <Modal id={"Modal1"} consumer={children} isOpen={isOpen} setOpen={setOpen}>
       <div className="modal-body">😆</div>
     </Modal>
   );

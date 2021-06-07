@@ -1,16 +1,18 @@
-import { useState } from "react";
-import Modal, { modalAnimation } from "../../../lib";
+import Modal, {
+  useModalState,
+  modalAnimation
+} from "react-simple-modal-provider";
 import Modal10Body from "./Modal10Body";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
+  const { isOpen, setOpen } = useModalState();
 
   return (
     <Modal
       id={"Modal10"}
       consumer={children}
-      state={state}
-      setState={setState}
+      isOpen={isOpen}
+      setOpen={setOpen}
       duration={250}
       animation={modalAnimation.scaleUp}
       draggable={true}

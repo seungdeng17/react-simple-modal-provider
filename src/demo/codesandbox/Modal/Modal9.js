@@ -1,10 +1,13 @@
 import { useState } from "react";
-import Modal, { modalAnimation } from "../../../lib";
+import Modal, {
+  useModalState,
+  modalAnimation
+} from "react-simple-modal-provider";
 import Modal9Body from "./Modal9Body";
 import "./modal.scss";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
+  const { isOpen, setOpen } = useModalState();
   const [data, setData] = useState(null);
 
   const asyncOpen = async () => {
@@ -19,8 +22,8 @@ export default ({ children }) => {
     <Modal
       id={"Modal9"}
       consumer={children}
-      state={state}
-      setState={setState}
+      isOpen={isOpen}
+      setOpen={setOpen}
       duration={250}
       animation={modalAnimation.slideDown}
       asyncOpen={asyncOpen}

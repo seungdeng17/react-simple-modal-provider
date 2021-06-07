@@ -1,17 +1,16 @@
-import { useState } from "react";
-import Modal from "../../../lib";
+import Modal, { useModalState } from "react-simple-modal-provider";
 import "./modal.scss";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
+  const { isOpen, setOpen } = useModalState();
 
   return (
     <Modal
       // essential props
       id={"Modal5"}
       consumer={children}
-      state={state}
-      setState={setState}
+      isOpen={isOpen}
+      setOpen={setOpen}
       // optional props
       duration={500}
       animation={{
@@ -31,7 +30,7 @@ export default ({ children }) => {
     >
       <div className="custom-modal-inner">
         😎
-        <button onClick={() => setState(false)}>Close</button>
+        <button onClick={() => setOpen(false)}>Close</button>
       </div>
     </Modal>
   );

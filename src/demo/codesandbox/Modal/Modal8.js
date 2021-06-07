@@ -1,16 +1,18 @@
-import { useState } from "react";
-import Modal, { modalAnimation } from "../../../lib";
+import Modal, {
+  useModalState,
+  modalAnimation
+} from "react-simple-modal-provider";
 import "./modal.scss";
 
 export default ({ children }) => {
-  const [state, setState] = useState(false);
+  const { isOpen, setOpen } = useModalState();
 
   return (
     <Modal
       id={"Modal8"}
       consumer={children}
-      state={state}
-      setState={setState}
+      isOpen={isOpen}
+      setOpen={setOpen}
       duration={250}
       animation={modalAnimation.slideUp}
     >
