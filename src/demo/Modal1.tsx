@@ -37,7 +37,7 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
         >
             <div>
                 <Modal1Body data={data} />
-                <button type="button" onClick={modal2Open}>
+                <button type="button" onClick={() => modal2Open({ testModal2: 'TEST MODAL2' })}>
                     Modal2 Open
                 </button>
                 <button type="button" onClick={modal3Open}>
