@@ -258,11 +258,13 @@ import LocalConsumePage from "./LocalConsumePage";
 export default () => {
   return (
     <ModalProvider value={[GlobalModal, ...]}>
+      {/* Available Modals: GlobalModal */}
       <GlobalConsumePage />
       <GlobalConsumePage />
       ...
 
       <ModalProvider value={[LocalModal, ...]}>
+        {/* Available Modals: GlobalModal, LocalModal */}
         <LocalConsumePage />
         <LocalConsumePage />
         ...
