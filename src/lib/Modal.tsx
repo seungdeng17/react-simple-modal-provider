@@ -47,7 +47,7 @@ const Modal = ({
     backgroundColor = 'transparent',
     asyncOpen,
     spinner,
-    spinnerColor = '#93dbe9',
+    spinnerColor = '#000',
     draggable = false,
 }: IModalProps) => {
     checkModalEssentialProps({ id, consumer, isOpen, setOpen });
@@ -55,21 +55,26 @@ const Modal = ({
     duration = animation?.type && !duration ? 150 : duration;
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
 
-    const hashId = hash(id);
     const Context = useMemo(() => createModalContext(id), []);
+
+    const hashId = hash(id);
     const [initialization, setInitialization] = useState<boolean>(false);
     const [pending, setPending] = useState<boolean>(false);
     const [props, setProps] = useState<{}>({});
 
-    const open = useCallback(async (props) => {
-        setOpen(true);
-        if (checkPropsCondition(props)) setProps(props);
-        if (!initialization) setInitialization(true);
-        if (!asyncOpen) return;
-        setPending(true);
-        await asyncOpen();
-        setPending(false);
-    }, []);
+    const open = useCallback(
+        async (props) => {
+            setOpen(true);
+            if (checkPropsCondition(props)) setProps(props);
+            if (!initialization) setInitialization(true);
+            if (!asyncOpen) return;
+            setPending(true);
+            await asyncOpen();
+            setPending(false);
+        },
+        [props]
+    );
+
     const close = useCallback(() => setOpen(false), []);
 
     const keyUpHandler = useCallback(({ key }) => {
@@ -84,8 +89,17 @@ const Modal = ({
         modalSet.add(id);
     }, [isOpen]);
 
+    const providerValues = useMemo(
+        () => ({
+            open,
+            close,
+            ...props,
+        }),
+        []
+    );
+
     return (
-        <Context.Provider value={{ open, close, ...props }}>
+        <Context.Provider value={providerValues}>
             {consumer}
             <Portal
                 id={id}
