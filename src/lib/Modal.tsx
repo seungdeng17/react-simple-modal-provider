@@ -62,18 +62,15 @@ const Modal = ({
     const [pending, setPending] = useState<boolean>(false);
     const [props, setProps] = useState<{}>({});
 
-    const open = useCallback(
-        async (props) => {
-            setOpen(true);
-            if (checkPropsCondition(props)) setProps(props);
-            if (!initialization) setInitialization(true);
-            if (!asyncOpen) return;
-            setPending(true);
-            await asyncOpen();
-            setPending(false);
-        },
-        [props]
-    );
+    const open = useCallback(async (props) => {
+        setOpen(true);
+        if (checkPropsCondition(props)) setProps(props);
+        if (!initialization) setInitialization(true);
+        if (!asyncOpen) return;
+        setPending(true);
+        await asyncOpen();
+        setPending(false);
+    }, []);
 
     const close = useCallback(() => setOpen(false), []);
 
@@ -95,7 +92,7 @@ const Modal = ({
             close,
             ...props,
         }),
-        []
+        [props]
     );
 
     return (
