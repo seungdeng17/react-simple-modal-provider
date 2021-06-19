@@ -114,7 +114,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**draggable**|boolean|false|Drag usable|
 |**allowClickOutside**|boolean|true|Allow click outside|
 |**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
-|**spinnerColor**|string|#93dbe9|Built-in spinner color|
+|**spinnerColor**|string|#000|Built-in spinner color|
 |**overlayColor**|string|rgba(0, 0, 0, 0.6)|Overlay color|
 |**backgroundColor**|string|transparent|Modal background color|
 |**animation**|object|-|Open/Close [animation](#animation)|
