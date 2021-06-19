@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, memo, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { IPortalCommonProps } from './type';
 import { defer, startDragHandler } from './utils';
 import { OVERLAY_CLASS_NAME, CLASS_NAME } from './constants';
@@ -41,4 +41,4 @@ const PortalBody = ({ children, isOpen, close, allowClickOutside, draggable }: I
     );
 };
 
-export default memo(PortalBody);
+export default PortalBody;

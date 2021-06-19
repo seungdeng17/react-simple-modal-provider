@@ -5,7 +5,7 @@ const Button1 = () => {
 
     return (
         <div>
-            <button type="button" onClick={open}>
+            <button type="button" onClick={() => open({ testModal1: 'TEST MODAL1' })}>
                 Modal1 Open
             </button>
         </div>

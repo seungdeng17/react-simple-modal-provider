@@ -1,4 +1,5 @@
 import Modal, { useModalState, useModal, modalAnimation } from '../lib';
+import Modal2Body from './Modal2Body';
 
 const Modal2 = ({ children }: { children: React.ReactNode }) => {
     const { isOpen, setOpen } = useModalState();
@@ -20,6 +21,7 @@ const Modal2 = ({ children }: { children: React.ReactNode }) => {
         >
             <div style={{ width: 300, height: 300, backgroundColor: 'red' }}>
                 <div>Modal2</div>
+                <Modal2Body />
                 <button onClick={onCloseHandler} type="button">
                     Modal2 Close
                 </button>

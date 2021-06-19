@@ -97,7 +97,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 ### Modal Module
 
-#### - Essential props
+#### - Required props
 
 |Prop|Type|Default|Description|
 |:---:|:---:|:---:|:---:|
@@ -114,7 +114,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 |**draggable**|boolean|false|Drag usable|
 |**allowClickOutside**|boolean|true|Allow click outside|
 |**spinner**|false \| JSX|Built-in spinner|Async loading spinner|
-|**spinnerColor**|string|#93dbe9|Built-in spinner color|
+|**spinnerColor**|string|rgba(45, 52, 54, 0.6)|Built-in spinner color|
 |**overlayColor**|string|rgba(0, 0, 0, 0.6)|Overlay color|
 |**backgroundColor**|string|transparent|Modal background color|
 |**animation**|object|-|Open/Close [animation](#animation)|
@@ -238,6 +238,39 @@ export default () => {
   const { title } = useModal("ETCModal");
 
   return <h1>{title}</h1>;  // Hello World
+};
+```
+
+<br/>
+
+#### - Provider overlap (differentiate global / local modal)
+
+```jsx
+// App Component
+import { ModalProvider } from "react-simple-modal-provider";
+
+import GlobalModal from "./GlobalModal";
+import GlobalConsumePage from "./GlobalConsumePage";
+
+import LocalModal from "./LocalModal";
+import LocalConsumePage from "./LocalConsumePage";
+
+export default () => {
+  return (
+    <ModalProvider value={[GlobalModal, ...]}>
+      {/* Available Modals: GlobalModal */}
+      <GlobalConsumePage />
+      <GlobalConsumePage />
+      ...
+
+      <ModalProvider value={[LocalModal, ...]}>
+        {/* Available Modals: GlobalModal, LocalModal */}
+        <LocalConsumePage />
+        <LocalConsumePage />
+        ...
+      </ModalProvider>
+    </ModalProvider>
+  );
 };
 ```
 

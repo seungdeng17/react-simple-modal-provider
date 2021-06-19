@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createModalContext } from './modalContext';
 import { modalAnimation } from './modalAnimation';
-import { checkModalEssentialProps, hash, getModalStyle, checkPropsCondition } from './utils';
+import { checkRequiredProps, checkCustomStyle, hash, getModalStyle, checkPropsCondition } from './utils';
 import { IAnimation } from './type';
 import Portal from './Portal';
 
@@ -47,29 +47,44 @@ const Modal = ({
     backgroundColor = 'transparent',
     asyncOpen,
     spinner,
-    spinnerColor = '#93dbe9',
+    spinnerColor = 'rgba(45, 52, 54, 0.6)',
     draggable = false,
 }: IModalProps) => {
-    checkModalEssentialProps({ id, consumer, isOpen, setOpen });
+    checkRequiredProps({ id, consumer, isOpen, setOpen });
+    checkCustomStyle({ id, width, height, backgroundColor });
 
     duration = animation?.type && !duration ? 150 : duration;
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
 
     const hashId = hash(id);
+
     const Context = useMemo(() => createModalContext(id), []);
     const [initialization, setInitialization] = useState<boolean>(false);
     const [pending, setPending] = useState<boolean>(false);
-    const [props, setProps] = useState<{}>({});
 
-    const open = useCallback(async (props) => {
-        setOpen(true);
-        if (checkPropsCondition(props)) setProps(props);
-        if (!initialization) setInitialization(true);
-        if (!asyncOpen) return;
-        setPending(true);
-        await asyncOpen();
-        setPending(false);
-    }, []);
+    const INIT_CUSTOM_PROPS = {};
+    const [customProps, setCustomProps] = useState<{ [key: string]: any }>(INIT_CUSTOM_PROPS);
+    const setCustomPropsWithCheckPropsCondition = useCallback(
+        (props) => {
+            if (checkPropsCondition(props)) return setCustomProps(props);
+            if (customProps !== INIT_CUSTOM_PROPS) return setCustomProps(INIT_CUSTOM_PROPS);
+        },
+        [customProps]
+    );
+
+    const open = useCallback(
+        async (props) => {
+            setOpen(true);
+            setCustomPropsWithCheckPropsCondition(props);
+            if (!initialization) setInitialization(true);
+            if (!asyncOpen) return;
+            setPending(true);
+            await asyncOpen();
+            setPending(false);
+        },
+        [customProps]
+    );
+
     const close = useCallback(() => setOpen(false), []);
 
     const keyUpHandler = useCallback(({ key }) => {
@@ -84,8 +99,17 @@ const Modal = ({
         modalSet.add(id);
     }, [isOpen]);
 
+    const providerValues = useMemo(
+        () => ({
+            open,
+            close,
+            ...customProps,
+        }),
+        [customProps]
+    );
+
     return (
-        <Context.Provider value={{ open, close, ...props }}>
+        <Context.Provider value={providerValues}>
             {consumer}
             <Portal
                 id={id}

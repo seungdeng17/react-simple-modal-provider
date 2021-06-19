@@ -6,7 +6,7 @@ export default ({ children }) => {
 
   return (
     <Modal
-      // essential props
+      // required props
       id={"Modal5"}
       consumer={children}
       isOpen={isOpen}
