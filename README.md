@@ -243,6 +243,37 @@ export default () => {
 
 <br/>
 
+#### - Provider overlap (differentiate global / local modal)
+
+```jsx
+// App Component
+import { ModalProvider } from "react-simple-modal-provider";
+
+import GlobalModal from "./GlobalModal";
+import GlobalConsumePage from "./GlobalConsumePage";
+
+import LocalModal from "./LocalModal";
+import LocalConsumePage from "./LocalConsumePage";
+
+export default () => {
+  return (
+    <ModalProvider value={[GlobalModal, ...]}>
+      <GlobalConsumePage />
+      <GlobalConsumePage />
+      ...
+
+      <ModalProvider value={[LocalModal, ...]}>
+        <LocalConsumePage />
+        <LocalConsumePage />
+        ...
+      </ModalProvider>
+    </ModalProvider>
+  );
+};
+```
+
+<br/>
+
 [Top](#contents)
 
 <hr/>
