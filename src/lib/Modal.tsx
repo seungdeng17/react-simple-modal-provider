@@ -47,7 +47,7 @@ const Modal = ({
     backgroundColor = 'transparent',
     asyncOpen,
     spinner,
-    spinnerColor = '#000',
+    spinnerColor = 'rgba(45, 52, 54, 0.6)',
     draggable = false,
 }: IModalProps) => {
     checkRequiredProps({ id, consumer, isOpen, setOpen });
