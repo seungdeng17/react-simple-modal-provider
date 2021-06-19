@@ -189,9 +189,8 @@ const checkCustomStyle = ({
     height: number;
     backgroundColor: string;
 }) => {
-    if ((!!width || !!height) && backgroundColor === 'transparent') {
-        console.warn(`Modal ID(${id}): The backgroundColor is transparent. Please specify the backgroundColor.`);
-    }
+    if ((!!width || !!height) && backgroundColor === 'transparent')
+        console.warn(ERROR_MESSAGES.MODAL_CUSTOM_STYLE_WARN(id));
 };
 
 export {

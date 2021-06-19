@@ -26,6 +26,8 @@ const ERROR_MESSAGES = {
         `react-simple-modal-provider: useModal Error! ID "${id}" is not valid`,
     MODAL_ID_NOT_EXIST: (id: string) =>
         `react-simple-modal-provider: useModal Error! ID "${id}" not exist. Check the order of value props passed to "ModalProvider".`,
+    MODAL_CUSTOM_STYLE_WARN: (id: string) =>
+        `Modal ID(${id}): The backgroundColor is transparent. Please specify the backgroundColor.`,
 };
 
 export { OVERLAY_CLASS_NAME, CLASS_NAME, PREFIX, ERROR_MESSAGES };
