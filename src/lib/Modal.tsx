@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createModalContext } from './modalContext';
 import { modalAnimation } from './modalAnimation';
-import { checkModalRequiredProps, hash, getModalStyle, checkPropsCondition } from './utils';
+import { checkRequiredProps, checkCustomStyle, hash, getModalStyle, checkPropsCondition } from './utils';
 import { IAnimation } from './type';
 import Portal from './Portal';
 
@@ -50,7 +50,8 @@ const Modal = ({
     spinnerColor = '#000',
     draggable = false,
 }: IModalProps) => {
-    checkModalRequiredProps({ id, consumer, isOpen, setOpen });
+    checkRequiredProps({ id, consumer, isOpen, setOpen });
+    checkCustomStyle({ id, width, height, backgroundColor });
 
     duration = animation?.type && !duration ? 150 : duration;
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;

@@ -18,7 +18,7 @@ const hash = (id: string) => {
 
 const defer = async (ms: number) => await new Promise((r) => setTimeout(r, ms));
 
-const checkModalRequiredProps = ({
+const checkRequiredProps = ({
     id,
     consumer,
     isOpen,
@@ -178,14 +178,31 @@ const checkPropsCondition = (props: {}) => {
     );
 };
 
+const checkCustomStyle = ({
+    id,
+    width,
+    height,
+    backgroundColor,
+}: {
+    id: string;
+    width: number;
+    height: number;
+    backgroundColor: string;
+}) => {
+    if ((!!width || !!height) && backgroundColor === 'transparent') {
+        console.warn(`Modal ID(${id}): The backgroundColor is transparent. Please specify the backgroundColor.`);
+    }
+};
+
 export {
     $,
     stateBundler,
     hash,
     defer,
-    checkModalRequiredProps,
+    checkRequiredProps,
     getModalStyle,
     throttle,
     startDragHandler,
     checkPropsCondition,
+    checkCustomStyle,
 };
