@@ -55,22 +55,34 @@ const Modal = ({
     duration = animation?.type && !duration ? 150 : duration;
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
 
-    const Context = useMemo(() => createModalContext(id), []);
-
     const hashId = hash(id);
+
+    const Context = useMemo(() => createModalContext(id), []);
     const [initialization, setInitialization] = useState<boolean>(false);
     const [pending, setPending] = useState<boolean>(false);
-    const [props, setProps] = useState<{}>({});
 
-    const open = useCallback(async (props) => {
-        setOpen(true);
-        if (checkPropsCondition(props)) setProps(props);
-        if (!initialization) setInitialization(true);
-        if (!asyncOpen) return;
-        setPending(true);
-        await asyncOpen();
-        setPending(false);
-    }, []);
+    const INIT_CUSTOM_PROPS = {};
+    const [customProps, setCustomProps] = useState<{ [key: string]: any }>(INIT_CUSTOM_PROPS);
+    const setCustomPropsWithCheckPropsCondition = useCallback(
+        (props) => {
+            if (checkPropsCondition(props)) return setCustomProps(props);
+            if (customProps !== INIT_CUSTOM_PROPS) return setCustomProps(INIT_CUSTOM_PROPS);
+        },
+        [customProps]
+    );
+
+    const open = useCallback(
+        async (props) => {
+            setOpen(true);
+            setCustomPropsWithCheckPropsCondition(props);
+            if (!initialization) setInitialization(true);
+            if (!asyncOpen) return;
+            setPending(true);
+            await asyncOpen();
+            setPending(false);
+        },
+        [customProps]
+    );
 
     const close = useCallback(() => setOpen(false), []);
 
@@ -90,9 +102,9 @@ const Modal = ({
         () => ({
             open,
             close,
-            ...props,
+            ...customProps,
         }),
-        [props]
+        [customProps]
     );
 
     return (
