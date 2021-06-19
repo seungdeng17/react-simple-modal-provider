@@ -19,7 +19,7 @@ const ERROR_MESSAGES = {
     MODAL_PROVIDER_EMPTY_VALUE: 'react-simple-modal-provider: ModalProvider Warning! Value props is empty.',
     MODAL_ID_TYPE_ERROR: 'react-simple-modal-provider: Modal Error! id props must be a string type.',
     MODAL_NOT_ENOUGH_PROPS:
-        'react-simple-modal-provider: Modal Error! Not enough essential props data. Check the Modal props. (id, consumer, isOpen, setOpen)',
+        'react-simple-modal-provider: Modal Error! Not enough required props data. Check the Modal props. (id, consumer, isOpen, setOpen)',
     MODAL_ID_INVALID_FROM_CONTEXT: (id: string) =>
         `react-simple-modal-provider: context Error! ID "${id}" is not valid`,
     MODAL_ID_INVALID_FROM_USEMODAL: (id: string) =>

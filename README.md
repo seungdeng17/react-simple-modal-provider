@@ -97,7 +97,7 @@ It is recommended to name variables using destructuring assignment.<br/>
 
 ### Modal Module
 
-#### - Essential props
+#### - Required props
 
 |Prop|Type|Default|Description|
 |:---:|:---:|:---:|:---:|

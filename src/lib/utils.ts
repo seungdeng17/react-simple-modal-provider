@@ -18,7 +18,7 @@ const hash = (id: string) => {
 
 const defer = async (ms: number) => await new Promise((r) => setTimeout(r, ms));
 
-const checkModalEssentialProps = ({
+const checkModalRequiredProps = ({
     id,
     consumer,
     isOpen,
@@ -183,7 +183,7 @@ export {
     stateBundler,
     hash,
     defer,
-    checkModalEssentialProps,
+    checkModalRequiredProps,
     getModalStyle,
     throttle,
     startDragHandler,
