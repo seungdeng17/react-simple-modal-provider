@@ -241,8 +241,6 @@ export default () => {
 };
 ```
 
-<br/>
-
 #### - Provider overlap (differentiate global / local modal)
 
 ```jsx
