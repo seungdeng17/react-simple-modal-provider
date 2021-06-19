@@ -1,12 +1,15 @@
-import { ModalProvider } from "../../lib";
-import modals from "./Modal";
-import Panel from "./Panel";
-import "./app.scss";
+import { ModalProvider } from '../../lib';
+import modals, { globalModals, localModals } from './Modal';
+import Panel, { GlobalPanel, LocalPanel } from './Panel';
+import './app.scss';
 
 export default function App() {
-  return (
-    <ModalProvider value={modals}>
-      <Panel />
-    </ModalProvider>
-  );
+    return (
+        <ModalProvider value={globalModals}>
+            <GlobalPanel />
+            <ModalProvider value={localModals}>
+                <LocalPanel />
+            </ModalProvider>
+        </ModalProvider>
+    );
 }
