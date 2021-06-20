@@ -51,11 +51,13 @@ const Modal = ({
     spinnerColor = 'rgba(45, 52, 54, 0.6)',
     draggable = false,
 }: IModalProps) => {
-    checkRequiredProps({ id, consumer, isOpen, setOpen });
-    checkCustomStyle({ id, width, height, backgroundColor });
-
     duration = animation?.type && !duration ? 150 : duration;
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
+
+    useEffect(() => {
+        checkRequiredProps({ id, consumer, isOpen, setOpen });
+        checkCustomStyle({ id, width, height, backgroundColor });
+    }, []);
 
     const hashId = hash(id);
     const Context = useMemo(() => createModalContext(id), []);

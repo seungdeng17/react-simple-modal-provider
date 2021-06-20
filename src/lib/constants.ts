@@ -17,9 +17,10 @@ const PREFIX = {
 
 const ERROR_MESSAGES = {
     MODAL_PROVIDER_EMPTY_VALUE: 'react-simple-modal-provider: ModalProvider Warning! Value props is empty.',
-    MODAL_ID_TYPE_ERROR: 'react-simple-modal-provider: Modal Error! id props must be a string type.',
-    MODAL_NOT_ENOUGH_PROPS:
-        'react-simple-modal-provider: Modal Error! Not enough required props data. Check the Modal props. (id, consumer, isOpen, setOpen)',
+    MODAL_ID_TYPE_ERROR: (id: string) =>
+        `react-simple-modal-provider: Modal ID(${id}): Modal Error! id props must be a string type.`,
+    MODAL_NOT_ENOUGH_PROPS: (id: string) =>
+        `react-simple-modal-provider: Modal ID(${id}): Modal Error! Not enough required props data. Check the Modal props. (id, consumer, isOpen, setOpen)`,
     MODAL_ID_INVALID_FROM_CONTEXT: (id: string) =>
         `react-simple-modal-provider: context Error! ID "${id}" is not valid`,
     MODAL_ID_INVALID_FROM_USEMODAL: (id: string) =>
@@ -27,7 +28,7 @@ const ERROR_MESSAGES = {
     MODAL_ID_NOT_EXIST: (id: string) =>
         `react-simple-modal-provider: useModal Error! ID "${id}" not exist. Check the order of value props passed to "ModalProvider".`,
     MODAL_CUSTOM_STYLE_WARN: (id: string) =>
-        `Modal ID(${id}): The backgroundColor is transparent. Please specify the backgroundColor.`,
+        `react-simple-modal-provider: Modal ID(${id}): The backgroundColor is transparent. Please specify the backgroundColor.`,
 };
 
 export { OVERLAY_CLASS_NAME, CLASS_NAME, PREFIX, ERROR_MESSAGES };

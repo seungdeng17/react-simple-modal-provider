@@ -29,8 +29,9 @@ const checkRequiredProps = ({
     isOpen: boolean;
     setOpen: Function;
 }) => {
-    if (typeof id !== 'string') throw new Error(ERROR_MESSAGES.MODAL_ID_TYPE_ERROR);
-    if (!id || !consumer || isOpen === undefined || !setOpen) throw new Error(ERROR_MESSAGES.MODAL_NOT_ENOUGH_PROPS);
+    if (typeof id !== 'string') throw new Error(ERROR_MESSAGES.MODAL_ID_TYPE_ERROR(id));
+    if (!id || !consumer || isOpen === undefined || !setOpen)
+        throw new Error(ERROR_MESSAGES.MODAL_NOT_ENOUGH_PROPS(id));
 };
 
 const getModalStyle = ({
