@@ -28,6 +28,7 @@ interface IModalProps {
 }
 
 const modalSet: Set<string> = new Set();
+const INIT_CUSTOM_PROPS: { [key: string]: any } = {};
 
 const Modal = ({
     children,
@@ -57,12 +58,11 @@ const Modal = ({
     if (draggable && animation.type.match(/top|bottom|left|right/)) animation = modalAnimation.scaleUp;
 
     const hashId = hash(id);
-
     const Context = useMemo(() => createModalContext(id), []);
+
     const [initialization, setInitialization] = useState<boolean>(false);
     const [pending, setPending] = useState<boolean>(false);
 
-    const INIT_CUSTOM_PROPS = {};
     const [customProps, setCustomProps] = useState<{ [key: string]: any }>(INIT_CUSTOM_PROPS);
     const setCustomPropsWithCheckPropsCondition = useCallback(
         (props) => {
