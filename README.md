@@ -36,7 +36,8 @@
 import Modal, { useModalState } from "react-simple-modal-provider";
 
 export default ({ children }) => {
-  const { isOpen, setOpen } = useModalState();
+  const [isOpen, setOpen] = useModalState();
+  /* const onCloseHandler = () => setOpen(false); */
 
   return (
     <Modal
@@ -136,7 +137,7 @@ import Modal, { useModalState } from "react-simple-modal-provider";
 import ModalBody from "./ModalBody";
 
 export default ({ children }) => {
-  const { isOpen, setOpen } = useModalState();
+  const [isOpen, setOpen] = useModalState();
   const [data, setData] = useState(null);
 
   const asyncOpen = async () => {
