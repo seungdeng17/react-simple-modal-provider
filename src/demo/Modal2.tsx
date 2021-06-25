@@ -2,7 +2,7 @@ import Modal, { useModalState, useModal, modalAnimation } from '../lib';
 import Modal2Body from './Modal2Body';
 
 const Modal2 = ({ children }: { children: React.ReactNode }) => {
-    const { isOpen, setOpen } = useModalState();
+    const [isOpen, setOpen] = useModalState();
     const { open: modal3Open } = useModal('Modal3');
     const onCloseHandler = () => setOpen(false);
 

@@ -3,7 +3,7 @@ import Modal, { useModalState, useModal, modalAnimation } from '../lib/';
 import Modal1Body from './Modal1Body';
 
 const Modal1 = ({ children }: { children: React.ReactNode }) => {
-    const { isOpen, setOpen } = useModalState();
+    const [isOpen, setOpen] = useModalState();
     const { open: modal2Open } = useModal('Modal2');
     const { open: modal3Open } = useModal('Modal3');
 

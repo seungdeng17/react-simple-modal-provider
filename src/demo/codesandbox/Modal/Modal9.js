@@ -4,7 +4,7 @@ import Modal9Body from './Modal9Body';
 import './modal.scss';
 
 export default ({ children }) => {
-    const { isOpen, setOpen } = useModalState();
+    const [isOpen, setOpen] = useModalState();
     const [data, setData] = useState(null);
 
     const asyncOpen = async () => {

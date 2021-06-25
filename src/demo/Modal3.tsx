@@ -1,7 +1,7 @@
 import Modal, { useModalState, modalAnimation } from '../lib';
 
 const Modal3 = ({ children }: { children: React.ReactNode }) => {
-    const { isOpen, setOpen } = useModalState();
+    const [isOpen, setOpen] = useModalState();
     const onCloseHandler = () => setOpen(false);
 
     return (
