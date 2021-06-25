@@ -10,7 +10,7 @@ interface IModalProps {
     id: string;
     consumer: React.ReactNode;
     isOpen: boolean;
-    setOpen: Function;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     allowClickOutside?: boolean;
     duration?: number;
     overlayColor?: string;
