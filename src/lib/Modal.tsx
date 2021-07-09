@@ -27,9 +27,6 @@ interface IModalProps {
     draggable?: boolean;
 }
 
-const modalSet: Set<string> = new Set();
-const INIT_CUSTOM_PROPS: { [key: string]: any } = {};
-
 const Modal = ({
     children,
     id,
@@ -60,16 +57,16 @@ const Modal = ({
     }, []);
 
     const hashId = hash(id);
-    const Context = useMemo(() => createModalContext(id), []);
+    const [Context, ContextProps] = useMemo(() => createModalContext(id), []);
 
     const [initialization, setInitialization] = useState<boolean>(false);
     const [pending, setPending] = useState<boolean>(false);
 
-    const [customProps, setCustomProps] = useState<{ [key: string]: any }>(INIT_CUSTOM_PROPS);
+    const [customProps, setCustomProps] = useState<{ [key: string]: any }>({});
     const setCustomPropsWithCheckPropsCondition = useCallback(
         (props) => {
             if (checkPropsCondition(props)) return setCustomProps(props);
-            if (customProps !== INIT_CUSTOM_PROPS) return setCustomProps(INIT_CUSTOM_PROPS);
+            setCustomProps({});
         },
         [customProps]
     );
@@ -105,44 +102,54 @@ const Modal = ({
         () => ({
             open,
             close,
+        }),
+        []
+    );
+
+    const propsProviderValues = useMemo(
+        () => ({
             ...customProps,
         }),
         [customProps]
     );
 
     return (
-        <Context.Provider value={providerValues}>
-            {consumer}
-            <Portal
-                id={id}
-                hashId={hashId}
-                modalSet={modalSet}
-                initialization={initialization}
-                pending={pending}
-                isOpen={isOpen}
-                close={close}
-                allowClickOutside={allowClickOutside}
-                spinner={spinner}
-                spinnerColor={spinnerColor}
-                duration={duration}
-                modalStyle={getModalStyle({
-                    hashId,
-                    duration,
-                    overlayColor,
-                    vertical,
-                    horizontal,
-                    animation,
-                    width,
-                    height,
-                    radius,
-                    backgroundColor,
-                })}
-                draggable={draggable}
-            >
-                {children}
-            </Portal>
-        </Context.Provider>
+        <ContextProps.Provider value={propsProviderValues}>
+            <Context.Provider value={providerValues}>
+                {consumer}
+                <Portal
+                    id={id}
+                    hashId={hashId}
+                    modalSet={modalSet}
+                    initialization={initialization}
+                    pending={pending}
+                    isOpen={isOpen}
+                    close={close}
+                    allowClickOutside={allowClickOutside}
+                    spinner={spinner}
+                    spinnerColor={spinnerColor}
+                    duration={duration}
+                    modalStyle={getModalStyle({
+                        hashId,
+                        duration,
+                        overlayColor,
+                        vertical,
+                        horizontal,
+                        animation,
+                        width,
+                        height,
+                        radius,
+                        backgroundColor,
+                    })}
+                    draggable={draggable}
+                >
+                    {children}
+                </Portal>
+            </Context.Provider>
+        </ContextProps.Provider>
     );
 };
+
+const modalSet: Set<string> = new Set();
 
 export default Modal;

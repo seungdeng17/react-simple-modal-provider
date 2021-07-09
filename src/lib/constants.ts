@@ -23,10 +23,10 @@ const ERROR_MESSAGES = {
         `react-simple-modal-provider: Modal ID(${id}): Modal Error! Not enough required props data. Check the Modal props. (id, consumer, isOpen, setOpen)`,
     MODAL_ID_INVALID_FROM_CONTEXT: (id: string) =>
         `react-simple-modal-provider: context Error! ID "${id}" is not valid`,
-    MODAL_ID_INVALID_FROM_USEMODAL: (id: string) =>
-        `react-simple-modal-provider: useModal Error! ID "${id}" is not valid`,
-    MODAL_ID_NOT_EXIST: (id: string) =>
-        `react-simple-modal-provider: useModal Error! ID "${id}" not exist. Check the order of value props passed to "ModalProvider".`,
+    MODAL_ID_INVALID_FROM: (id: string, name: string) =>
+        `react-simple-modal-provider: ${name} Error! ID "${id}" is not valid`,
+    MODAL_ID_NOT_EXIST: (id: string, name: string) =>
+        `react-simple-modal-provider: ${name} Error! ID "${id}" not exist. Check the order of value props passed to "ModalProvider".`,
     MODAL_CUSTOM_STYLE_WARN: (id: string) =>
         `react-simple-modal-provider: Modal ID(${id}): The backgroundColor is transparent. Please specify the backgroundColor.`,
 };

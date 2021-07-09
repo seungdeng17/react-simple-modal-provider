@@ -18,9 +18,6 @@ interface IPortalProps extends IPortalCommonProps {
     spinnerColor: string;
 }
 
-const body = document.body;
-const head = document.head;
-
 const Portal = ({
     children,
     id,
@@ -80,5 +77,8 @@ const Portal = ({
         $(`.${PREFIX.PORTAL}${hashId}`) as HTMLElement
     );
 };
+
+const body = document.body;
+const head = document.head;
 
 export default Portal;
