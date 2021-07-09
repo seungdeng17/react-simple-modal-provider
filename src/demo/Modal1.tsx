@@ -11,7 +11,7 @@ const Modal1 = ({ children }: { children: React.ReactNode }) => {
 
     const asyncOpen = async () => {
         try {
-            await new Promise((r) => setTimeout(r, 500));
+            await new Promise((r) => setTimeout(r, 10));
             const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
             const json = await res.json();
             setData(json);

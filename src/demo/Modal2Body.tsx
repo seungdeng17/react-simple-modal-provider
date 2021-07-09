@@ -1,7 +1,7 @@
-import { useModal } from '../lib';
+import { useModalProps } from '../lib';
 
 const Modal2Body = () => {
-    const { testModal2 } = useModal('Modal2');
+    const { testModal2 } = useModalProps('Modal2');
 
     return (
         <div>
