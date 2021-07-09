@@ -218,7 +218,7 @@ export default ({ children }) => {
 
 ## ETC
 
-#### - Forward props when opening modals
+#### - useModalProps (forward props when opening modals)
 
 ```jsx
 // ConsumePage Component
@@ -233,10 +233,10 @@ export default () => {
 
 ```jsx
 // ModalBody Component
-import { useModal } from "react-simple-modal-provider";
+import { useModalProps } from "react-simple-modal-provider";
 
 export default () => {
-  const { title } = useModal("ETCModal");
+  const { title } = useModalProps("ETCModal");
 
   return <h1>{title}</h1>;  // Hello World
 };
