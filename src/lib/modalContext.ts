@@ -22,7 +22,7 @@ const createModalContext = (id: string): [React.Context<IModalContext>, React.Co
 
 const useModal = (id: string): IModalContext => {
     if (!id) throw new Error(ERROR_MESSAGES.MODAL_ID_INVALID_FROM(id, 'useModal'));
-    if (!contextMap.has(id)) throw new Error(ERROR_MESSAGES.MODAL_ID_NOT_EXIST(id, 'useModalProps'));
+    if (!contextMap.has(id)) throw new Error(ERROR_MESSAGES.MODAL_ID_NOT_EXIST(id, 'useModal'));
     return useContext(contextMap.get(id));
 };
 
