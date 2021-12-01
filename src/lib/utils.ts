@@ -89,7 +89,6 @@ const getModalStyle = ({
             position: relative;
             bottom: ${vertical}px;
             left: ${horizontal}px;
-            overflow: hidden;
             outline: 0;
             transition-timing-function: ease-in-out;
             transition-property: ${animation.type};
