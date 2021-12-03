@@ -43,8 +43,8 @@ const Portal = ({
 
                 const portal = $(`.${PREFIX.PORTAL}${hashId}`);
                 const style = $(`[data-modal-style="${PREFIX.PORTAL}${hashId}`);
-                portal?.remove();
-                style?.remove();
+                portal && body.removeChild(portal);
+                style && head.removeChild(style);
 
                 return setCreatedPortal(false);
             }
