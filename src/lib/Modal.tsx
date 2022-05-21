@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { createModalContext } from './modalContext';
+import { createModalContext, createModalContextProps } from './modalContext';
 import { modalAnimation } from './modalAnimation';
 import { checkRequiredProps, checkCustomStyle, hash, getModalStyle, checkPropsCondition } from './utils';
 import { IAnimation } from './type';
@@ -57,7 +57,8 @@ const Modal = ({
     }, []);
 
     const hashId = hash(id);
-    const [Context, ContextProps] = useMemo(() => createModalContext(id), []);
+    const Context = useMemo(() => createModalContext(id), []);
+    const ContextProps = useMemo(() => createModalContextProps(id), []);
 
     const [initialization, setInitialization] = useState<boolean>(false);
     const [pending, setPending] = useState<boolean>(false);

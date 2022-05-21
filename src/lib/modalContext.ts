@@ -10,14 +10,20 @@ interface IModalContextProps {
     [key: string]: any;
 }
 
-const createModalContext = (id: string): [React.Context<IModalContext>, React.Context<IModalContextProps>] => {
+const createModalContext = (id: string): React.Context<IModalContext> => {
     if (!id) throw new Error(ERROR_MESSAGES.MODAL_ID_INVALID_FROM_CONTEXT(id));
     if (contextMap.has(id)) return contextMap.get(id);
     const context = createContext<IModalContext>({} as IModalContext);
-    const contextProps = createContext<IModalContextProps>({} as IModalContextProps);
     contextMap.set(id, context);
+    return context;
+};
+
+const createModalContextProps = (id: string): React.Context<IModalContextProps> => {
+    if (!id) throw new Error(ERROR_MESSAGES.MODAL_ID_INVALID_FROM_CONTEXT(id));
+    if (contextPropsMap.has(id)) return contextPropsMap.get(id);
+    const contextProps = createContext<IModalContextProps>({} as IModalContextProps);
     contextPropsMap.set(id, contextProps);
-    return [context, contextProps];
+    return contextProps;
 };
 
 const useModal = (id: string): IModalContext => {
@@ -35,4 +41,4 @@ const useModalProps = (id: string): IModalContextProps => {
 const contextMap = new Map();
 const contextPropsMap = new Map();
 
-export { createModalContext, useModal, useModalProps };
+export { createModalContext, createModalContextProps, useModal, useModalProps };

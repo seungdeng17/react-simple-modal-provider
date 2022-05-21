@@ -43,20 +43,20 @@ const Portal = ({
 
                 const portal = $(`.${PREFIX.PORTAL}${hashId}`);
                 const style = $(`[data-modal-style="${PREFIX.PORTAL}${hashId}`);
-                portal && body.removeChild(portal);
-                style && head.removeChild(style);
+                portal && document.body.removeChild(portal);
+                style && document.head.removeChild(style);
 
                 return setCreatedPortal(false);
             }
 
             const portal = document.createElement('div');
             portal.classList.add(`${PREFIX.PORTAL}${hashId}`);
-            body.appendChild(portal);
+            document.body.appendChild(portal);
 
             const style = document.createElement('style');
             style.setAttribute('data-modal-style', `${PREFIX.PORTAL}${hashId}`);
             style.textContent = modalStyle;
-            head.appendChild(style);
+            document.head.appendChild(style);
 
             setCreatedPortal(true);
         })();
@@ -77,8 +77,5 @@ const Portal = ({
         $(`.${PREFIX.PORTAL}${hashId}`) as HTMLElement
     );
 };
-
-const body = document.body;
-const head = document.head;
 
 export default Portal;
